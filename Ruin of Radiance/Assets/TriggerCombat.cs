@@ -20,7 +20,7 @@ public class TriggerCombat : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-
+        Debug.Log("Hit something");
         if (collision.gameObject.CompareTag("wall")) {
 
             // does nothing
@@ -53,4 +53,8 @@ public class TriggerCombat : MonoBehaviour
            // theScript.takeDamage();
 
         }
-    } }
+    } 
+    void OnTriggerExit2D(Collider2D col){
+        CombatCam.orthographicSize = 5f;
+    }
+}
