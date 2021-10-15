@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    GameObject staminaBar;
     private Animator anim;
     [SerializeField]
     private AudioSource audio;
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
     public bool inCombat = false;
     bool enteringCombat = false;
     bool exitingCombat = false;
+    float stamina = 100;
     // Start is called before the first frame update
     [SerializeField]
     public AudioClip[] walkDirt, walkConcrete;
@@ -25,6 +27,7 @@ public class Movement : MonoBehaviour
     Material groundMaterial;
     void Start()
     {
+        staminaBar = GameObject.FindGameObjectWithTag("Stamina");
         groundMaterial = Material.DIRT;
         anim = GetComponent<Animator>();
     }
@@ -37,8 +40,15 @@ public class Movement : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
 
             if(Input.GetKey(KeyCode.LeftShift)){
-                Debug.Log("Shift");
-                movement = movement*2;
+                if(stamina>0){
+                    stamina-=.1f;
+                    movement = movement*2;
+                }
+            }
+            else{
+                if(stamina<100){
+                    stamina+=.1f;
+                }
             }
         }
         anim.SetFloat("Horizontal", movement.x);
@@ -48,6 +58,9 @@ public class Movement : MonoBehaviour
     }
 
     void FixedUpdate(){
+        staminaBar.transform.localScale = new Vector3(stamina/75,.2f,.2f);
+
+
         character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
         if(enteringCombat){
             if(combatCam.orthographicSize > 2.5) combatCam.orthographicSize -= .1f;
