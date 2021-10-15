@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private Rigidbody2D character;
+    
     private Vector2 movement;
     [SerializeField]
     float moveSpeed = 1;
