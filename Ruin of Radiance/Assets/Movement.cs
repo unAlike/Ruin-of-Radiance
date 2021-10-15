@@ -6,6 +6,8 @@ public class Movement : MonoBehaviour
 {
     private Animator anim;
     [SerializeField]
+    private AudioSource audio;
+    [SerializeField]
     private Rigidbody2D character;
     private Vector2 movement;
     [SerializeField]
@@ -17,8 +19,13 @@ public class Movement : MonoBehaviour
     bool enteringCombat = false;
     bool exitingCombat = false;
     // Start is called before the first frame update
+    [SerializeField]
+    public AudioClip[] walkDirt, walkConcrete;
+    enum Material {DIRT,CONCRETE,CRYSTAL};
+    Material groundMaterial;
     void Start()
     {
+        groundMaterial = Material.DIRT;
         anim = GetComponent<Animator>();
     }
 
@@ -93,5 +100,15 @@ public class Movement : MonoBehaviour
     } 
     void OnTriggerExit2D(Collider2D col){
         exitingCombat = true;
+    }
+    void playWalkSoundEffect(){
+        switch(groundMaterial){
+            case Material.DIRT:
+                audio.PlayOneShot(walkDirt[Random.Range(0,2)], .5f);
+                return;
+            case Material.CONCRETE:
+                audio.PlayOneShot(walkConcrete[Random.Range(0,3)], .5f);
+                return;
+        }
     }
 }
