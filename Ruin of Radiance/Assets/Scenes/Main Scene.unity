@@ -34867,6 +34867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Raccoon_Default
       objectReference: {fileID: 0}
+    - target: {fileID: 7916689107126553840, guid: ff1d1f6bde162c344afd3b4068de7dd3, type: 3}
+      propertyPath: MaxDistance
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff1d1f6bde162c344afd3b4068de7dd3, type: 3}
 --- !u!1001 &9201699663481983310
