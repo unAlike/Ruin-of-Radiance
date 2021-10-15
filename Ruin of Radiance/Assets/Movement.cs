@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     GridLayout grid;
     private AudioSource audio;
     private Rigidbody2D character;
+    
     private Vector2 movement;
     [SerializeField]
     float moveSpeed = 1;
@@ -28,7 +29,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         tilemap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
-        audio = GameObject.Find("Footsteps").GetComponent<AudioSource>();
+        audio = GameObject.Find("CharacterAudioSource").GetComponent<AudioSource>();
         character = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         staminaBar = GameObject.FindGameObjectWithTag("Stamina");
