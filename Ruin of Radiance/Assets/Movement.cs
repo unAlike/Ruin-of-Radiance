@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     GridLayout grid;
     private AudioSource audio;
     private Rigidbody2D character;
+    
     private Vector2 movement;
     [SerializeField]
     float moveSpeed = 1;
