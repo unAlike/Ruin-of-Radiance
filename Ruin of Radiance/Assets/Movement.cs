@@ -7,18 +7,14 @@ public class Movement : MonoBehaviour
 {
     GameObject staminaBar;
     private Animator anim;
-    [SerializeField]
     Tilemap tilemap;
     GridLayout grid;
-    [SerializeField]
     private AudioSource audio;
-    [SerializeField]
     private Rigidbody2D character;
     private Vector2 movement;
     [SerializeField]
     float moveSpeed = 1;
-    [SerializeField]
-    Camera combatCam;
+    Camera mainCamera;
     [SerializeField]
     public bool inCombat = false;
     bool enteringCombat = false;
@@ -31,6 +27,10 @@ public class Movement : MonoBehaviour
     Material groundMaterial;
     void Start()
     {
+        tilemap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
+        audio = GameObject.Find("Footsteps").GetComponent<AudioSource>();
+        character = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
         staminaBar = GameObject.FindGameObjectWithTag("Stamina");
         groundMaterial = Material.DIRT;
         anim = GetComponent<Animator>();
@@ -67,11 +67,11 @@ public class Movement : MonoBehaviour
 
         character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
         if(enteringCombat){
-            if(combatCam.orthographicSize > 2.5) combatCam.orthographicSize -= .1f;
+            if(mainCamera.orthographicSize > 2.5) mainCamera.orthographicSize -= .1f;
             else enteringCombat = false;
         }
         if(exitingCombat){
-            if(combatCam.orthographicSize < 5) combatCam.orthographicSize += .1f;
+            if(mainCamera.orthographicSize < 5) mainCamera.orthographicSize += .1f;
             else exitingCombat = false;
         }
     }
