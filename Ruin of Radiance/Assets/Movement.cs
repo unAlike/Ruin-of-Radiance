@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         tilemap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
-        audio = GameObject.Find("Footsteps").GetComponent<AudioSource>();
+        audio = GameObject.Find("CharacterAudioSource").GetComponent<AudioSource>();
         character = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         staminaBar = GameObject.FindGameObjectWithTag("Stamina");

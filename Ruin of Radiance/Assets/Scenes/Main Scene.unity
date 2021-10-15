@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 498533264}
   - component: {fileID: 498533265}
   m_Layer: 0
-  m_Name: Footsteps
+  m_Name: CharacterAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2540,6 +2540,7 @@ GameObject:
   - component: {fileID: 1872722295}
   - component: {fileID: 1872722294}
   - component: {fileID: 1872722293}
+  - component: {fileID: 1872722299}
   - component: {fileID: 1872722298}
   m_Layer: 0
   m_Name: Dynamic Sprite
@@ -2581,11 +2582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf11726b54b6d47a1e6480320fda80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 2081835818}
-  audio: {fileID: 498533265}
-  character: {fileID: 1872722292}
   moveSpeed: 1
-  combatCam: {fileID: 327696286}
   inCombat: 0
   walkDirt:
   - {fileID: 8300000, guid: c978d18dc290e0c438c679bc11647bd1, type: 3}
@@ -2718,6 +2715,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872722291}
   m_Enabled: 1
+--- !u!114 &1872722299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872722291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c197308030acb74e8ae68072c840611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 1872722294}
+  plantAttack1: {fileID: 8300000, guid: 073f9de315abf974bb60289474f20b55, type: 3}
 --- !u!4 &1979216444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1809397835792944773, guid: 4ce1705d9ea464d4081950d809b79967, type: 3}

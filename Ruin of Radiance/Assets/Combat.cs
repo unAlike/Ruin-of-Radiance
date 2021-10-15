@@ -13,19 +13,19 @@ public class Combat : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-        plantSounds = GetComponent<AudioSource>();
+        plantSounds = GameObject.Find("CharacterAudioSource").GetComponent<AudioSource>();
         plantSounds.clip = plantAttack1;
     }
 
     // Update is called once per frame
     void Update()
     {
-         {
-               if(Input.GetKey("space"))
+        {
+               if(Input.GetKey("space") && !plantSounds.isPlaying)
                {
                        anim.Play("characterFrontAttack");
-                       plantSounds.Play();
+                       plantSounds.PlayOneShot(plantAttack1,1f);
                }
-     }
+        }
     }
 }
