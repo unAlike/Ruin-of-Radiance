@@ -1,24 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Movement : MonoBehaviour
 {
+    GameObject staminaBar;
     private Animator anim;
-    [SerializeField]
+    Tilemap tilemap;
+    GridLayout grid;
+    private AudioSource audio;
     private Rigidbody2D character;
+    
     private Vector2 movement;
     [SerializeField]
     float moveSpeed = 1;
-    [SerializeField]
-    Camera combatCam;
+    Camera mainCamera;
     [SerializeField]
     public bool inCombat = false;
     bool enteringCombat = false;
     bool exitingCombat = false;
+    float stamina = 100;
     // Start is called before the first frame update
+    [SerializeField]
+    public AudioClip[] walkDirt, walkConcrete;
+    enum Material {DIRT,CONCRETE,CRYSTAL};
+    Material groundMaterial;
     void Start()
     {
+        tilemap = GameObject.Find("Tilemap").GetComponent<Tilemap>();
+        audio = GameObject.Find("CharacterAudioSource").GetComponent<AudioSource>();
+        character = GetComponent<Rigidbody2D>();
+        mainCamera = Camera.main;
+        staminaBar = GameObject.FindGameObjectWithTag("Stamina");
+        groundMaterial = Material.DIRT;
         anim = GetComponent<Animator>();
     }
 
@@ -30,8 +45,15 @@ public class Movement : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
 
             if(Input.GetKey(KeyCode.LeftShift)){
-                Debug.Log("Shift");
-                movement = movement*2;
+                if(stamina>0){
+                    stamina-=.1f;
+                    movement = movement*2;
+                }
+            }
+            else{
+                if(stamina<100){
+                    stamina+=.1f;
+                }
             }
         }
         anim.SetFloat("Horizontal", movement.x);
@@ -41,13 +63,16 @@ public class Movement : MonoBehaviour
     }
 
     void FixedUpdate(){
+        staminaBar.transform.localScale = new Vector3(stamina/75,.2f,.2f);
+
+
         character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
         if(enteringCombat){
-            if(combatCam.orthographicSize > 2.5) combatCam.orthographicSize -= .1f;
+            if(mainCamera.orthographicSize > 2.5) mainCamera.orthographicSize -= .1f;
             else enteringCombat = false;
         }
         if(exitingCombat){
-            if(combatCam.orthographicSize < 5) combatCam.orthographicSize += .1f;
+            if(mainCamera.orthographicSize < 5) mainCamera.orthographicSize += .1f;
             else exitingCombat = false;
         }
     }
@@ -93,5 +118,31 @@ public class Movement : MonoBehaviour
     } 
     void OnTriggerExit2D(Collider2D col){
         exitingCombat = true;
+        
+    }
+    void playWalkSoundEffect(){
+        //Debug.Log("The Tile Name is '" + tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString() + "' done");
+        switch(tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString()){
+            case "UptownTileSheet_0 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_1 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_2 (UnityEngine.Tilemaps.Tile)": 
+            case "UptownTileSheet_3 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_4 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_5 (UnityEngine.Tilemaps.Tile)":
+            case "UptownTileSheet_6 (UnityEngine.Tilemaps.Tile)":  case "UptownTileSheet_8 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_9 (UnityEngine.Tilemaps.Tile)": 
+            case "UptownTileSheet_10 (UnityEngine.Tilemaps.Tile)":
+                groundMaterial = Material.CONCRETE;
+                break;
+            case "UptownTileSheet_7 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_11 (UnityEngine.Tilemaps.Tile)":
+                groundMaterial = Material.DIRT;
+                break;
+            default:
+                Debug.Log("AHH");
+                break;
+        }
+        switch(groundMaterial){
+            case Material.DIRT:
+                audio.PlayOneShot(walkDirt[Random.Range(0,2)], .5f);
+                break;
+            case Material.CONCRETE:
+                audio.PlayOneShot(walkConcrete[Random.Range(0,3)], .5f);
+                break;
+        }
     }
 }

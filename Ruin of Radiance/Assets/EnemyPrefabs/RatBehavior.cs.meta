@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ed1b80ae8d9399540af269638553d3db
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rat1: {fileID: 8300000, guid: 711a08d92048d754785507e4e1474add, type: 3}
+  - rat2: {fileID: 8300000, guid: 06f9452978c659f4d91a6180a171fd2a, type: 3}
+  - rat3: {fileID: 8300000, guid: d1aa76b1952692b4ca9509f288d4b745, type: 3}
+  - rat4: {fileID: 8300000, guid: 8fffd0d9085485944b0080fdab1d18fd, type: 3}
+  - ratAttack: {fileID: 8300000, guid: 6de9bde974ffbb7449fcc221a830f386, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
