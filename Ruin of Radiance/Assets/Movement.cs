@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Movement : MonoBehaviour
 {
     GameObject staminaBar;
     private Animator anim;
+    [SerializeField]
+    Tilemap tilemap;
+    GridLayout grid;
     [SerializeField]
     private AudioSource audio;
     [SerializeField]
@@ -113,15 +117,31 @@ public class Movement : MonoBehaviour
     } 
     void OnTriggerExit2D(Collider2D col){
         exitingCombat = true;
+        
     }
     void playWalkSoundEffect(){
+        //Debug.Log("The Tile Name is '" + tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString() + "' done");
+        switch(tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString()){
+            case "UptownTileSheet_0 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_1 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_2 (UnityEngine.Tilemaps.Tile)": 
+            case "UptownTileSheet_3 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_4 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_5 (UnityEngine.Tilemaps.Tile)":
+            case "UptownTileSheet_6 (UnityEngine.Tilemaps.Tile)":  case "UptownTileSheet_8 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_9 (UnityEngine.Tilemaps.Tile)": 
+            case "UptownTileSheet_10 (UnityEngine.Tilemaps.Tile)":
+                groundMaterial = Material.CONCRETE;
+                break;
+            case "UptownTileSheet_7 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_11 (UnityEngine.Tilemaps.Tile)":
+                groundMaterial = Material.DIRT;
+                break;
+            default:
+                Debug.Log("AHH");
+                break;
+        }
         switch(groundMaterial){
             case Material.DIRT:
                 audio.PlayOneShot(walkDirt[Random.Range(0,2)], .5f);
-                return;
+                break;
             case Material.CONCRETE:
                 audio.PlayOneShot(walkConcrete[Random.Range(0,3)], .5f);
-                return;
+                break;
         }
     }
 }
