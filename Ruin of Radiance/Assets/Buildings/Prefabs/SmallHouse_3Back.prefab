@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8104371872675503189}
   - component: {fileID: 7028864313820115872}
   - component: {fileID: 7204669414259132343}
+  - component: {fileID: -3645395590925380314}
   m_Layer: 0
   m_Name: SmallHouse_3Back
   m_TagString: Untagged
@@ -96,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.0078875}
+  m_Offset: {x: 0, y: -0.31910288}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.4932111, y: 0.29293963}
     oldSize: {x: 2, y: 3}
     newSize: {x: 2, y: 3}
     adaptiveTilingThreshold: 0.5
@@ -107,5 +108,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.98422503}
+  m_Size: {x: 2, y: 0.9068339}
   m_EdgeRadius: 0
+--- !u!114 &-3645395590925380314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229052943842294457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

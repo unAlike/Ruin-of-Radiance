@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9130347076392523397}
   - component: {fileID: 8719947995586528780}
   - component: {fileID: 2460651560143295601}
+  - component: {fileID: -7755434721474699235}
   m_Layer: 0
   m_Name: SmallHouse_1Front
   m_TagString: Untagged
@@ -96,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.9972353}
+  m_Offset: {x: 0, y: -0.28205848}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.50339437, y: 0.27596745}
     oldSize: {x: 2, y: 3}
     newSize: {x: 2, y: 3}
     adaptiveTilingThreshold: 0.5
@@ -107,5 +108,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.0055294}
+  m_Size: {x: 2, y: 0.9195523}
   m_EdgeRadius: 0
+--- !u!114 &-7755434721474699235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6428475043542602005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

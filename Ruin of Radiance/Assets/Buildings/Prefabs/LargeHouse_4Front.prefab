@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4203082089571800323}
   - component: {fileID: 1019677674135112697}
   - component: {fileID: 2932870725545000378}
+  - component: {fileID: 1749642959523855428}
   m_Layer: 0
   m_Name: LargeHouse_4Front
   m_TagString: Untagged
@@ -96,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.499609}
+  m_Offset: {x: 0, y: -0.50327945}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5037716, y: 0.30764884}
     oldSize: {x: 6, y: 5}
     newSize: {x: 6, y: 5}
     adaptiveTilingThreshold: 0.5
@@ -107,5 +108,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 2.000782}
+  m_Size: {x: 6, y: 1.8426347}
   m_EdgeRadius: 0
+--- !u!114 &1749642959523855428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687985054543592889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

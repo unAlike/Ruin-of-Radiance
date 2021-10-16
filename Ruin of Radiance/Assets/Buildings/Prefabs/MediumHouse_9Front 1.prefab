@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6850640628485129474}
   - component: {fileID: 394632195639938510}
   - component: {fileID: 5996679073968417704}
+  - component: {fileID: 7147418121095842966}
   m_Layer: 0
   m_Name: MediumHouse_9Front 1
   m_TagString: Untagged
@@ -96,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.0055776}
+  m_Offset: {x: 0, y: -0.5602277}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5033944, y: 0.3970356}
     oldSize: {x: 4, y: 4}
     newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
@@ -107,5 +108,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 1.9888449}
+  m_Size: {x: 4, y: 1.8997747}
   m_EdgeRadius: 0
+--- !u!114 &7147418121095842966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738275714309774055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

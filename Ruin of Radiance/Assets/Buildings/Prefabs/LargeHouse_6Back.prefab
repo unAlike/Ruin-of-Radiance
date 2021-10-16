@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2078580533352738321}
   - component: {fileID: 2078580533352738322}
   - component: {fileID: 2078580533352738323}
+  - component: {fileID: 34101874496126960}
   m_Layer: 0
   m_Name: LargeHouse_6Back
   m_TagString: Untagged
@@ -96,10 +97,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.5102389}
+  m_Offset: {x: 0, y: -0.5021931}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.51037186, y: 0.30651733}
     oldSize: {x: 6, y: 5}
     newSize: {x: 6, y: 5}
     adaptiveTilingThreshold: 0.5
@@ -107,5 +108,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6, y: 1.9795222}
+  m_Size: {x: 6, y: 1.9001486}
   m_EdgeRadius: 0
+--- !u!114 &34101874496126960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078580533352738324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
