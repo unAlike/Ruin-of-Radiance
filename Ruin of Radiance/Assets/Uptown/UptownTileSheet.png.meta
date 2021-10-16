@@ -38,11 +38,41 @@ TextureImporter:
   - first:
       213: -6589378197981694627
     second: UptownTileSheet_11
+  - first:
+      213: -6656259592357853457
+    second: UptownTileSheet_12
+  - first:
+      213: -5653562995442495084
+    second: UptownTileSheet_13
+  - first:
+      213: -7364974061828391187
+    second: UptownTileSheet_14
+  - first:
+      213: 4638276582975005182
+    second: UptownTileSheet_15
+  - first:
+      213: -1472400736267221613
+    second: UptownTileSheet_16
+  - first:
+      213: -5125516540167770263
+    second: UptownTileSheet_17
+  - first:
+      213: -6852075754111302758
+    second: UptownTileSheet_18
+  - first:
+      213: -4045059458249366333
+    second: UptownTileSheet_19
+  - first:
+      213: 5819223039022184580
+    second: UptownTileSheet_20
+  - first:
+      213: 6873684137535338193
+    second: UptownTileSheet_21
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -71,9 +101,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -85,7 +115,7 @@ TextureImporter:
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
-  alphaUsage: 0
+  alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
   textureType: 8
@@ -96,7 +126,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  ignorePngGamma: 1
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -123,6 +153,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -131,7 +173,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -152,7 +194,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -173,7 +215,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -194,7 +236,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -214,8 +256,8 @@ TextureImporter:
       name: UptownTileSheet_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 128
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -235,8 +277,8 @@ TextureImporter:
       name: UptownTileSheet_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 0
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -256,8 +298,8 @@ TextureImporter:
       name: UptownTileSheet_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 32
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -277,8 +319,8 @@ TextureImporter:
       name: UptownTileSheet_7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -298,8 +340,8 @@ TextureImporter:
       name: UptownTileSheet_8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 96
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -319,8 +361,8 @@ TextureImporter:
       name: UptownTileSheet_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 128
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -340,8 +382,8 @@ TextureImporter:
       name: UptownTileSheet_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -361,8 +403,8 @@ TextureImporter:
       name: UptownTileSheet_11
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -374,6 +416,216 @@ TextureImporter:
       bones: []
       spriteID: d55f892e073dd84a0800000000000000
       internalID: -6589378197981694627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe649b8ca2730a3a0800000000000000
+      internalID: -6656259592357853457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4915b55d8628a81b0800000000000000
+      internalID: -5653562995442495084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deeb0c0bc1b5ac990800000000000000
+      internalID: -7364974061828391187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef1ec324af77e5040800000000000000
+      internalID: 4638276582975005182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 395c4cbd45bf09be0800000000000000
+      internalID: -1472400736267221613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f29e4ecd18ed8b0800000000000000
+      internalID: -5125516540167770263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93012ec76988e0a0800000000000000
+      internalID: -6852075754111302758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c466b7badf0dd7c0800000000000000
+      internalID: -4045059458249366333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 488bfadb58802c050800000000000000
+      internalID: 5819223039022184580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UptownTileSheet_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6f7040e4b346f50800000000000000
+      internalID: 6873684137535338193
       vertices: []
       indices: 
       edges: []
