@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2917992454392026847}
   - component: {fileID: 1374079984673246240}
   - component: {fileID: 2096932785888450640}
+  - component: {fileID: 4040493535297131403}
   m_Layer: 0
   m_Name: Raccoon_Controlled_Unanimated_0
   m_TagString: Untagged
@@ -96,6 +97,18 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.035945415}
+  m_Offset: {x: -0.0062893233, y: -0.0062847137}
   serializedVersion: 2
-  m_Radius: 0.3397282
+  m_Radius: 0.19057512
+--- !u!114 &4040493535297131403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828038236867843552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
