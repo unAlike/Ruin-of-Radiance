@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7916689107126553840}
   - component: {fileID: 7916689107126553841}
   - component: {fileID: 7916689107126553843}
+  - component: {fileID: 8468085488046132637}
   m_Layer: 0
   m_Name: Raccoon_Default
   m_TagString: enemy
@@ -99,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.035945415}
+  m_Offset: {x: 0, y: -0.016168317}
   serializedVersion: 2
-  m_Radius: 0.3397282
+  m_Radius: 0.18158977
 --- !u!82 &7916689107126553840
 AudioSource:
   m_ObjectHideFlags: 0
@@ -234,3 +235,15 @@ MonoBehaviour:
   raccoon3: {fileID: 0}
   raccoon4: {fileID: 0}
   raccoonAttack: {fileID: 0}
+--- !u!114 &8468085488046132637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331167990346694345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

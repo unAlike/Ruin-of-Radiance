@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4986160524536178409}
   - component: {fileID: 593329278223859639}
   - component: {fileID: 7606553443763777912}
+  - component: {fileID: 1945803380721590581}
   m_Layer: 0
   m_Name: Pigeon_GroundAndSky_Controlled_Unanimated_0
   m_TagString: Untagged
@@ -96,6 +97,18 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011981885, y: 0}
+  m_Offset: {x: -0.013081551, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3157642
+  m_Radius: 0.18209235
+--- !u!114 &1945803380721590581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7134878335356643429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

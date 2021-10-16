@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5995220001658802915}
   - component: {fileID: 5995220001658802912}
   - component: {fileID: 3558064949252649064}
+  - component: {fileID: 1064873096529419434}
   m_Layer: 0
   m_Name: Rat_Default
   m_TagString: enemy
@@ -99,9 +100,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.08387296}
+  m_Offset: {x: 0, y: 0.0030137699}
   serializedVersion: 2
-  m_Radius: 0.31576428
+  m_Radius: 0.15034549
 --- !u!82 &5995220001658802915
 AudioSource:
   m_ObjectHideFlags: 0
@@ -234,3 +235,15 @@ MonoBehaviour:
   rat3: {fileID: 8300000, guid: d1aa76b1952692b4ca9509f288d4b745, type: 3}
   rat4: {fileID: 8300000, guid: 8fffd0d9085485944b0080fdab1d18fd, type: 3}
   ratAttack: {fileID: 8300000, guid: 6de9bde974ffbb7449fcc221a830f386, type: 3}
+--- !u!114 &1064873096529419434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995220001658802914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
