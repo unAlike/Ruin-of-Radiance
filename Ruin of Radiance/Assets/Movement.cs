@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
     }
 
     void FixedUpdate(){
-        staminaBar.transform.localScale = new Vector3(stamina/75,.2f,.2f);
+        staminaBar.transform.localScale = new Vector3(stamina/75,.1f,.1f);
 
 
         character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -121,16 +121,14 @@ public class Movement : MonoBehaviour
         
     }
     void playWalkSoundEffect(){
-        Debug.Log("The Tile Name is '" + tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString() + "' done");
-        switch(tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString()){
-            case "UptownTileSheet_0 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_1 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_2 (UnityEngine.Tilemaps.Tile)": 
-            case "UptownTileSheet_3 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_4 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_5 (UnityEngine.Tilemaps.Tile)":
-            case "UptownTileSheet_6 (UnityEngine.Tilemaps.Tile)":  case "UptownTileSheet_8 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_9 (UnityEngine.Tilemaps.Tile)": 
-            case "UptownTileSheet_14 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_15 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_16 (UnityEngine.Tilemaps.Tile)":
-            case "UptownTileSheet_17 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_18 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_19 (UnityEngine.Tilemaps.Tile)":
+        //Debug.Log("The Tile Name is '" + tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString() + "' done");
+        string str = tilemap.GetTile(new Vector3Int((int)Mathf.Floor(character.position.x), (int)Mathf.Floor(character.position.y), 0)).ToString();
+        str = str.Substring(16,str.IndexOf(" ")-16);
+        switch(str){
+            case "0": case "1": case "2": case "3": case "4": case "5":case "6":  case "8": case "9": case "14": case "15": case "16":case "17": case "18": case "19":
                 groundMaterial = Material.CONCRETE;
                 break;
-            case "UptownTileSheet_11 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_12 (UnityEngine.Tilemaps.Tile)": case "UptownTileSheet_13 (UnityEngine.Tilemaps.Tile)":
+            case "11": case "12": case "13":
                 groundMaterial = Material.DIRT;
                 break;
             default:
