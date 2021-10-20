@@ -32,7 +32,7 @@ AudioSource raccoonSound;
      while(true)
      {
         
-         Debug.Log("Raccoon sound Played");
+         // Debug.Log("Raccoon sound Played");
          playRaccoonSound();
          yield return new WaitForSeconds(13);
      }

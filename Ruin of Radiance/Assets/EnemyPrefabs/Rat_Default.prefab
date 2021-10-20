@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5995220001658802914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.08, y: 0.65, z: -10}
+  m_LocalPosition: {x: -6.08, y: 0.65, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -230,10 +230,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1b80ae8d9399540af269638553d3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rat1: {fileID: 8300000, guid: 711a08d92048d754785507e4e1474add, type: 3}
-  rat2: {fileID: 8300000, guid: 06f9452978c659f4d91a6180a171fd2a, type: 3}
-  rat3: {fileID: 8300000, guid: d1aa76b1952692b4ca9509f288d4b745, type: 3}
-  rat4: {fileID: 8300000, guid: 8fffd0d9085485944b0080fdab1d18fd, type: 3}
+  ratNoises:
+  - {fileID: 8300000, guid: 711a08d92048d754785507e4e1474add, type: 3}
+  - {fileID: 8300000, guid: 06f9452978c659f4d91a6180a171fd2a, type: 3}
+  - {fileID: 8300000, guid: d1aa76b1952692b4ca9509f288d4b745, type: 3}
+  - {fileID: 8300000, guid: 8fffd0d9085485944b0080fdab1d18fd, type: 3}
   ratAttack: {fileID: 8300000, guid: 6de9bde974ffbb7449fcc221a830f386, type: 3}
 --- !u!114 &1064873096529419434
 MonoBehaviour:
