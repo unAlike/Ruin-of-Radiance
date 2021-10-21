@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     private Animator anim;
     Tilemap tilemap;
     GridLayout grid;
-    private AudioSource audio;
+    private AudioSource audioSource;
     private Rigidbody2D character;
     
     private Vector2 movement;
@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     bool enteringCombat = false;
     bool exitingCombat = false;
     float stamina = 100;
+    float mag =0;
     // Start is called before the first frame update
     [SerializeField]
     public AudioClip[] walkDirt, walkConcrete;
@@ -29,7 +30,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         tilemap = GameObject.Find("Ground").GetComponent<Tilemap>();
-        audio = GameObject.Find("CharacterAudioSource").GetComponent<AudioSource>();
+        audioSource = GameObject.Find("CharacterAudioSource").GetComponent<AudioSource>();
         character = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
         staminaBar = GameObject.FindGameObjectWithTag("Stamina");
@@ -56,6 +57,7 @@ public class Movement : MonoBehaviour
                 }
             }
         }
+        mag = Mathf.Sqrt(Mathf.Pow(movement.x,2) + Mathf.Pow(movement.y,2));
         anim.SetFloat("Horizontal", movement.x);
         anim.SetFloat("Vertical", movement.y);
         anim.SetFloat("Speed", movement.magnitude);
@@ -64,9 +66,9 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate(){
         staminaBar.transform.localScale = new Vector3(stamina/75,.1f,.1f);
+        
 
-
-        character.MovePosition(character.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(mag!=0) character.MovePosition(character.position + movement / mag * moveSpeed * Time.fixedDeltaTime);
         if(enteringCombat){
             if(mainCamera.orthographicSize > 2.5) mainCamera.orthographicSize -= .1f;
             else enteringCombat = false;
@@ -137,10 +139,10 @@ public class Movement : MonoBehaviour
         }
         switch(groundMaterial){
             case Material.DIRT:
-                audio.PlayOneShot(walkDirt[Random.Range(0,2)], .5f);
+                audioSource.PlayOneShot(walkDirt[Random.Range(0,2)], .5f);
                 break;
             case Material.CONCRETE:
-                audio.PlayOneShot(walkConcrete[Random.Range(0,3)], .5f);
+                audioSource.PlayOneShot(walkConcrete[Random.Range(0,3)], .5f);
                 break;
         }
     }
