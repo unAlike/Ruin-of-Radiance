@@ -29,7 +29,7 @@ public class RatBehavior : MonoBehaviour {
      while(true)
      {
         
-         Debug.Log("Sound Played");
+         // Debug.Log("Sound Played");
          playRatSound();
          yield return new WaitForSeconds(10);
      }

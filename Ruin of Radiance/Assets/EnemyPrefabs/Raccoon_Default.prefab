@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6331167990346694345}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.88, y: 0.26, z: -10}
+  m_LocalPosition: {x: -4.88, y: 0.26, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5819379724208516992, guid: f98bd55d7aecb9c43a2cf90ca5e6555e, type: 3}
+  m_Sprite: {fileID: 8799747254825652088, guid: 89c2e2b8a5f96434cb4fc16e1f7fcc4f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -230,10 +230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed11ad46a585ab489d58ece61717e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raccoon1: {fileID: 0}
-  raccoon2: {fileID: 0}
-  raccoon3: {fileID: 0}
-  raccoon4: {fileID: 0}
+  raccoon1: {fileID: 8300000, guid: 6ac643f44e055164fbdfac1eb47f2ce2, type: 3}
+  raccoon2: {fileID: 8300000, guid: acb9ee025df7c1c479bfa48cc59ded5f, type: 3}
+  raccoon3: {fileID: 8300000, guid: 0106b57a3c49be9458950d0295978fc1, type: 3}
+  raccoon4: {fileID: 8300000, guid: 6b282f51330367c4aba16a9529d32af5, type: 3}
   raccoonAttack: {fileID: 0}
 --- !u!114 &8468085488046132637
 MonoBehaviour:
