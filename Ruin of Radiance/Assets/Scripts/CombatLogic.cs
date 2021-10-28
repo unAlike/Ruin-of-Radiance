@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+
 public class CombatLogic : MonoBehaviour
 {
     [SerializeField]
@@ -29,7 +30,7 @@ public class CombatGrid{
     public void moveTileTo(CombatTile unit1, int xCoord, int yCoord) {
         // play animation to move sprite
 
-         if( !tiles[xCoord,yCoord].tileUnit.getIsOccupied()) // if not occupied
+         if( !tiles[xCoord,yCoord].getIsOccupied()) // if not occupied - originally .tileUnit.getIsOccupied() n
          tiles[xCoord,yCoord].tileUnit = unit1.tileUnit; // copy unit over then DELETE OLD SPOT
          else { 
              Debug.Log(" space already taken.");
@@ -64,6 +65,12 @@ public class CombatTile{
     }
     public void takeDamage(int damage ) {
         // randomize damage +- 2
+        
+        int num1 = Random.Range(-2,2);
+        
+        int damageDelt = num1 + damage;
+        Debug.Log("Damage output is " + damageDelt);
+
         tileUnit.setHealth(tileUnit.getHealth()-damage);
     }
     
@@ -74,13 +81,13 @@ public class CombatTile{
 [System.Serializable]
 public class Unit{
     public GameObject unitSprite;
-    public int maxhp, currHp,dmg;
+    public int maxhp, currhp,dmg;
     public double scalingNum;
     public void setHealth(int health){
         currhp=health;
     }
     public int getHealth(){
-        return hp;
+        return currhp;
     }
     
     public void setDamage(int damage){
