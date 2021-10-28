@@ -62,6 +62,7 @@ public class CombatTile{
     }
     public void createUnit(Unit unit1){
         tileUnit = unit1;
+        
     }
     public void takeDamage(int damage ) {
         // randomize damage +- 2
