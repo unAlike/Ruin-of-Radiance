@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEditor;
 
 
+/* to do list 
+function to get tile space to world space
+implement move tile to delete and create tiles
+enemy combat decisions
+
+
+*/
+
 public class CombatLogic : MonoBehaviour
 {
     [SerializeField]
@@ -38,9 +46,6 @@ public class CombatGrid{
          
     }
     
-
-
-    
 }
 [System.Serializable]
 public class CombatTile{
@@ -67,7 +72,7 @@ public class CombatTile{
     public void takeDamage(int damage ) {
         // randomize damage +- 2
         
-        int num1 = Random.Range(-2,2);
+        int num1 = Random.Range(-1,1);
         
         int damageDelt = num1 + damage;
         Debug.Log("Damage output is " + damageDelt);
