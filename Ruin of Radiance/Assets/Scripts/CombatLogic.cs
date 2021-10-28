@@ -6,9 +6,13 @@ using UnityEditor;
 
 /* to do list 
 function to get tile space to world space
+
 implement move tile to delete and create tiles
+
 enemy combat decisions
 
+trigger combat encounter
+turns on grid visuals and overlays
 
 */
 
@@ -16,9 +20,7 @@ public class CombatLogic : MonoBehaviour
 {
     [SerializeField]
     List<CombatTile> units;
-
     CombatGrid grid = new CombatGrid();
-
     void Start(){
         
     }    
@@ -35,14 +37,16 @@ public class CombatGrid{
         tiles = new CombatTile[7,3];
 
     }
-    public void moveTileTo(CombatTile unit1, int xCoord, int yCoord) {
+    public void moveUnitTo(CombatTile unit1, int xCoord, int yCoord) {
         // play animation to move sprite
 
-         if( !tiles[xCoord,yCoord].getIsOccupied()) // if not occupied - originally .tileUnit.getIsOccupied() n
-         tiles[xCoord,yCoord].tileUnit = unit1.tileUnit; // copy unit over then DELETE OLD SPOT
-         else { 
+        if(!tiles[xCoord,yCoord].getIsOccupied()){ // if not occupied - originally .tileUnit.getIsOccupied() n
+            tiles[xCoord,yCoord].tileUnit = unit1.tileUnit; // copy unit over then DELETE OLD SPOT
+            unit1.deleteUnit(); // deletes the prev unit
+        }
+        else { 
              Debug.Log(" space already taken.");
-              }
+        }
          
     }
     
@@ -86,22 +90,22 @@ public class CombatTile{
 }
 [System.Serializable]
 public class Unit{
-    public GameObject unitSprite;
-    public int maxhp, currhp,dmg;
-    public double scalingNum;
+    private GameObject unitSprite;
+    private int maxHealth, currentHealth, damage;
+    private double scalingNum;
     public void setHealth(int health){
-        currhp=health;
+        currentHealth=health;
     }
     public int getHealth(){
-        return currhp;
+        return currentHealth;
     }
+
     
     public void setDamage(int damage){
-        dmg = damage;
+       this.damage = damage;
     }
     public int getDamage(){
-
-        return dmg;
+        return this.damage;
     }
 
 }
