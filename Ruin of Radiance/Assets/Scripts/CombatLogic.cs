@@ -28,6 +28,32 @@ public class CombatLogic : MonoBehaviour
     {
         
     }
+
+    public void startCombat() {
+        // puts player into the combat scene
+        // place the player on [0,1]
+        // toggle movement off
+        // Enemies placed in combat grid
+        // turns on combat overlay
+    }
+
+    public void endTurn() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Debug.Log("Your turn has been ended");
+        }
+        // activate the enemy movements
+        // refresh action points once enemy movements are made
+        // 
+    }
+    public void endCombat() {
+        // allow for collecting creatures
+        // turn grid opacity off
+        // toggle movement on 
+        // remove dead or captured creatures
+        
+    }
+
+    
 }
 public class CombatGrid{
     public CombatTile[,] tiles;
@@ -39,17 +65,25 @@ public class CombatGrid{
     }
     public void moveUnitTo(CombatTile unit1, int xCoord, int yCoord) {
         // play animation to move sprite
-
+        // moving distance, limits player to that distance
+        // highlightTiles(unit1.xCoord, unit1.yCoord);
         if(!tiles[xCoord,yCoord].getIsOccupied()){ // if not occupied - originally .tileUnit.getIsOccupied() n
             tiles[xCoord,yCoord].tileUnit = unit1.tileUnit; // copy unit over then DELETE OLD SPOT
             unit1.deleteUnit(); // deletes the prev unit
+
         }
         else { 
              Debug.Log(" space already taken.");
         }
          
     }
-    
+    public void highlightTiles(int xCoord, int yCoord) {
+        // highlights gridUnit (xCoord + ActionPoints, yCoord)
+        // highlights gridUnit (xCoord, yCoord + ActionPoints)
+        // highlights gridUnit (xCoord - ActionPoints, yCoord)
+        // highlights gridUnit (xCoord, yCoord - ActionPoints)
+
+    }
 }
 [System.Serializable]
 public class CombatTile{
@@ -90,9 +124,9 @@ public class CombatTile{
 }
 [System.Serializable]
 public class Unit{
-    private GameObject unitSprite;
-    private int maxHealth, currentHealth, damage;
-    private double scalingNum;
+    public GameObject unitSprite;
+    public int maxHealth, currentHealth, damage, actionPoints;
+    public double scalingNum;
     public void setHealth(int health){
         currentHealth=health;
     }
