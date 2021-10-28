@@ -70,6 +70,7 @@ public class CombatGrid{
         if(!tiles[xCoord,yCoord].getIsOccupied()){ // if not occupied - originally .tileUnit.getIsOccupied() n
             tiles[xCoord,yCoord].tileUnit = unit1.tileUnit; // copy unit over then DELETE OLD SPOT
             unit1.deleteUnit(); // deletes the prev unit
+        
 
         }
         else { 
@@ -125,7 +126,7 @@ public class CombatTile{
 [System.Serializable]
 public class Unit{
     public GameObject unitSprite;
-    public int maxHealth, currentHealth, damage, actionPoints;
+    public int maxHealth, currentHealth, damage, maxActionPoints, actionPoints;
     public double scalingNum;
     public void setHealth(int health){
         currentHealth=health;
@@ -140,6 +141,15 @@ public class Unit{
     }
     public int getDamage(){
         return this.damage;
+    }
+    public void setactionPoints(int ap){
+       this.actionPoints = ap;
+    }
+    public int getactionPoints(){
+        return this.actionPoints;
+    }
+    public void fillActionPoints() {
+        this.actionPoints = maxActionPoints;
     }
 
 }
