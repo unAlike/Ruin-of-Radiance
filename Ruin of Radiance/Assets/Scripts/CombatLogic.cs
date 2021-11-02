@@ -20,32 +20,50 @@ public class CombatLogic : MonoBehaviour
 {
     [SerializeField]
     List<CombatTile> units;
+    Movement moveScript;
     CombatGrid grid = new CombatGrid();
     void Start(){
-        
+        moveScript = GameObject.Find("DynamicSprite").GetComponent<Movement>();
+        // moveScript.inCombat = true;
     }    
     void Update()
     {
         
+        // Debug.Log("character Position: " + GameObject.Find("DynamicSprite").transform.position);
+
+
     }
 
+    void OnTriggerEnter2D(Collider2D collision) {
+        startCombat();
+    }
     public void startCombat() {
         // puts player into the combat scene
+        Vector3 charStart = new Vector3(0.5f,-1.7f,0);    
+        Vector3 gridPos = new Vector3(0,0,0); 
+        GameObject character = GameObject.Find("DynamicSprite");
+        gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + charStart;
+        character.transform.position = gridPos;
+
         // place the player on [0,1]
         // toggle movement off
         // Enemies placed in combat grid
         // turns on combat overlay
     }
 
-    public void endTurn() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+    public void endTurn(Unit character) {
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) {
             Debug.Log("Your turn has been ended");
         }
         // activate the enemy movements
         // refresh action points once enemy movements are made
-        // 
+        character.fillActionPoints();
     }
-    public void endCombat() {
+    public void endCombat(int currentHealth) {
+        if ((Input.GetKeyDown(KeyCode.Escape)) || (currentHealth == 0)) {
+            // Destroy(CombatGrid);
+            Debug.Log("You have ended the battle");
+        }
         // allow for collecting creatures
         // turn grid opacity off
         // toggle movement on 
@@ -142,13 +160,13 @@ public class Unit{
     public int getDamage(){
         return this.damage;
     }
-    public void setactionPoints(int ap){
+    public void setactionPoints(int ap){ // for removing action points
        this.actionPoints = ap;
     }
     public int getactionPoints(){
         return this.actionPoints;
     }
-    public void fillActionPoints() {
+    public void fillActionPoints() { // end of turn fills actions points
         this.actionPoints = maxActionPoints;
     }
 

@@ -78,7 +78,7 @@ public class Movement : MonoBehaviour
             else exitingCombat = false;
         }
     }
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hit something");
         if (collision.gameObject.CompareTag("wall")) {
@@ -87,8 +87,8 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (collision.gameObject.CompareTag("enemy")) {
-            Debug.Log("Combat Collision started yo.");
+        if (collision.gameObject.CompareTag("combatGrid")) {
+            Debug.Log("Combat Collision started");
 
             if(!enteringCombat && !inCombat){
                 enteringCombat = true;
