@@ -13,29 +13,37 @@ public class GUIScript : MonoBehaviour
     string activeBtn;
     [SerializeField]
     bool openGUI = false;
-    void Start()
+    void Awake()
     {
-        EventSystem = GameObject.Find("InventoryUI").GetComponent<EventSystem>();
+        EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        switch(EventSystem.currentSelectedGameObject.name){
-            case "InventoryButton":
-                Debug.Log(EventSystem.currentSelectedGameObject.name);
-                openGUI=true;
-                break;
-            case "MapButton":
-                Debug.Log(EventSystem.currentSelectedGameObject.name);
-                break;
-            case "SkillButton":
-                Debug.Log(EventSystem.currentSelectedGameObject.name);
-                break;
-            case null:
-                break;
-            
+        if(EventSystem.currentSelectedGameObject){
+            switch(EventSystem.currentSelectedGameObject.name){
+                case "InventoryButton":
+                    Debug.Log(EventSystem.currentSelectedGameObject.name);
+                    openGUI=true;
+                    break;
+                case "MapButton":
+                    Debug.Log(EventSystem.currentSelectedGameObject.name);
+                    break;
+                case "SkillButton":
+                    Debug.Log(EventSystem.currentSelectedGameObject.name);
+                    break;
+                case null:
+                    openGUI=false;
+                    break;
+                default:
+                    openGUI = false;
+                    break;
+                
+            }
+        }
+        else{
+            openGUI = false;
         }
         if(openGUI){
             OpenGui();
@@ -45,10 +53,15 @@ public class GUIScript : MonoBehaviour
         }
     }
     public void OpenGui(){
-        GameObject.Find("MenuPanel").transform.position = GameObject.Find("MenuPanel").transform.position + new Vector3(0,.01f,0);
+        if(GameObject.Find("MenuPanel").transform.localPosition.y<140){
+            GameObject.Find("MenuPanel").transform.localPosition = GameObject.Find("MenuPanel").transform.localPosition + new Vector3(0,1f,0);
+        }
+        
     }
     public void CloseGui(){
-
+        if(GameObject.Find("MenuPanel").transform.localPosition.y>-35){
+            GameObject.Find("MenuPanel").transform.localPosition = GameObject.Find("MenuPanel").transform.localPosition + new Vector3(0,-1f,0);
+        }
     }
 
 }
