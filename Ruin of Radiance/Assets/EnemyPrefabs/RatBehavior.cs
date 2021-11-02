@@ -43,7 +43,7 @@ public class RatBehavior : MonoBehaviour {
             }
        } 
        else {
-            int num= Random.Range(0,6);
+            int num= Random.Range(0,5);
             ratSound.PlayOneShot(ratNoises[num]);
        }
 

@@ -6,9 +6,9 @@ using UnityEngine.Tilemaps;
 public class Movement : MonoBehaviour
 {
     GameObject staminaBar;
-    private Animator anim;
     Tilemap tilemap;
     GridLayout grid;
+    private Animator anim;
     private AudioSource audioSource;
     private Rigidbody2D character;
     

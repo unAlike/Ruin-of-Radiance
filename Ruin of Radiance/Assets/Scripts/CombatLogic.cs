@@ -28,10 +28,10 @@ public class CombatLogic : MonoBehaviour
     }    
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            endCombat();
+        }
         // Debug.Log("character Position: " + GameObject.Find("DynamicSprite").transform.position);
-
-
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
@@ -41,11 +41,24 @@ public class CombatLogic : MonoBehaviour
         // puts player into the combat scene
         Vector3 charStart = new Vector3(0.5f,-1.7f,0);    
         Vector3 gridPos = new Vector3(0,0,0); 
-        GameObject character = GameObject.Find("DynamicSprite");
+        GameObject charSprite = GameObject.Find("DynamicSprite");
         gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + charStart;
-        character.transform.position = gridPos;
+        charSprite.transform.position = gridPos;
+    
+        Unit Character = new Unit();
+        grid.tiles[0,1].createUnit(Character); // places character on [0,1]
+        grid.tiles[6,2].createUnit(units[2].tileUnit); // places enemies 1,2,3 on their locations
+        grid.tiles[6,1].createUnit(units[1].tileUnit);
+        grid.tiles[6,0].createUnit(units[0].tileUnit);
+
+
 
         // place the player on [0,1]
+        
+
+        
+        // units[1].tileUnit.getHealth();
+        
         // toggle movement off
         // Enemies placed in combat grid
         // turns on combat overlay
@@ -59,11 +72,11 @@ public class CombatLogic : MonoBehaviour
         // refresh action points once enemy movements are made
         character.fillActionPoints();
     }
-    public void endCombat(int currentHealth) {
-        if ((Input.GetKeyDown(KeyCode.Escape)) || (currentHealth == 0)) {
-            // Destroy(CombatGrid);
-            Debug.Log("You have ended the battle");
-        }
+    public void endCombat() {
+        GameObject.Find("CombatGrid").SetActive(false);
+        Debug.Log("You have ended the battle");
+        moveScript.inCombat = false;
+
         // allow for collecting creatures
         // turn grid opacity off
         // toggle movement on 
@@ -124,6 +137,7 @@ public class CombatTile{
     }
     public void createUnit(Unit unit1){
         tileUnit = unit1;
+        
         
     }
     public void takeDamage(int damage ) {
