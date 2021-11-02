@@ -9,29 +9,41 @@ public class GUIScript : MonoBehaviour
     // Start is called before the first frame update
     Button invBtn, mapBtn, sklBtn;
     EventSystem EventSystem;
-    
+    GameObject invPanel, mapPanel, sklPanel;
     string activeBtn;
     [SerializeField]
     bool openGUI = false;
-    void Awake()
+    void Start()
     {
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        invPanel = GameObject.Find("InventoryPanel");
+        mapPanel = GameObject.Find("MapPanel");
+        sklPanel = GameObject.Find("SkillTreePanel");
     }
 
     // Update is called once per frame
     void Update()
     {
         if(EventSystem.currentSelectedGameObject){
+            openGUI=true;
             switch(EventSystem.currentSelectedGameObject.name){
                 case "InventoryButton":
                     Debug.Log(EventSystem.currentSelectedGameObject.name);
-                    openGUI=true;
+                    invPanel.SetActive(true);
+                    mapPanel.SetActive(false);
+                    sklPanel.SetActive(false);
                     break;
                 case "MapButton":
                     Debug.Log(EventSystem.currentSelectedGameObject.name);
+                    invPanel.SetActive(false);
+                    mapPanel.SetActive(true);
+                    sklPanel.SetActive(false);
                     break;
-                case "SkillButton":
+                case "SkillTreeButton":
                     Debug.Log(EventSystem.currentSelectedGameObject.name);
+                    invPanel.SetActive(false);
+                    mapPanel.SetActive(false);
+                    sklPanel.SetActive(true);
                     break;
                 case null:
                     openGUI=false;
