@@ -4672,6 +4672,36 @@ MonoBehaviour:
       scalingNum: 1
     xCoord: 6
     yCoord: 0
+  - tileUnit:
+      unitSprite: {fileID: 1979450624}
+      maxHealth: 10
+      currentHealth: 10
+      damage: 2
+      maxActionPoints: 2
+      actionPoints: 2
+      scalingNum: 1
+    xCoord: 6
+    yCoord: 0
+  - tileUnit:
+      unitSprite: {fileID: 1979450624}
+      maxHealth: 10
+      currentHealth: 10
+      damage: 2
+      maxActionPoints: 2
+      actionPoints: 2
+      scalingNum: 1
+    xCoord: 6
+    yCoord: 0
+  - tileUnit:
+      unitSprite: {fileID: 1979450624}
+      maxHealth: 10
+      currentHealth: 10
+      damage: 2
+      maxActionPoints: 2
+      actionPoints: 2
+      scalingNum: 1
+    xCoord: 6
+    yCoord: 0
 --- !u!61 &1469940127
 BoxCollider2D:
   m_ObjectHideFlags: 0
