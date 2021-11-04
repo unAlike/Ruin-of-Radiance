@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 941332506819014879}
   - component: {fileID: 1776030989477545102}
-  - component: {fileID: 7114982623687722303}
   - component: {fileID: 8900899279858687236}
+  - component: {fileID: -507583647252232276}
   m_Layer: 0
   m_Name: LargeTreeOverlay
   m_TagString: Untagged
@@ -84,20 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!136 &7114982623687722303
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7030580963204868308}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.25513268
-  m_Height: 0.88006973
-  m_Direction: 0
-  m_Center: {x: -0.036278248, y: -1.7593787, z: 0}
 --- !u!114 &8900899279858687236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59f841c5a54eca46aa96959a705847a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!70 &-507583647252232276
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7030580963204868308}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.052525584, y: -0.22251947}
+  m_Size: {x: 0.92375916, y: 0.5614092}
+  m_Direction: 1
