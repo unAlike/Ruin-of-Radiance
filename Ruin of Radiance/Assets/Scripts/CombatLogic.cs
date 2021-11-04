@@ -5,14 +5,23 @@ using UnityEditor;
 
 
 /* to do list 
-function to get tile space to world space
+-add debugs for actions
+-limit the movement to grid space without errors
+-get Select tile (unit) working by clicking on unit
+-apply movement to all units not just character
 
-implement move tile to delete and create tiles
+-Switch from key presses to clicking on square
 
-enemy combat decisions
+-attack animation + deal damage to squares
+-attacks deal damage only when one unit is friendly and the other isnt/ vice versa
 
-trigger combat encounter
-turns on grid visuals and overlays
+
+Enemy Combat AI
+
+-Spawn Friendly creatures
+-Health for friendly creatures
+
+
 
 */
 
@@ -38,31 +47,47 @@ public class CombatLogic : MonoBehaviour
             endCombat();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            Vector3 moveRight = new Vector3(.5f,0,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
-            grid.moveUnitTo(grid.findUnit(Character),xCoord+1,yCoord);
+            grid.moveUnitTo(grid.findUnit(Character),xCoord+1,yCoord,moveRight);
             Debug.Log("Unit moved right");
     
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            Vector3 moveDown = new Vector3(0,-0.5f,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
-            grid.moveUnitTo(grid.findUnit(Character),xCoord,yCoord-1);
+            grid.moveUnitTo(grid.findUnit(Character),xCoord,yCoord-1,moveDown);
             Debug.Log("Unit moved down");
     
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            Vector3 moveUp = new Vector3(0,.5f,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
-            grid.moveUnitTo(grid.findUnit(Character),xCoord,yCoord+1);
+            grid.moveUnitTo(grid.findUnit(Character),xCoord,yCoord+1,moveUp);
             Debug.Log("Unit moved up");
     
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+            Vector3 moveLeft = new Vector3(-0.5f,0,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
-            grid.moveUnitTo(grid.findUnit(Character),xCoord-1,yCoord);
+            grid.moveUnitTo(grid.findUnit(Character),xCoord-1,yCoord,moveLeft);
             Debug.Log("Unit moved left");
+    
+        }
+        else if (Input.GetKeyDown(KeyCode.RightAlt)) {
+            //int xCoord = grid.findUnit(Character).xCoord;
+            //int yCoord = grid.findUnit(Character).yCoord;
+            // grid.moveUnitTo(grid.findUnit(Character),xCoord-1,yCoord);
+            //                Change to selected Unit instead of character
+            int xCoord = grid.findUnit(Character).xCoord;
+            int yCoord = grid.findUnit(Character).yCoord;
+            int damage = grid.findUnit(Character).tileUnit.getDamage();
+            grid.basicAttack(grid.findUnit(Character),xCoord,yCoord,damage);
+            Debug.Log("Unit Attacked");
     
         }
         
@@ -81,10 +106,10 @@ public class CombatLogic : MonoBehaviour
     }
     public void startCombat() {
         // puts player into the combat scene
-        Vector3 charStart = new Vector3(0.5f,-1.7f,0);    
-        Vector3 gridPos = new Vector3(0,0,0); 
+        Vector3 standardOffset = new Vector3(0.5f,-1.7f,0);  
+        Vector3 gridPos = new Vector3(0,0,0);
         GameObject charSprite = GameObject.Find("DynamicSprite");
-        gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + charStart;
+        gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + standardOffset;
         charSprite.transform.position = gridPos;
     
         // Unit Character = new Unit();
@@ -140,19 +165,37 @@ public class CombatGrid{
        
     }
 
-    public void moveUnitTo(CombatTile unit1, int xCoord, int yCoord) {
+    public void moveUnitTo(CombatTile unit1, int xCoord, int yCoord,Vector3 moveVector) {
         // play animation to move sprite
-        // moving distance, limits player to that distance
+        // currently limits the distance but throws error when out of bounds FIXME
         // highlightTiles(unit1.xCoord, unit1.yCoord);
-        if(!tiles[xCoord,yCoord].getIsOccupied() && xCoord < 7 && xCoord > -1 && yCoord < 3 && yCoord > -1 ){ // if not occupied - originally .tileUnit.getIsOccupied() n
+        if(!tiles[xCoord,yCoord].getIsOccupied() && xCoord < 8 && xCoord > -1 && yCoord < 3 && yCoord > -1 ){ // if not occupied - originally .tileUnit.getIsOccupied() n
             tiles[xCoord,yCoord].tileUnit = unit1.tileUnit; // copy unit over then DELETE OLD SPOT
             unit1.deleteUnit(); // deletes the prev unit
-            Debug.Log("Moved Unit to " + unit1.xCoord + ", " + unit1.yCoord);
+            Debug.Log("Moved Unit to " + tiles[xCoord,yCoord].xCoord + ", " + tiles[xCoord,yCoord].yCoord);
+
+            // move sprite to appropriate tile
+        // moveVector = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + moveVector;
+        GameObject unitSprite = GameObject.Find("DynamicSprite");
+        unitSprite.transform.Translate( moveVector);
+
         }
         else { 
              Debug.Log(" space already taken or out of bounds");
         }
          
+    }
+    public void basicAttack(CombatTile unit1, int xCoord, int yCoord,int dmg) {
+        if(!tiles[xCoord,yCoord].getIsOccupied()) {
+            tiles[xCoord,yCoord].takeDamage(dmg);
+            Debug.Log(""+ xCoord + ", "+ yCoord + " should have taken damage");
+        }
+    }
+    public void specialAttack() {
+        
+    }
+    public void rangedAttack() {
+        
     }
     public CombatTile findUnit(Unit unit) {
         for (int i = 0; i < 7;++i) {
@@ -223,14 +266,13 @@ public class Unit{
     public GameObject unitSprite;
     public int maxHealth, currentHealth, damage, maxActionPoints, actionPoints;
     public double scalingNum;
+    public bool isFriendly;
     public void setHealth(int health){
         currentHealth=health;
     }
     public int getHealth(){
         return currentHealth;
     }
-
-    
     public void setDamage(int damage){
        this.damage = damage;
     }
@@ -245,6 +287,12 @@ public class Unit{
     }
     public void fillActionPoints() { // end of turn fills actions points
         this.actionPoints = maxActionPoints;
+    }
+    public void setIsFriendlyh(bool friendly){
+        isFriendly = friendly;
+    }
+    public bool getIsFriendlyh(){
+        return isFriendly;
     }
 
 }
