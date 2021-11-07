@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
+using Random=UnityEngine.Random;
 
 
 /* to do list 
 -add debugs for actions
--limit the movement to grid space without errors
+Debug.Log(" ");
 -get Select tile (unit) working by clicking on unit
 -apply movement to all units not just character
+-Disable grid box collider after combat started.
 
 -Switch from key presses to clicking on square
 
@@ -17,7 +20,7 @@ using UnityEditor;
 
 
 Enemy Combat AI
-
+-Health for enemy Creatures is displayed?
 -Spawn Friendly creatures
 -Health for friendly creatures
 
@@ -34,6 +37,14 @@ public class CombatLogic : MonoBehaviour
     CombatTile activeTile = new CombatTile(0,1);
     Unit Character;
     void Start(){
+        // GameObject.Find("CombatGrid").SetActive(false);
+        //GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().
+        // change alpha value
+        Color tmp = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
+        tmp.a = 0f;
+        GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = tmp;
+
+        // set png to invisible
         moveScript = GameObject.Find("DynamicSprite").GetComponent<Movement>();
         // moveScript.inCombat = true;
         createPlayer();
@@ -43,6 +54,8 @@ public class CombatLogic : MonoBehaviour
     }    
     void Update()
     {
+        grid.highlightTiles(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord,grid.findUnit(Character).tileUnit.getactionPoints());
+        // selectedTile.highlightTiles(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord);
         if (Input.GetKeyDown(KeyCode.Escape)) {
             endCombat();
         }
@@ -97,15 +110,24 @@ public class CombatLogic : MonoBehaviour
     }
     public void createPlayer(){
         Character = new Unit();
-        Character.unitSprite = GameObject.Find("DynamicSprite"); 
+        Character.unitSprite = GameObject.Find("DynamicSprite");
+        Debug.Log("Player Created "); 
 
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
         startCombat();
+        Debug.Log("Combat Started");
     }
     public void startCombat() {
+        // GameObject.Find("CombatGrid").SetActive(true); // makes the grid visable
+        // GameObject.Find("CombatGrid").opacity(1);
         // puts player into the combat scene
+
+        Color tmp = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
+        tmp.a = 1f;
+        GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = tmp;
+
         Vector3 standardOffset = new Vector3(0.5f,-1.7f,0);  
         Vector3 gridPos = new Vector3(0,0,0);
         GameObject charSprite = GameObject.Find("DynamicSprite");
@@ -143,8 +165,6 @@ public class CombatLogic : MonoBehaviour
         moveScript.inCombat = false;
 
         // allow for collecting creatures
-        // turn grid opacity off
-        // toggle movement on 
         // remove dead or captured creatures
         
     }
@@ -166,6 +186,7 @@ public class CombatGrid{
     }
 
     public void moveUnitTo(CombatTile unit1, int xCoord, int yCoord,Vector3 moveVector) {
+        try{
         // play animation to move sprite
         // currently limits the distance but throws error when out of bounds FIXME
         // highlightTiles(unit1.xCoord, unit1.yCoord);
@@ -183,8 +204,16 @@ public class CombatGrid{
         else { 
              Debug.Log(" space already taken or out of bounds");
         }
-         
+
+        }
+
+        catch(IndexOutOfRangeException) {
+           Debug.Log("You can't run away!");
+        }
+
+
     }
+
     public void basicAttack(CombatTile unit1, int xCoord, int yCoord,int dmg) {
         if(!tiles[xCoord,yCoord].getIsOccupied()) {
             tiles[xCoord,yCoord].takeDamage(dmg);
@@ -212,13 +241,27 @@ public class CombatGrid{
         return tiles[-1,-1];
 
     }
-    public void highlightTiles(int xCoord, int yCoord) {
+    public void highlightTiles(int xCoord, int yCoord, int ap) {
+        // highlight right
+        
+        
+
+
+
         // highlights gridUnit (xCoord + ActionPoints, yCoord)
         // highlights gridUnit (xCoord, yCoord + ActionPoints)
         // highlights gridUnit (xCoord - ActionPoints, yCoord)
         // highlights gridUnit (xCoord, yCoord - ActionPoints)
 
     }
+
+    public void SelectTile(){ // matters once we can spawn friendly creatures
+        
+        
+
+        
+    }
+
 }
 [System.Serializable]
 public class CombatTile{
