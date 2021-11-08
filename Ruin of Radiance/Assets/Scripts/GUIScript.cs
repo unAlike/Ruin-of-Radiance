@@ -9,21 +9,33 @@ public class GUIScript : MonoBehaviour
     // Start is called before the first frame update
     Button invBtn, mapBtn, sklBtn;
     EventSystem EventSystem;
-    GameObject invPanel, mapPanel, sklPanel;
+    GameObject invPanel, mapPanel, sklPanel, hoverPanel;
     string activeBtn;
     [SerializeField]
     bool openGUI = false;
+
+    
+
+
+
     void Start()
     {
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         invPanel = GameObject.Find("InventoryPanel");
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
+        hoverPanel = GameObject.Find("HoverPanel");
+        hoverPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(hoverPanel.activeSelf){
+            Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
+            pos.z = 20;
+            hoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
+        }
         if(EventSystem.currentSelectedGameObject){
             openGUI=true;
             switch(EventSystem.currentSelectedGameObject.name){
@@ -48,15 +60,18 @@ public class GUIScript : MonoBehaviour
                 case null:
                     openGUI=false;
                     break;
-                default:
-                    openGUI = false;
-                    break;
+                // default:
+                //     openGUI = false;
+                //     break;
                 
             }
         }
         else{
             openGUI = false;
         }
+        
+    }
+    public void FixedUpdate(){
         if(openGUI){
             OpenGui();
         }
@@ -66,14 +81,27 @@ public class GUIScript : MonoBehaviour
     }
     public void OpenGui(){
         if(GameObject.Find("MenuPanel").transform.localPosition.y<140){
-            GameObject.Find("MenuPanel").transform.localPosition = GameObject.Find("MenuPanel").transform.localPosition + new Vector3(0,1f,0);
+            GameObject.Find("MenuPanel").transform.localPosition = GameObject.Find("MenuPanel").transform.localPosition + new Vector3(0,5f,0);
         }
         
     }
     public void CloseGui(){
         if(GameObject.Find("MenuPanel").transform.localPosition.y>-35){
-            GameObject.Find("MenuPanel").transform.localPosition = GameObject.Find("MenuPanel").transform.localPosition + new Vector3(0,-1f,0);
+            GameObject.Find("MenuPanel").transform.localPosition = GameObject.Find("MenuPanel").transform.localPosition + new Vector3(0,-5f,0);
         }
+    }
+
+    public void enableHoverPanel(){
+        hoverPanel.SetActive(true);
+    }
+    public void disableHoverPanel(){
+        hoverPanel.SetActive(false);
+    }
+
+    public void setPanel(GameObject g){
+        hoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().skillName;
+        hoverPanel.gameObject.transform.GetChild(1).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().desc;
+        hoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().currentPoints + "/" + g.GetComponent<SkillTreeButton>().maxPoints;
     }
 
 }
