@@ -24,6 +24,8 @@ public class tileSquareScript : MonoBehaviour, IPointerDownHandler // IPointerUp
 
 
 
+
+
     public void callSelectTile(string n) {
         if(moveScript.inCombat) {
         int xVal = int.Parse(n[0].ToString());
@@ -34,6 +36,8 @@ public class tileSquareScript : MonoBehaviour, IPointerDownHandler // IPointerUp
         //logic.selectTile(xVal,yVal);
         }
     }
+
+
 
 public void OnPointerDown(PointerEventData eventData) {
     

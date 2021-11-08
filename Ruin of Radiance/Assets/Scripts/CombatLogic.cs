@@ -35,7 +35,7 @@ public class CombatLogic : MonoBehaviour
     public CombatGrid grid = new CombatGrid();
     CombatTile activeTile = new CombatTile(0,1);
     Unit Character;
-    public Unit selectedUnit = new Unit();
+    public CombatTile selectedUnit = new CombatTile(0,0);
     void Start(){
         // makes grid invisible on start
         Color tmp = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
@@ -278,7 +278,7 @@ public class CombatGrid{
             if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
                 square = damageSquare;
             } //enemy in square
-            
+            if(xCoord + i < 6)
             square.transform.position = grid.transform.position + (new Vector3(i,0,0))+ (new Vector3(1,-2,0)) + (new Vector3(xCoord,yCoord,0));
 
         
@@ -294,7 +294,7 @@ public class CombatGrid{
             if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
                 square = damageSquare;
             } //enemy in square
-        
+            if(xCoord - i > 0)
             square.transform.position = grid.transform.position + (new Vector3(-i,0,0))+ (new Vector3(-1,-2,0))+ (new Vector3(xCoord,yCoord,0));
 
             //square.transform.position = grid.transform.position;
@@ -310,7 +310,7 @@ public class CombatGrid{
             if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
                 square = damageSquare;
             } //enemy in square
-        
+            if(yCoord + i < 2)
             square.transform.position = grid.transform.position + (new Vector3(0,i,0))+ (new Vector3(0,-1,0))+ (new Vector3(xCoord,yCoord,0));
 
             //square.transform.position = grid.transform.position;
@@ -327,6 +327,7 @@ public class CombatGrid{
                 square = damageSquare;
             } //enemy in square
         
+            if(yCoord - i > 0)
             square.transform.position = grid.transform.position + (new Vector3(0,-i,0))+ (new Vector3(0,-3,0))+ (new Vector3(xCoord,yCoord,0));
 
             //square.transform.position = grid.transform.position;
@@ -420,10 +421,30 @@ public class CombatGrid{
 
     }
 
-public void selectTile(int xCoord, int yCoord){ // matters once we can spawn friendly creatures
+    public void selectTile(int xCoord, int yCoord){ // matters once we can spawn friendly creatures
         
         Debug.Log("X: "+ xCoord + "  Y: " + yCoord);
-        GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit = tiles[xCoord, yCoord].tileUnit;
+        //int tileXVal = GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit.xCoord;
+        //int tileYVal = GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit.yCoord;
+        
+        if(tiles[xCoord,yCoord].getIsOccupied() && tiles[xCoord,yCoord].tileUnit.getIsFriendly()){ // if space is a unit
+        GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit = tiles[xCoord, yCoord];
+        Debug.Log("Selected Unit?");
+
+        }
+        else if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()){ // detects enemy
+        Debug.Log("Wrong script2?");
+        }
+        else if(tiles[xCoord,yCoord].getIsOccupied()) { //empty space
+        Vector3 vect = new Vector3(xCoord -  GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit.xCoord, yCoord-  GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit.yCoord, 0);
+        //moveUnitTo
+        //GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit
+        Debug.Log("Running movement script?");
+        GameObject.Find("CombatGrid").GetComponent<CombatLogic>().grid.moveUnitTo(GameObject.Find("CombatGrid").GetComponent<CombatLogic>().grid.findUnit(GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit.tileUnit),xCoord,yCoord,vect);
+        }
+        else{
+            Debug.Log("None of da scripts ran");
+        }
         
     }
 }
