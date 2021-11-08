@@ -9,7 +9,14 @@ public class tileSquareScript : MonoBehaviour, IPointerDownHandler // IPointerUp
     // Start is called before the first frame update
         public int xVal = 0;
         public int yVal = 0;
-        CombatGrid logic;
+        CombatLogic logic;
+        Movement moveScript;
+        
+    public void Start(){
+        logic = GameObject.Find("CombatGrid").GetComponent<CombatLogic>();
+        moveScript = GameObject.Find("DynamicSprite").GetComponent<Movement>();
+        
+    }
 
     public void onMouseDown() {
         Debug.Log("Calls Funtion with " + xVal + yVal);
@@ -17,10 +24,15 @@ public class tileSquareScript : MonoBehaviour, IPointerDownHandler // IPointerUp
 
 
 
-    public void callSelectTile() {
+    public void callSelectTile(string n) {
+        if(moveScript.inCombat) {
+        int xVal = int.Parse(n[0].ToString());
+        int yVal = int.Parse(n[1].ToString());
         Debug.Log("Calls Funtion with " + xVal + yVal);
-        //logic = GameObject.Find("CombatGrid").GetComponent<CombatGrid>();
+        
+        logic.grid.selectTile(xVal,yVal);
         //logic.selectTile(xVal,yVal);
+        }
     }
 
 public void OnPointerDown(PointerEventData eventData) {

@@ -11,24 +11,19 @@ using Random=UnityEngine.Random;
 Debug.Log(" ");
 
 -get Select tile (unit) working by clicking on unit
-
--Highlight tiles when unit moves or is selected
-
+-determine if slected tile is ocupied and friendly
+-display stats
+-move by clicking
 -apply movement to all units not just character
 
 -Disable grid box collider after combat started.
 
--attack animation + deal damage to squares
-
--attacks deal damage only when one unit is friendly and the other isnt/ vice versa
-
+-attack animation
 
 Enemy Combat AI
 -Health for enemy Creatures is displayed?
 -Spawn Friendly creatures
 -Health for friendly creatures
-
-
 
 */
 
@@ -37,9 +32,10 @@ public class CombatLogic : MonoBehaviour
     [SerializeField]
     List<CombatTile> units;
     Movement moveScript;
-    CombatGrid grid = new CombatGrid();
+    public CombatGrid grid = new CombatGrid();
     CombatTile activeTile = new CombatTile(0,1);
     Unit Character;
+    public Unit selectedUnit = new Unit();
     void Start(){
         // makes grid invisible on start
         Color tmp = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
@@ -128,12 +124,12 @@ public class CombatLogic : MonoBehaviour
     public void createPlayer(){
         Character = new Unit();
         Character.unitSprite = GameObject.Find("DynamicSprite");
+        // selectedUnit = Character;
         // Debug.Log("Player Created "); 
     }
-
     void OnTriggerEnter2D(Collider2D collision) {
         startCombat();
-        Debug.Log("Combat Started");
+        // Debug.Log("Combat Started");
     }
     public void startCombat() {
         // GameObject.Find("CombatGrid").SetActive(true); // makes the grid visable
@@ -166,7 +162,6 @@ public class CombatLogic : MonoBehaviour
         // Enemies placed in combat grid
         // turns on combat overlay
     }
-
     public void endTurn(Unit character) {
         if (Input.GetKeyDown(KeyCode.KeypadEnter)) {
             Debug.Log("Your turn has been ended");
@@ -184,9 +179,7 @@ public class CombatLogic : MonoBehaviour
         // remove dead or captured creatures
         
     }
-
-    
-}
+    }
 public class CombatGrid{
     public CombatTile[,] tiles;
     
@@ -427,13 +420,12 @@ public class CombatGrid{
 
     }
 
-    public void selectTile(int xValue, int yValue ){ // matters once we can spawn friendly creatures
+public void selectTile(int xCoord, int yCoord){ // matters once we can spawn friendly creatures
         
-        Debug.Log("X: "+ xValue + "  Y: " + yValue);
-
+        Debug.Log("X: "+ xCoord + "  Y: " + yCoord);
+        GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit = tiles[xCoord, yCoord].tileUnit;
         
     }
-
 }
 [System.Serializable]
 public class CombatTile{
@@ -459,7 +451,6 @@ public class CombatTile{
     public void createUnit(Unit unit1){
         tileUnit = unit1;
         
-        
     }
     public void takeDamage(int damage ) {
         // randomize damage +- 2
@@ -471,6 +462,7 @@ public class CombatTile{
 
         tileUnit.setHealth(tileUnit.getHealth()-damage);
     }
+    
     
 
 
