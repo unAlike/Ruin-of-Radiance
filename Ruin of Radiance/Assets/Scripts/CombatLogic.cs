@@ -70,36 +70,41 @@ public class CombatLogic : MonoBehaviour
             endCombat();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow) && Character.getActionPoints() > 0) {
+            grid.clearHighlight(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord,grid.findUnit(Character).tileUnit.getActionPoints());
             Vector3 moveRight = new Vector3(.5f,0,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
             grid.moveUnitTo(grid.findUnit(Character),xCoord+1,yCoord,moveRight);
             Debug.Log("Unit moved right");
             Debug.Log("Action Points:" + Character.getActionPoints());
+        
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) && Character.getActionPoints() > 0) {
+            grid.clearHighlight(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord,grid.findUnit(Character).tileUnit.getActionPoints());
             Vector3 moveDown = new Vector3(0,-0.5f,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
             grid.moveUnitTo(grid.findUnit(Character),xCoord,yCoord-1,moveDown);
             Debug.Log("Unit moved down");
-    
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow) && Character.getActionPoints() > 0) {
+            grid.clearHighlight(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord,grid.findUnit(Character).tileUnit.getActionPoints());
             Vector3 moveUp = new Vector3(0,.5f,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
             grid.moveUnitTo(grid.findUnit(Character),xCoord,yCoord+1,moveUp);
             Debug.Log("Unit moved up");
-            
     
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && Character.getActionPoints() > 0) {
+            grid.clearHighlight(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord,grid.findUnit(Character).tileUnit.getActionPoints());
             Vector3 moveLeft = new Vector3(-0.5f,0,0);
             int xCoord = grid.findUnit(Character).xCoord;
             int yCoord = grid.findUnit(Character).yCoord;
             grid.moveUnitTo(grid.findUnit(Character),xCoord-1,yCoord,moveLeft);
             Debug.Log("Unit moved left");
+            
+
     
         }
         else if (Input.GetKeyDown(KeyCode.RightAlt)) {
@@ -265,28 +270,149 @@ public class CombatGrid{
         return tiles[-1,-1];
 
     }
-    public void highlightTiles(int xCoord, int yCoord, int ap) {
+    public void highlightTiles(int xCoord, int yCoord, int range) {
         // highlight right
         
         // Debug.Log("Taken in " + xCoord + ", " + yCoord + ", " + ap + ": Action Points");
         
         SpriteRenderer grid = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>();
         
-        for (int i = 0; i < ap; ++i) {
+        for (int i = 0; i < range; ++i) { // highlight to the right 0 - 6
         GameObject moveSquare = GameObject.Find("tileMoveOverlay"+i);
         GameObject damageSquare = GameObject.Find("tileDamageOverlay"+i);
-            // if else if square is occupied for move vs damage
-            //GameObject square1 = new GameObject();
-            GameObject square = moveSquare;
+        GameObject square = moveSquare;
+        Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
             
             square.transform.position = grid.transform.position + (new Vector3(i,0,0))+ (new Vector3(1,-2,0)) + (new Vector3(xCoord,yCoord,0));
 
+        
+            //square.transform.position = grid.transform.position;
+        }
+        int j = 6;
+        for (int i = 0; i < range; ++i) { // highlight to the left 6 - 11
+            
+            GameObject moveSquare = GameObject.Find("tileMoveOverlay"+j);
+            GameObject damageSquare = GameObject.Find("tileDamageOverlay"+j);
+            GameObject square = moveSquare;
+            // Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
+        
+            square.transform.position = grid.transform.position + (new Vector3(-i,0,0))+ (new Vector3(-1,-2,0))+ (new Vector3(xCoord,yCoord,0));
 
             //square.transform.position = grid.transform.position;
+        j++;
+        }
+        j = 12;
+        for (int i = 0; i < range; ++i) { // highlight to the up 12-13
+            
+            GameObject moveSquare = GameObject.Find("tileMoveOverlay"+j);
+            GameObject damageSquare = GameObject.Find("tileDamageOverlay"+j);
+            GameObject square = moveSquare;
+            // Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
+        
+            square.transform.position = grid.transform.position + (new Vector3(0,i,0))+ (new Vector3(0,-1,0))+ (new Vector3(xCoord,yCoord,0));
+
+            //square.transform.position = grid.transform.position;
+        j++;
+        }
+        j=14;
+        for (int i = 0; i < range; ++i) { // highlight to the up 14-15
+            
+            GameObject moveSquare = GameObject.Find("tileMoveOverlay"+j);
+            GameObject damageSquare = GameObject.Find("tileDamageOverlay"+j);
+            GameObject square = moveSquare;
+            // Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
+        
+            square.transform.position = grid.transform.position + (new Vector3(0,-i,0))+ (new Vector3(0,-3,0))+ (new Vector3(xCoord,yCoord,0));
+
+            //square.transform.position = grid.transform.position;
+        j++;
         }
 
         
 
+    }
+    public void clearHighlight(int xCoord, int yCoord, int range) {
+        // highlight right
+        
+        // Debug.Log("Taken in " + xCoord + ", " + yCoord + ", " + ap + ": Action Points");
+        
+        SpriteRenderer grid = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>();
+        
+        for (int i = 0; i < 6; ++i) { // highlight to the right 0 - 6
+        GameObject moveSquare = GameObject.Find("tileMoveOverlay"+i);
+        GameObject damageSquare = GameObject.Find("tileDamageOverlay"+i);
+        GameObject square = moveSquare;
+        Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
+            
+            square.transform.position = grid.transform.position + (new Vector3(i,0,0))+ (new Vector3(1000,-2000,0)) + (new Vector3(xCoord,yCoord,0));
+
+        
+            //square.transform.position = grid.transform.position;
+        }
+        int j = 6;
+        for (int i = 0; i < 6; ++i) { // highlight to the left 6 - 11
+            
+            GameObject moveSquare = GameObject.Find("tileMoveOverlay"+j);
+            GameObject damageSquare = GameObject.Find("tileDamageOverlay"+j);
+            GameObject square = moveSquare;
+            // Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
+        
+            square.transform.position = grid.transform.position + (new Vector3(-i,0,0))+ (new Vector3(1000,-2000,0))+ (new Vector3(xCoord,yCoord,0));
+
+            //square.transform.position = grid.transform.position;
+        j++;
+        }
+        j = 12;
+        for (int i = 0; i < 2; ++i) { // highlight to the up 12-13
+            
+            GameObject moveSquare = GameObject.Find("tileMoveOverlay"+j);
+            GameObject damageSquare = GameObject.Find("tileDamageOverlay"+j);
+            GameObject square = moveSquare;
+            // Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
+        
+            square.transform.position = grid.transform.position + (new Vector3(0,i,0))+ (new Vector3(1000,-2000,0))+ (new Vector3(xCoord,yCoord,0));
+
+            //square.transform.position = grid.transform.position;
+        j++;
+        }
+        j=14;
+        for (int i = 0; i < 3; ++i) { // highlight to the down 14-15
+            
+            GameObject moveSquare = GameObject.Find("tileMoveOverlay"+j);
+            GameObject damageSquare = GameObject.Find("tileDamageOverlay"+j);
+            GameObject square = moveSquare;
+            // Vector3 orignalPos = square.transform.position;
+            if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()) {
+                square = damageSquare;
+            } //enemy in square
+        
+            square.transform.position = grid.transform.position + (new Vector3(0,-i,0))+ (new Vector3(1000,-2000,0))+ (new Vector3(xCoord,yCoord,0));
+
+            //square.transform.position = grid.transform.position;
+        j++;
+        }
+        
 
 
         // highlights gridUnit (xCoord + ActionPoints, yCoord)
@@ -301,9 +427,9 @@ public class CombatGrid{
 
     }
 
-    public void SelectTile(){ // matters once we can spawn friendly creatures
+    public void selectTile(int xValue, int yValue ){ // matters once we can spawn friendly creatures
         
-        
+        Debug.Log("X: "+ xValue + "  Y: " + yValue);
 
         
     }
