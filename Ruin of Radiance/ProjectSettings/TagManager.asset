@@ -8,6 +8,8 @@ TagManager:
   - Stamina
   - Ground
   - wall
+  - combatGrid
+  - character
   layers:
   - Default
   - TransparentFX
