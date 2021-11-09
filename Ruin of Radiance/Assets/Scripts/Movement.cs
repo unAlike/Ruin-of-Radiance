@@ -6,9 +6,9 @@ using UnityEngine.Tilemaps;
 public class Movement : MonoBehaviour
 {
     GameObject staminaBar;
-    private Animator anim;
     Tilemap tilemap;
     GridLayout grid;
+    private Animator anim;
     private AudioSource audioSource;
     private Rigidbody2D character;
     
@@ -68,7 +68,7 @@ public class Movement : MonoBehaviour
         staminaBar.transform.localScale = new Vector3(stamina/75,.1f,.1f);
         if(mag!=0) character.MovePosition(character.position + (movement * (1/mag)) * moveSpeed * Time.fixedDeltaTime);
     }
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Hit something");
         if (collision.gameObject.CompareTag("wall")) {
@@ -77,8 +77,8 @@ public class Movement : MonoBehaviour
             return;
         }
 
-        if (collision.gameObject.CompareTag("enemy")) {
-            Debug.Log("Combat Collision started yo.");
+        if (collision.gameObject.CompareTag("combatGrid")) {
+            Debug.Log("Combat Collision started");
 
             if(!enteringCombat && !inCombat){
                 enteringCombat = true;

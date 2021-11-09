@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using Random=UnityEngine.Random;
 
 // audio clip sound files
 
@@ -35,6 +37,7 @@ public class RatBehavior : MonoBehaviour {
      }
  }
     void playRatSound() {
+        try{
         bool inCombat = false;
        if(inCombat) {
         int num1 = Random.Range(0,1);
@@ -43,9 +46,13 @@ public class RatBehavior : MonoBehaviour {
             }
        } 
        else {
-            int num= Random.Range(0,6);
+            int num= Random.Range(0,5);
             ratSound.PlayOneShot(ratNoises[num]);
-       }
+        }
+        }
+        catch(IndexOutOfRangeException) {
+            Debug.Log("Rat quiet");
+        }
 
     }
 
