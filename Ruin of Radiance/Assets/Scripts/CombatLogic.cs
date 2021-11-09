@@ -44,7 +44,7 @@ public class CombatLogic : MonoBehaviour
         GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = tmp;
 
         // defines movement script
-        moveScript = GameObject.Find("DynamicSprite").GetComponent<Movement>();
+        moveScript = GameObject.Find("Dynamic Sprite").GetComponent<Movement>();
         // moveScript.inCombat = true;
         
         createPlayer();
@@ -127,7 +127,7 @@ public class CombatLogic : MonoBehaviour
     }
     public void createPlayer(){
         Character = new Unit();
-        Character.unitSprite = GameObject.Find("DynamicSprite");
+        Character.unitSprite = GameObject.Find("Dynamic Sprite");
         // Debug.Log("Player Created "); 
     }
     void OnTriggerEnter2D(Collider2D collision) {
@@ -143,7 +143,7 @@ public class CombatLogic : MonoBehaviour
         //Offset for Sprites
         Vector3 standardOffset = new Vector3(0.5f,-1.7f,0);  
         Vector3 gridPos = new Vector3(0,0,0);
-        GameObject charSprite = GameObject.Find("DynamicSprite");
+        GameObject charSprite = GameObject.Find("Dynamic Sprite");
         gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + standardOffset;
         charSprite.transform.position = gridPos;
     
@@ -205,7 +205,7 @@ public class CombatGrid{
                 Debug.Log("Moved Unit to " + tiles[xCoord,yCoord].xCoord + ", " + tiles[xCoord,yCoord].yCoord);
                 // move sprite to appropriate tile
                 // moveVector = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + moveVector;
-                GameObject unitSprite = GameObject.Find("DynamicSprite");
+                GameObject unitSprite = GameObject.Find("Dynamic Sprite");
                 unitSprite.transform.Translate(moveVector);
 
             }

@@ -14,7 +14,7 @@ public class tileSquareScript : MonoBehaviour, IPointerDownHandler // IPointerUp
         
     public void Start(){
         logic = GameObject.Find("CombatGrid").GetComponent<CombatLogic>();
-        moveScript = GameObject.Find("DynamicSprite").GetComponent<Movement>();
+        moveScript = GameObject.Find("Dynamic Sprite").GetComponent<Movement>();
         
     }
 
