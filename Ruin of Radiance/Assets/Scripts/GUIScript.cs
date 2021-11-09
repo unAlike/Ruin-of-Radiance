@@ -13,14 +13,13 @@ public class GUIScript : MonoBehaviour
     string activeBtn;
     [SerializeField]
     bool openGUI = false;
-
+    PlayerStats stats;
     
-
-
 
     void Start()
     {
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+        stats = GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>();
         invPanel = GameObject.Find("InventoryPanel");
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
@@ -31,6 +30,7 @@ public class GUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        updateUIBars();
         if(hoverPanel.activeSelf){
             Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
             pos.z = 20;
@@ -102,6 +102,10 @@ public class GUIScript : MonoBehaviour
         hoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().skillName;
         hoverPanel.gameObject.transform.GetChild(1).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().desc;
         hoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().currentPoints + "/" + g.GetComponent<SkillTreeButton>().maxPoints;
+    }
+    public void updateUIBars(){
+        GameObject.Find("HealthValue").GetComponent<Text>().text = (stats.health + "/" + stats.maxHealth);
+        GameObject.Find("MindEnergyValue").GetComponent<Text>().text = (stats.mindEnergy + "/" + stats.maxMindEnergy);
     }
 
 }
