@@ -1,23 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int health, maxHealth, mindEnergy, maxMindEnergy;
+    public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints;
+    public float critRate, creatureCritRate, sheildRate, lifestealRate;
+    public bool hasHeal, hasMegaHeal, hasSlash, hasSporeBomb, hasBoostedSpawn, hasFlip;
     
     // Start is called before the first frame update
     void Start()
     {
-        health = 30;
-        maxHealth = 30;
+        skillPoints = 3;
+        health = 25;
+        maxHealth = 25;
         mindEnergy = 20;
         maxMindEnergy = 20;
+        
+        critRate = 0;
+        creatureCritRate = 0;
+        sheildRate = 0;
+        lifestealRate = 0;
+
+        hasHeal = false;
+        hasMegaHeal = false;
+        hasSlash = false;
+        hasSporeBomb = false;
+        hasBoostedSpawn = false;
+        hasFlip = false;
+
+        GameObject.Find("Health Bar").GetComponent<Slider>().value = health;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
