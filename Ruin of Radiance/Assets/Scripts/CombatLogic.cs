@@ -354,10 +354,11 @@ public class CombatGrid{
         CombatGrid grid = GameObject.Find("CombatGrid").GetComponent<CombatLogic>().grid;
         CombatTile selectedTile = GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedTile;
         
+        
         if(tiles[xCoord,yCoord].getIsOccupied() && tiles[xCoord,yCoord].tileUnit.getIsFriendly()){ // if space is a unit
             selectedTile = tiles[xCoord, yCoord];
-            Debug.Log("Selected Unit?");
-            grid.highlightTiles(selectedTile.xCoord,selectedTile.yCoord,selectedTile.tileUnit.getActionPoints());
+            Debug.Log("Selected Unit: " + xCoord + yCoord);
+            // grid.highlightTiles(selectedTile.xCoord,selectedTile.yCoord,stats.actionPoints);
             
         }
         else if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()){ // detects enemy
