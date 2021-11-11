@@ -4,8 +4,9 @@ using System;
 using UnityEngine;
 
 public class CombatGrid{
-    public CombatTile[,] tiles;
-    
+    private CombatTile[,] tiles;
+    private int UUID;
+    public CombatTile selectedTile = new CombatTile(0,1);
 
     public CombatGrid(){
         tiles = new CombatTile[7,3];
@@ -16,6 +17,16 @@ public class CombatGrid{
         }
        
     }
+    // fix return 
+    public void getTileOfUnit(CombatUnit Unit1) {
+        // find unit location
+    }
+    public void moveTile(CombatTile tile, int x, int y) {
+
+        // moves the tile
+    }
+
+    /*
 
     public void moveUnitTo(CombatTile tile1, int xCoord, int yCoord,Vector3 moveVector) {
         try {
@@ -23,8 +34,8 @@ public class CombatGrid{
             // currently limits the distance but throws error when out of bounds FIXME
             // highlightTiles(unit1.xCoord, unit1.yCoord);
             if(!tiles[xCoord,yCoord].getIsOccupied() && xCoord < 8 && xCoord > -1 && yCoord < 3 && yCoord > -1 ){ // if not occupied - originally .tileUnit.getIsOccupied() n
-                tile1.tileUnit.actionPoints = tile1.tileUnit.actionPoints -1; 
-                Debug.Log("Action Points:" + tile1.tileUnit.getActionPoints());
+                // tile1.tileUnit.actionPoints = tile1.tileUnit.actionPoints -1; 
+                // Debug.Log("Action Points:" + tile1.tileUnit.getActionPoints());
                 tiles[xCoord,yCoord].tileUnit = tile1.tileUnit; // copy unit over then DELETE OLD SPOT
                 GameObject.Find("CombatGrid").GetComponent<CombatLogic>().grid.findUnit(tile1.tileUnit).deleteUnit(); // deletes the prev unit
                 Debug.Log("Moved Unit to " + tiles[xCoord,yCoord].xCoord + ", " + tiles[xCoord,yCoord].yCoord);
@@ -53,7 +64,7 @@ public class CombatGrid{
 
             tiles[xCoord,yCoord].takeDamage(dmg);
             Debug.Log(""+ xCoord + ", "+ yCoord + " should have taken damage");
-            unit1.tileUnit.setActionPoints(-1);
+            // unit1.tileUnit.setActionPoints(-1);
             tiles[xCoord,yCoord].tileUnit.setHealth(-dmg);
             Debug.Log(tiles[xCoord,yCoord].tileUnit.getHealth() + " is the enemies health");
             }
@@ -207,4 +218,5 @@ public class CombatGrid{
         Debug.Log("I AM RUNNING");
         GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedTile = selectedTile;
     }
+    */
 }

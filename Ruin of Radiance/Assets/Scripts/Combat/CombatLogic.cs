@@ -34,7 +34,7 @@ public class CombatLogic : MonoBehaviour {
     Movement moveScript;
     public CombatGrid grid = new CombatGrid();
     CombatTile activeTile = new CombatTile(0, 1);
-    Unit Character;
+    CombatUnit Character;
     public CombatTile selectedTile = new CombatTile(0, 0);
     void Start() {
         // makes grid invisible on start
@@ -52,8 +52,8 @@ public class CombatLogic : MonoBehaviour {
         grid.tiles[0, 1].createUnit(Character);
         grid.tiles[0, 1].setIsOccupied(true);
         Character.setIsFriendly(true);
-        Character.setActionPoints(3);
-        Debug.Log("Action Points:" + Character.getActionPoints());
+        // Character.setActionPoints(3);
+        // Debug.Log("Action Points:" + Character.getActionPoints());
     }
     void Update() {
         if (selectedTile != null) {
@@ -68,23 +68,23 @@ public class CombatLogic : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 endCombat();
-            } else if (Input.GetKeyDown(KeyCode.RightArrow) && Character.getActionPoints() > 0) {
+            } else if (Input.GetKeyDown(KeyCode.RightArrow) /*&& Character.getActionPoints() > 0*/) {
                 grid.clearHighlight();
                 Vector3 moveRight = new Vector3(.5f, 0, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
                 int yCoord = grid.findUnit(Character).yCoord;
                 grid.moveUnitTo(grid.findUnit(Character), xCoord + 1, yCoord, moveRight);
                 Debug.Log("Unit moved right");
-                Debug.Log("Action Points:" + Character.getActionPoints());
+                // Debug.Log("Action Points:" + Character.getActionPoints());
 
-            } else if (Input.GetKeyDown(KeyCode.DownArrow) && Character.getActionPoints() > 0) {
+            } else if (Input.GetKeyDown(KeyCode.DownArrow) /*&& Character.getActionPoints() > 0*/) {
                 grid.clearHighlight();
                 Vector3 moveDown = new Vector3(0, -0.5f, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
                 int yCoord = grid.findUnit(Character).yCoord;
                 grid.moveUnitTo(grid.findUnit(Character), xCoord, yCoord - 1, moveDown);
                 Debug.Log("Unit moved down");
-            } else if (Input.GetKeyDown(KeyCode.UpArrow) && Character.getActionPoints() > 0) {
+            } else if (Input.GetKeyDown(KeyCode.UpArrow) /* && Character.getActionPoints() > 0*/) {
                 grid.clearHighlight();
                 Vector3 moveUp = new Vector3(0, .5f, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
@@ -92,7 +92,7 @@ public class CombatLogic : MonoBehaviour {
                 grid.moveUnitTo(grid.findUnit(Character), xCoord, yCoord + 1, moveUp);
                 Debug.Log("Unit moved up");
 
-            } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Character.getActionPoints() > 0) {
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow) /*&& Character.getActionPoints() > 0*/) {
                 grid.clearHighlight();
                 Vector3 moveLeft = new Vector3(-0.5f, 0, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
@@ -120,7 +120,7 @@ public class CombatLogic : MonoBehaviour {
     }
     public void createPlayer() {
         Character = new Unit();
-        Character.unitSprite = GameObject.Find("Dynamic Sprite");
+        // Character.unitSprite = GameObject.Find("Dynamic Sprite");
         // Debug.Log("Player Created "); 
     }
     void OnTriggerEnter2D(Collider2D collision) {
