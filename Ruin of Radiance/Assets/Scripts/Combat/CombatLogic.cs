@@ -49,26 +49,26 @@ public class CombatLogic : MonoBehaviour {
         createPlayer();
 
 
-        grid.tiles[0, 1].createUnit(Character);
-        grid.tiles[0, 1].setIsOccupied(true);
+        //grid.tiles[0, 1].createUnit(Character);
+        //grid.tiles[0, 1].setIsOccupied(true);
         Character.setIsFriendly(true);
         // Character.setActionPoints(3);
         // Debug.Log("Action Points:" + Character.getActionPoints());
     }
     void Update() {
         if (selectedTile != null) {
-            Debug.Log("X: " + selectedTile.xCoord + " Y: " + selectedTile.yCoord);
+            //Debug.Log("X: " + selectedTile.xCoord + " Y: " + selectedTile.yCoord);
         }
 
+        /*
 
         if (moveScript.inCombat) {
             // Debug.Log("Started Highlight");
             // selectedTile.highlightTiles(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord);
 
-
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 endCombat();
-            } else if (Input.GetKeyDown(KeyCode.RightArrow) /*&& Character.getActionPoints() > 0*/) {
+            } else if (Input.GetKeyDown(KeyCode.RightArrow) && Character.getActionPoints() > 0) {
                 grid.clearHighlight();
                 Vector3 moveRight = new Vector3(.5f, 0, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
@@ -77,14 +77,14 @@ public class CombatLogic : MonoBehaviour {
                 Debug.Log("Unit moved right");
                 // Debug.Log("Action Points:" + Character.getActionPoints());
 
-            } else if (Input.GetKeyDown(KeyCode.DownArrow) /*&& Character.getActionPoints() > 0*/) {
+            } else if (Input.GetKeyDown(KeyCode.DownArrow) && Character.getActionPoints() > 0) {
                 grid.clearHighlight();
                 Vector3 moveDown = new Vector3(0, -0.5f, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
                 int yCoord = grid.findUnit(Character).yCoord;
                 grid.moveUnitTo(grid.findUnit(Character), xCoord, yCoord - 1, moveDown);
                 Debug.Log("Unit moved down");
-            } else if (Input.GetKeyDown(KeyCode.UpArrow) /* && Character.getActionPoints() > 0*/) {
+            } else if (Input.GetKeyDown(KeyCode.UpArrow)  && Character.getActionPoints() > 0) {
                 grid.clearHighlight();
                 Vector3 moveUp = new Vector3(0, .5f, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
@@ -92,7 +92,7 @@ public class CombatLogic : MonoBehaviour {
                 grid.moveUnitTo(grid.findUnit(Character), xCoord, yCoord + 1, moveUp);
                 Debug.Log("Unit moved up");
 
-            } else if (Input.GetKeyDown(KeyCode.LeftArrow) /*&& Character.getActionPoints() > 0*/) {
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow) && Character.getActionPoints() > 0) {
                 grid.clearHighlight();
                 Vector3 moveLeft = new Vector3(-0.5f, 0, 0);
                 int xCoord = grid.findUnit(Character).xCoord;
@@ -113,13 +113,13 @@ public class CombatLogic : MonoBehaviour {
                 Debug.Log("Unit Attacked");
             }
         }
-
+        */
         // Debug.Log("character Position: " + GameObject.Find("DynamicSprite").transform.position);
 
 
     }
     public void createPlayer() {
-        Character = new Unit();
+        // Character = new Unit();
         // Character.unitSprite = GameObject.Find("Dynamic Sprite");
         // Debug.Log("Player Created "); 
     }
@@ -142,13 +142,14 @@ public class CombatLogic : MonoBehaviour {
 
         // Unit Character = new Unit();
         // grid.tiles[0,1].createUnit(Character); // places character on [0,1]
+        /*
         grid.tiles[6, 2].createUnit(units[2].tileUnit); // places enemies 1,2,3 on their locations
         grid.tiles[6, 1].createUnit(units[1].tileUnit);
         grid.tiles[6, 0].createUnit(units[0].tileUnit);
         grid.tiles[5, 2].createUnit(units[3].tileUnit); // places enemies 4,5,6 on their locations
         grid.tiles[5, 1].createUnit(units[4].tileUnit);
         grid.tiles[5, 0].createUnit(units[5].tileUnit);
-
+        */
         // place the player on [0,1]
         // units[1].tileUnit.getHealth();
 
