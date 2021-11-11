@@ -32,15 +32,12 @@ public class CombatLogic : MonoBehaviour {
     [SerializeField]
     List<CombatTile> units;
     Movement moveScript;
-    PlayerStats stats;
     public CombatGrid grid = new CombatGrid();
     CombatTile activeTile = new CombatTile(0, 1);
     Unit Character;
     public CombatTile selectedTile = new CombatTile(0, 0);
     void Start() {
         // makes grid invisible on start
-        stats = GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>();
-        
         Color tmp = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
         tmp.a = 0f;
         GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = tmp;
@@ -60,7 +57,7 @@ public class CombatLogic : MonoBehaviour {
     }
     void Update() {
         if (selectedTile != null) {
-            // Debug.Log("X: " + selectedTile.xCoord + " Y: " + selectedTile.yCoord);
+            Debug.Log("X: " + selectedTile.xCoord + " Y: " + selectedTile.yCoord);
         }
 
 
@@ -68,7 +65,7 @@ public class CombatLogic : MonoBehaviour {
             // Debug.Log("Started Highlight");
             // selectedTile.highlightTiles(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord);
 
-            /* no need for keyboard input
+
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 endCombat();
             } else if (Input.GetKeyDown(KeyCode.RightArrow) && Character.getActionPoints() > 0) {
@@ -115,7 +112,6 @@ public class CombatLogic : MonoBehaviour {
                 grid.basicAttack(grid.findUnit(Character), xCoord, yCoord, damage);
                 Debug.Log("Unit Attacked");
             }
-            */
         }
 
         // Debug.Log("character Position: " + GameObject.Find("DynamicSprite").transform.position);

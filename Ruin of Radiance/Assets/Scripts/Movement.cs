@@ -44,11 +44,12 @@ public class Movement : MonoBehaviour
         if(!inCombat){
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-
+            mag = Mathf.Sqrt(Mathf.Pow(movement.x,2) + Mathf.Pow(movement.y,2));
             if(Input.GetKey(KeyCode.LeftShift)){
                 if(stamina>0){
                     stamina-=.1f;
-                    movement = movement*2;
+                    movement*=2f;
+                    Debug.Log("sprinting");
                 }
             }
             else{
@@ -57,7 +58,6 @@ public class Movement : MonoBehaviour
                 }
             }
         }
-        mag = Mathf.Sqrt(Mathf.Pow(movement.x,2) + Mathf.Pow(movement.y,2));
         anim.SetFloat("Horizontal", movement.x);
         anim.SetFloat("Vertical", movement.y);
         anim.SetFloat("Speed", movement.magnitude);
@@ -66,17 +66,7 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate(){
         staminaBar.transform.localScale = new Vector3(stamina/75,.1f,.1f);
-        
-
-        if(mag!=0) character.MovePosition(character.position + movement / mag * moveSpeed * Time.fixedDeltaTime);
-        if(enteringCombat){
-            if(mainCamera.orthographicSize > 2.5) mainCamera.orthographicSize -= .1f;
-            else enteringCombat = false;
-        }
-        if(exitingCombat){
-            if(mainCamera.orthographicSize < 5) mainCamera.orthographicSize += .1f;
-            else exitingCombat = false;
-        }
+        if(mag!=0) character.MovePosition(character.position + (movement * (1/mag)) * moveSpeed * Time.fixedDeltaTime);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
