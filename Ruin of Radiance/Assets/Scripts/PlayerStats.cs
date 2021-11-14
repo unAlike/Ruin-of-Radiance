@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints;
-    public float critRate, creatureCritRate, sheildRate, lifestealRate;
+    public float critRate, creatureCritRate, shieldRate, lifestealRate;
     public bool hasHeal, hasMegaHeal, hasSlash, hasSporeBomb, hasBoostedSpawn, hasFlip;
     
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
         
         critRate = 0;
         creatureCritRate = 0;
-        sheildRate = 0;
+        shieldRate = 0;
         lifestealRate = 0;
 
         hasHeal = false;
