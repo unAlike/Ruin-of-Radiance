@@ -49,7 +49,6 @@ public class Movement : MonoBehaviour
                 if(stamina>0){
                     stamina-=.1f;
                     movement*=2f;
-                    Debug.Log("sprinting");
                 }
             }
             else{
@@ -78,7 +77,7 @@ public class Movement : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("combatGrid")) {
-            Debug.Log("Combat Collision started");
+            Debug.Log("Combat Collision detected");
 
             if(!enteringCombat && !inCombat){
                 enteringCombat = true;

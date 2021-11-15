@@ -18,22 +18,42 @@ public class CombatGrid{
         }
        Debug.Log("Created Grid");
     }
-    // fix return 
-    public void getTileOfUnit(CombatUnit Unit1) {
-        // find unit location
-        Debug.Log("Got tile of unit");
+    public CombatTile[,] getTiles() {
+        return tiles;
     }
-    public void moveTile(CombatTile tile, int x, int y) {
+    // fix return
+    public CombatTile getTileOfUnit(CombatUnit Unit1) {
+        // find unit location
+        for (int i = 0; i < 7;++i) {
+            for (int j = 0; j < 3;++j) {
+                if (tiles[i,j].GetTileUnit() == Unit1) {
+                    Debug.Log("Got tile of unit");
+                    return tiles[i,j];
+                }
+            }
+        }
+        Debug.Log("404 Unit not found");
+        return null;
+    }
+    public void moveTile(CombatTile fromTile, CombatTile toTile) {
+        //Create Temp Unit for Swap
+        CombatUnit Temp = toTile.GetTileUnit();
+        
+        //Swap Units
+        toTile.setTileUnit(fromTile.GetTileUnit());
+        fromTile.setTileUnit(Temp);
 
-        // moves the tile
-        Debug.Log("Moved:  [" + x + ", " + y + "]");
+        Debug.Log("Moved:  [" + fromTile.getXCoord() + ", " + fromTile.getYCoord() + "]");
+
+        //Snap Units
+        fromTile.snapUnit();
+        toTile.snapUnit();
     }
     public void attack(int damage, float critRate, int xCoord, int yCoord) {
-        //Random critCheck = new Random(100);
+        // determines damage being delt, critRate, and attacked square location
         if (Random.value < critRate) {
             damage = (int) (damage*(1.5));
         }
-        // determines damage being delt, critRate, and attacked square location
         tiles[xCoord,yCoord].takeDamage(damage);
         Debug.Log("Attacked:  [" + xCoord + ", " + yCoord + "]");
 
@@ -53,37 +73,6 @@ public class CombatGrid{
     }
 
     /*
-
-    public void moveUnitTo(CombatTile tile1, int xCoord, int yCoord,Vector3 moveVector) {
-        try {
-            // play animation to move sprite
-            // currently limits the distance but throws error when out of bounds FIXME
-            // highlightTiles(unit1.xCoord, unit1.yCoord);
-            if(!tiles[xCoord,yCoord].getIsOccupied() && xCoord < 8 && xCoord > -1 && yCoord < 3 && yCoord > -1 ){ // if not occupied - originally .tileUnit.getIsOccupied() n
-                // tile1.tileUnit.actionPoints = tile1.tileUnit.actionPoints -1; 
-                // Debug.Log("Action Points:" + tile1.tileUnit.getActionPoints());
-                tiles[xCoord,yCoord].tileUnit = tile1.tileUnit; // copy unit over then DELETE OLD SPOT
-                GameObject.Find("CombatGrid").GetComponent<CombatLogic>().grid.findUnit(tile1.tileUnit).deleteUnit(); // deletes the prev unit
-                Debug.Log("Moved Unit to " + tiles[xCoord,yCoord].xCoord + ", " + tiles[xCoord,yCoord].yCoord);
-                // move sprite to appropriate tile
-                // moveVector = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + moveVector;
-                GameObject unitSprite = GameObject.Find("Dynamic Sprite");
-                unitSprite.transform.Translate(moveVector);
-
-            }
-            else { 
-                Debug.Log(" space already taken or out of bounds");
-            }
-
-        }
-
-        catch(IndexOutOfRangeException) {
-           Debug.Log("You can't run away!");
-        }
-
-
-    }
-
     public void basicAttack(CombatTile unit1, int xCoord, int yCoord,int dmg) {
         if(tiles[xCoord,yCoord].getIsOccupied()) {
             if (tiles[xCoord,yCoord].tileUnit.getIsFriendly() == false){ // unit in space is enemy

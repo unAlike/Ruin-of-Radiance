@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints;
+    public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints, damage;
     public float critRate, creatureCritRate, sheildRate, lifestealRate;
     public bool hasHeal, hasMegaHeal, hasSlash, hasSporeBomb, hasBoostedSpawn, hasFlip;
     
@@ -30,7 +30,7 @@ public class PlayerStats : MonoBehaviour
         hasBoostedSpawn = false;
         hasFlip = false;
 
-        GameObject.Find("Health Bar").GetComponent<Slider>().value = health;
+        //GameObject.Find("Health Bar").GetComponent<Slider>().value = health;
     }
 
 }

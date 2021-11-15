@@ -22,7 +22,7 @@ public class GUIScript : MonoBehaviour
     void Start()
     {
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        stats = GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>();
+        stats = GameObject.Find("Character").GetComponent<PlayerStats>();
         invPanel = GameObject.Find("InventoryPanel");
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
@@ -133,97 +133,97 @@ public class GUIScript : MonoBehaviour
     }
     public void upgradeSkillTree(GameObject obj){
         SkillTreeButton sklBtn = obj.GetComponent<SkillTreeButton>();
-        if(GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints>0){
+        if(GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints>0){
             if(sklBtn.currentPoints<sklBtn.maxPoints && sklBtn.unlocked){
                 switch(sklBtn.name){
                     case "HealthBtn1":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().maxHealth += 5;
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().health += 5;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().maxHealth += 5;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().health += 5;
                         GameObject.Find("HealthBtn11").GetComponent<SkillTreeButton>().unlocked = true;
                         GameObject.Find("HealthBtn21").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         healthUpgradePoints++;
                         break;
                     case "HealthBtn11":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         GameObject.Find("HealthBtn12").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         sheildPoints++;
                         break;
                     case "HealthBtn12":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         lifestealPoints++;
                         break;
                     case "HealthBtn21":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         GameObject.Find("HealthBtn22").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         healPoints++;
                         break;
                     case "HealthBtn22":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         megaHealPoints++;
                         break;
                     case "DamageBtn1":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         GameObject.Find("DamageBtn11").GetComponent<SkillTreeButton>().unlocked = true;
                         GameObject.Find("DamageBtn21").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         damagePoints++;
                         break;
                     case "DamageBtn11":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         GameObject.Find("DamageBtn12").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         critPoints++;
                         break;
                     case "DamageBtn12":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         creatureCritPoints++;
                         break;
                     case "DamageBtn21":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         GameObject.Find("DamageBtn22").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         slashPoints++;
                         break;
                     case "DamageBtn22":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         sporeBombPoints++;
                         break;
                     case "MindBtn1":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().maxMindEnergy += 5;
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().mindEnergy += 5;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().maxMindEnergy += 5;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().mindEnergy += 5;
                         GameObject.Find("MindBtn11").GetComponent<SkillTreeButton>().unlocked = true;
                         GameObject.Find("MindBtn21").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         mindEnergyPoints++;
                         break;
                     case "MindBtn11":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         GameObject.Find("MindBtn12").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         spawnPoints++;
                         break;
                     case "MindBtn12":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         recallPoints++;
                         break;
                     case "MindBtn21":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         GameObject.Find("MindBtn22").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         boostedSpawnPoints++;
                         break;
                     case "MindBtn22":
-                        GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints--;
+                        GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints--;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         flipPoints++;
                         break;

@@ -8,6 +8,14 @@ using Random = UnityEngine.Random;
 
 /* to do list 
 
+Functions
+- COMBAT LOGIC psuedocode functions
+- getTileOfUnit
+- moveUnitTO
+- spawnCreature
+- recallCreature
+- combatTile - snapUnit
+
 
 -get Select tile (unit) working by clicking on unit
 -determine if slected tile is ocupied and friendly
@@ -35,14 +43,18 @@ public class CombatLogic : MonoBehaviour {
     CombatTile activeTile = new CombatTile(0, 1);
     CombatUnit Character;
     public CombatTile selectedTile = new CombatTile(0, 0);
+    PlayerStats stats;
     void Start() {
+        Debug.Log("Started Logic");
+        stats = GameObject.Find("Character").GetComponent<PlayerStats>();
+
         // makes grid invisible on start
         Color tmp = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
         tmp.a = 0f;
         GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = tmp;
 
         // defines movement script
-        moveScript = GameObject.Find("Dynamic Sprite").GetComponent<Movement>();
+        moveScript = GameObject.Find("Character").GetComponent<Movement>();
         // moveScript.inCombat = true;
 
         createPlayer();
@@ -53,6 +65,7 @@ public class CombatLogic : MonoBehaviour {
         Character.setIsFriendly(true);
         // Character.setActionPoints(3);
         // Debug.Log("Action Points:" + Character.getActionPoints());
+        Debug.Log("Finished Start");
     }
     void Update() {
         if (selectedTile != null) {
@@ -118,12 +131,17 @@ public class CombatLogic : MonoBehaviour {
 
     }
     public void createPlayer() {
+        Character = new CombatUnit(GameObject.Find("Character"),stats.maxHealth,stats.health,stats.damage,1,stats.critRate,true,false);
+        grid.getTiles()[0,1].setTileUnit(Character);
         // Character = new Unit();
         // Character.unitSprite = GameObject.Find("Dynamic Sprite");
         // Debug.Log("Player Created "); 
     }
     void OnTriggerEnter2D(Collider2D collision) {
+        Debug.Log("Collision in logic");
         //Starts Combat
+        GameObject.Find("Character").transform.parent = gameObject.transform.GetChild(2).transform;
+        Debug.Log("SetParent");
         startCombat();
     }
     public void startCombat() {
@@ -132,12 +150,15 @@ public class CombatLogic : MonoBehaviour {
         // puts player into the combat scene
         GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
 
-        //Offset for Sprites
-        Vector3 standardOffset = new Vector3(0.5f, -1.7f, 0);
-        Vector3 gridPos = new Vector3(0, 0, 0);
-        GameObject charSprite = GameObject.Find("Dynamic Sprite");
-        gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + standardOffset;
-        charSprite.transform.position = gridPos;
+        // swap for snapUnit function 
+        grid.getTiles()[0,1].snapUnit();
+        // grid.getTileOfUnit(Character).snapUnit();
+
+        // Vector3 standardOffset = new Vector3(0.5f, -1.7f, 0);
+        // Vector3 gridPos = new Vector3(0, 0, 0);
+        // GameObject charSprite = GameObject.Find("Dynamic Sprite");
+        // gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + standardOffset;
+        // charSprite.transform.position = gridPos;
 
         // Unit Character = new Unit();
         // grid.tiles[0,1].createUnit(Character); // places character on [0,1]
@@ -169,6 +190,10 @@ public class CombatLogic : MonoBehaviour {
         // allow for collecting creatures
         // remove dead or captured creatures
 
+    }
+
+    public void REEEDebug(){
+        grid.moveTile(grid.getTiles()[0,1], grid.getTiles()[0,2]);
     }
     
 
