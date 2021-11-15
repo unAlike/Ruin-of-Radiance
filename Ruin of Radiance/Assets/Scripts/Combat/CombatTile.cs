@@ -12,6 +12,8 @@ public class CombatTile{
 // Check this
     public CombatTile(int x, int y){
         tileUnit = new CombatUnit();
+        isOccupied = false;
+        highlight = 0; // 0-na
         xCoord = x;
         yCoord = y;
     }
@@ -24,6 +26,7 @@ public class CombatTile{
     public void setXCoord(int x){
         xCoord = x;
     }
+    
     public int getXCoord(){
         return xCoord;
     }
@@ -39,7 +42,16 @@ public class CombatTile{
     public CombatUnit GetTileUnit() {
         return tileUnit;
     }
+    public void setHighlight(int highlight1) {
+        highlight = highlight1;
+        // 0 - none, 1 - move, 2 - damage, 3 - MC, 4 - SelectedTile
+    }
+    public int getHighlight() {
+
+        return highlight; 
+    }
     public void takeDamage(int damage) {
+        
         // randomize damage +- 2
         // int num1 = Random.Range(-1,1);
         
@@ -48,21 +60,19 @@ public class CombatTile{
 
         // tileUnit.setHealth(tileUnit.getHealth()-damage);
     }
-    public void healUnit() {
-        // deal damage to a unit
+    public void healUnit(int heal) {
+        if(tileUnit.getHealth() + heal <= tileUnit.getMaxHealth()){
+            tileUnit.setHealth(tileUnit.getHealth()+heal);
+        }
+        else{
+            tileUnit.setHealth(tileUnit.getMaxHealth());
+        }
     }
     public void snapUnit() {
         // snaps unit to the grid
     }
-    public void setHighlight(int highlight1) {
-        highlight = highlight1;
-    }
-    public int getHighlight() {
 
-        return highlight; 
-    }
-
-    /*
+    /* // not using
     public void deleteUnit() {
         tileUnit = null;
     }

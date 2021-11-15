@@ -171,4 +171,8 @@ public class CombatLogic : MonoBehaviour {
         // remove dead or captured creatures
 
     }
+    
+
+
+
 }

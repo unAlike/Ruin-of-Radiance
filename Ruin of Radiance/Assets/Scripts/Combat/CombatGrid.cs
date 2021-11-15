@@ -25,6 +25,23 @@ public class CombatGrid{
 
         // moves the tile
     }
+    public void attack(int damage, float critRate, int xCoord, int yCoord) {
+        // determines damage being delt, critRate, and attacked square location
+
+    }
+
+    public void summonCreature() {
+        // create new unit
+        // subtract from inventory total depending on the unit type
+        // subtract MC energy
+
+    }
+    public void recallCreature() {
+        // remove unit
+        // add to inventory total depending on the unit type
+        // subtract MC energy
+
+    }
 
     /*
 
