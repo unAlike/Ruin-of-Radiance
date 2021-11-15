@@ -9,6 +9,17 @@ public class CombatUnit{
     private float scalingNum;
     private float critRate;
     private bool isFriendly, isDefeated;
+    public CombatUnit(GameObject unitSprite, int maxHealth, int currentHealth, int damage, float scalingNum, float critRate, bool isFriendly, bool isDefeated){
+        this.unitSprite = unitSprite;
+        this.maxHealth = maxHealth;
+        this.currentHealth = currentHealth;
+        this.damage = damage;
+        this.scalingNum = scalingNum;
+        this.critRate = critRate;
+        this.isFriendly = isFriendly;
+        this.isDefeated = isDefeated;
+        Debug.Log("Created combatUnit");
+    }
     public void setHealth(int health){
         currentHealth=health;
     }
@@ -39,10 +50,10 @@ public class CombatUnit{
     public bool getIsFriendly(){
         return isFriendly;
     }
-    public void setisDefeated(bool defeated){
+    public void setIsDefeated(bool defeated){
         isDefeated = defeated;
     }
-    public bool getisDefeated(){
+    public bool getIsDefeated(){
         return isDefeated;
     }
     public void setUnitSprite(GameObject unitSprite1) {

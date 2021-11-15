@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Random=UnityEngine.Random;
 
 public class CombatGrid{
     private CombatTile[,] tiles;
@@ -15,18 +16,26 @@ public class CombatGrid{
             tiles[i,j] = new CombatTile(i,j);
             }
         }
-       
+       Debug.Log("Created Grid");
     }
     // fix return 
     public void getTileOfUnit(CombatUnit Unit1) {
         // find unit location
+        Debug.Log("Got tile of unit");
     }
     public void moveTile(CombatTile tile, int x, int y) {
 
         // moves the tile
+        Debug.Log("Moved:  [" + x + ", " + y + "]");
     }
     public void attack(int damage, float critRate, int xCoord, int yCoord) {
+        //Random critCheck = new Random(100);
+        if (Random.value < critRate) {
+            damage = (int) (damage*(1.5));
+        }
         // determines damage being delt, critRate, and attacked square location
+        tiles[xCoord,yCoord].takeDamage(damage);
+        Debug.Log("Attacked:  [" + xCoord + ", " + yCoord + "]");
 
     }
 
@@ -34,13 +43,13 @@ public class CombatGrid{
         // create new unit
         // subtract from inventory total depending on the unit type
         // subtract MC energy
-
+        Debug.Log("Summoned Creature to [" + ", " + "]");
     }
     public void recallCreature() {
         // remove unit
         // add to inventory total depending on the unit type
         // subtract MC energy
-
+        Debug.Log("Recalled creature from [" + ", " + "]");
     }
 
     /*

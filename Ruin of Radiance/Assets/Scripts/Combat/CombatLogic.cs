@@ -7,8 +7,7 @@ using Random = UnityEngine.Random;
 
 
 /* to do list 
--add debugs for actions
-Debug.Log(" ");
+
 
 -get Select tile (unit) working by clicking on unit
 -determine if slected tile is ocupied and friendly

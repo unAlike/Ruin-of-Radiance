@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
 public class CombatTile{
     private CombatUnit tileUnit;
@@ -11,7 +12,6 @@ public class CombatTile{
 
 // Check this
     public CombatTile(int x, int y){
-        tileUnit = new CombatUnit();
         isOccupied = false;
         highlight = 0; // 0-na
         xCoord = x;
@@ -19,6 +19,7 @@ public class CombatTile{
     }
     public void setIsOccupied(bool set){
         isOccupied = set;
+        
     }
     public bool getIsOccupied(){
         return isOccupied;
@@ -52,13 +53,16 @@ public class CombatTile{
     }
     public void takeDamage(int damage) {
         
-        // randomize damage +- 2
-        // int num1 = Random.Range(-1,1);
-        
-        // int damageDelt = num1 + damage;
-        // Debug.Log("Damage output is " + damageDelt);
+        tileUnit.setHealth(tileUnit.getHealth() - damage);
+        Debug.Log("Damage Taken");
 
-        // tileUnit.setHealth(tileUnit.getHealth()-damage);
+        if(tileUnit.getHealth() > 0 ) {
+            Debug.Log("Unit still standing");
+        }
+        else { // tileUnit.getHealth() <= 0 
+            tileUnit.setIsDefeated(true);
+            Debug.Log("He definitely dead");
+        }
     }
     public void healUnit(int heal) {
         if(tileUnit.getHealth() + heal <= tileUnit.getMaxHealth()){
@@ -70,6 +74,7 @@ public class CombatTile{
     }
     public void snapUnit() {
         // snaps unit to the grid
+        Debug.Log("Unit Snapped to grid");
     }
 
     /* // not using
