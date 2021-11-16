@@ -74,8 +74,8 @@ public class CombatTile{
     }
     public void snapUnit() {
         // snaps unit to the grid
-        if(tileUnit.getUnitSprite()){
-            tileUnit.getUnitSprite().transform.position = tileUnit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(.5f,-1.75f,0);
+        if(tileUnit!=null){
+            tileUnit.getUnitSprite().transform.position = tileUnit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(xCoord+.5f,-2.75f+yCoord,0);
         }
         
         Debug.Log("Unit Snapped to grid");

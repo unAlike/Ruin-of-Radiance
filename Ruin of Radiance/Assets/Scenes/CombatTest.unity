@@ -5838,7 +5838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469940123}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1702168, y: 2.2207341, z: 143.65405}
+  m_LocalPosition: {x: 0.1702168, y: 2.24, z: 143.65405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2077759042}
@@ -6826,7 +6826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4369259240846294518, guid: ff1d1f6bde162c344afd3b4068de7dd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.52
+      value: -1.4802659
       objectReference: {fileID: 0}
     - target: {fileID: 4369259240846294518, guid: ff1d1f6bde162c344afd3b4068de7dd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7122,7 +7122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5995220001658802927, guid: 4f8889a75951cdf4197d7ba09b577f78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.54
+      value: -2.5002658
       objectReference: {fileID: 0}
     - target: {fileID: 5995220001658802927, guid: 4f8889a75951cdf4197d7ba09b577f78, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7266,11 +7266,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5995220001658802927, guid: 4f8889a75951cdf4197d7ba09b577f78, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.52973425
+      value: -0.49
       objectReference: {fileID: 0}
     - target: {fileID: 5995220001658802927, guid: 4f8889a75951cdf4197d7ba09b577f78, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5995220001658802927, guid: 4f8889a75951cdf4197d7ba09b577f78, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7324,10 +7324,18 @@ MonoBehaviour:
   mindEnergy: 0
   maxMindEnergy: 0
   skillPoints: 0
+  healPower: 0
+  megaHealPower: 0
   damage: 0
+  slashDamage: 0
+  sporeDamage: 0
+  spawnCostReduction: 0
+  recallCostReduction: 0
+  boostedSpawnLevel: 0
+  flipLevel: 0
   critRate: 0
   creatureCritRate: 0
-  sheildRate: 0
+  shieldRate: 0
   lifestealRate: 0
   hasHeal: 0
   hasMegaHeal: 0
