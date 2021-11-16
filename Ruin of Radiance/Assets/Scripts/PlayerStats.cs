@@ -5,14 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-<<<<<<< Updated upstream
-    public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints;
-    public float critRate, creatureCritRate, shieldRate, lifestealRate;
-=======
+
     public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints, healPower, megaHealPower, damage, slashDamage, sporeDamage, spawnCostReduction, 
     recallCostReduction, boostedSpawnLevel, flipLevel;
-    public float critRate, creatureCritRate, sheildRate, lifestealRate;
->>>>>>> Stashed changes
+    public float critRate, creatureCritRate, shieldRate, lifestealRate;
     public bool hasHeal, hasMegaHeal, hasSlash, hasSporeBomb, hasBoostedSpawn, hasFlip;
     
     // Start is called before the first frame update
@@ -43,7 +39,9 @@ public class PlayerStats : MonoBehaviour
         hasBoostedSpawn = false;
         hasFlip = false;
 
-        GameObject.Find("Health Bar").GetComponent<Slider>().value = health;
+        if(GameObject.Find("Health Bar")){
+            GameObject.Find("Health Bar").GetComponent<Slider>().value = health;
+        }
     }
 
 }

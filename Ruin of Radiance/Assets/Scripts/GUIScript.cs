@@ -22,7 +22,7 @@ public class GUIScript : MonoBehaviour
     void Start()
     {
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-        stats = GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>();
+        stats = GameObject.Find("Character").GetComponent<PlayerStats>();
         invPanel = GameObject.Find("InventoryPanel");
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
@@ -133,8 +133,8 @@ public class GUIScript : MonoBehaviour
     }
     public void upgradeSkillTree(GameObject obj){
         SkillTreeButton sklBtn = obj.GetComponent<SkillTreeButton>();
-        PlayerStats stats = GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>();
-        if(GameObject.Find("Dynamic Sprite").GetComponent<PlayerStats>().skillPoints>0){
+        PlayerStats stats = GameObject.Find("Character").GetComponent<PlayerStats>();
+        if(GameObject.Find("Character").GetComponent<PlayerStats>().skillPoints>0){
             if(sklBtn.currentPoints<sklBtn.maxPoints && sklBtn.unlocked){
                 switch(sklBtn.name){
                     case "HealthBtn1":
@@ -148,7 +148,7 @@ public class GUIScript : MonoBehaviour
                         break;
                     case "HealthBtn11":
                         stats.skillPoints--;
-                        stats.sheildRate += 5;
+                        stats.shieldRate += 5;
                         GameObject.Find("HealthBtn12").GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         sheildPoints++;
