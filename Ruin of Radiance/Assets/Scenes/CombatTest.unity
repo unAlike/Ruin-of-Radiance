@@ -311,9 +311,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -416,9 +416,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -521,9 +521,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -626,9 +626,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -731,9 +731,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -945,9 +945,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1050,9 +1050,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1155,9 +1155,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1304,9 +1304,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1409,9 +1409,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1516,8 +1516,8 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 2008950418}
           m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
-          m_MethodName: REEEDebug
-          m_Mode: 1
+          m_MethodName: clickTile
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1619,9 +1619,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5914,9 +5914,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6019,9 +6019,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6124,9 +6124,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6149,7 +6149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6349,9 +6349,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6454,9 +6454,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6559,9 +6559,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6751,9 +6751,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6930,9 +6930,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7035,9 +7035,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: clickTile
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7324,10 +7324,19 @@ MonoBehaviour:
   mindEnergy: 0
   maxMindEnergy: 0
   skillPoints: 0
+  healPower: 0
+  megaHealPower: 0
   damage: 0
+  slashDamage: 0
+  sporeDamage: 0
+  spawnCostReduction: 0
+  recallCostReduction: 0
+  boostedSpawnLevel: 0
+  flipLevel: 0
+  actionPoints: 5
   critRate: 0
   creatureCritRate: 0
-  sheildRate: 0
+  shieldRate: 0
   lifestealRate: 0
   hasHeal: 0
   hasMegaHeal: 0

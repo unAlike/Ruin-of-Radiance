@@ -10,9 +10,10 @@ using Random = UnityEngine.Random;
 
 Functions
 - COMBAT LOGIC psuedocode functions
-- select tile logic
-- getTileOfUnit
-- moveUnitTO
+- highlight tiles
+- load in enemies
+- attack logic
+
 - spawnCreature
 - recallCreature
 - combatTile - snapUnit
@@ -73,65 +74,11 @@ public class CombatLogic : MonoBehaviour {
             //Debug.Log("X: " + selectedTile.xCoord + " Y: " + selectedTile.yCoord);
         }
 
-        /*
-
-        if (moveScript.inCombat) {
-            // Debug.Log("Started Highlight");
-            // selectedTile.highlightTiles(grid.findUnit(Character).xCoord, grid.findUnit(Character).yCoord);
-
-            if (Input.GetKeyDown(KeyCode.Escape)) {
-                endCombat();
-            } else if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                grid.clearHighlight();
-                Vector3 moveRight = new Vector3(.5f, 0, 0);
-                int xCoord = grid.findUnit(Character).xCoord;
-                int yCoord = grid.findUnit(Character).yCoord;
-                grid.moveUnitTo(grid.findUnit(Character), xCoord + 1, yCoord, moveRight);
-                Debug.Log("Unit moved right");
-                // Debug.Log("Action Points:" + Character.getActionPoints());
-
-            } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-                grid.clearHighlight();
-                Vector3 moveDown = new Vector3(0, -0.5f, 0);
-                int xCoord = grid.findUnit(Character).xCoord;
-                int yCoord = grid.findUnit(Character).yCoord;
-                grid.moveUnitTo(grid.findUnit(Character), xCoord, yCoord - 1, moveDown);
-                Debug.Log("Unit moved down");
-            } else if (Input.GetKeyDown(KeyCode.UpArrow)  && Character.getActionPoints() > 0) {
-                grid.clearHighlight();
-                Vector3 moveUp = new Vector3(0, .5f, 0);
-                int xCoord = grid.findUnit(Character).xCoord;
-                int yCoord = grid.findUnit(Character).yCoord;
-                grid.moveUnitTo(grid.findUnit(Character), xCoord, yCoord + 1, moveUp);
-                Debug.Log("Unit moved up");
-
-            } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-                Vector3 moveLeft = new Vector3(-0.5f, 0, 0);
-                int xCoord = grid.findUnit(Character).xCoord;
-                int yCoord = grid.findUnit(Character).yCoord;
-                grid.moveUnitTo(grid.findUnit(Character), xCoord - 1, yCoord, moveLeft);
-                Debug.Log("Unit moved left");
-
-
-            } else if (Input.GetKeyDown(KeyCode.RightAlt)) {
-                //int xCoord = grid.findUnit(Character).xCoord;
-                //int yCoord = grid.findUnit(Character).yCoord;
-                // grid.moveUnitTo(grid.findUnit(Character),xCoord-1,yCoord);
-                
-                int xCoord = grid.findUnit(Character).xCoord;
-                int yCoord = grid.findUnit(Character).yCoord;
-                int damage = grid.findUnit(Character).tileUnit.getDamage();
-                grid.basicAttack(grid.findUnit(Character), xCoord, yCoord, damage);
-                Debug.Log("Unit Attacked");
-            }
-        }
-        */
-       
-
     }
     public void createPlayer() {
         Character = new CombatUnit(GameObject.Find("Character"),stats.maxHealth,stats.health,stats.damage,1,stats.critRate,true,false);
         grid.getTiles()[0,1].setTileUnit(Character);
+        grid.getTiles()[0,1].setIsOccupied(true);
         // Character = new Unit();
         // Character.unitSprite = GameObject.Find("Dynamic Sprite");
         // Debug.Log("Player Created "); 
@@ -149,30 +96,8 @@ public class CombatLogic : MonoBehaviour {
         moveScript.inCombat = true;
         // swap for snapUnit function 
         grid.getTiles()[0,1].snapUnit();
-        // grid.getTileOfUnit(Character).snapUnit();
-
-        // Vector3 standardOffset = new Vector3(0.5f, -1.7f, 0);
-        // Vector3 gridPos = new Vector3(0, 0, 0);
-        // GameObject charSprite = GameObject.Find("Dynamic Sprite");
-        // gridPos = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().transform.position + standardOffset;
-        // charSprite.transform.position = gridPos;
-
-        // Unit Character = new Unit();
-        // grid.tiles[0,1].createUnit(Character); // places character on [0,1]
-        /*
-        grid.tiles[6, 2].createUnit(units[2].tileUnit); // places enemies 1,2,3 on their locations
-        grid.tiles[6, 1].createUnit(units[1].tileUnit);
-        grid.tiles[6, 0].createUnit(units[0].tileUnit);
-        grid.tiles[5, 2].createUnit(units[3].tileUnit); // places enemies 4,5,6 on their locations
-        grid.tiles[5, 1].createUnit(units[4].tileUnit);
-        grid.tiles[5, 0].createUnit(units[5].tileUnit);
-        */
-        // place the player on [0,1]
-        // units[1].tileUnit.getHealth();
-
-        // toggle movement off
-        // Enemies placed in combat grid
-        // turns on combat overlay
+        // snap enemies to grid
+        
     }
     public void endTurn() {
 
@@ -189,11 +114,41 @@ public class CombatLogic : MonoBehaviour {
 
     }
 
+    public void clickTile(string name) {
+        if(moveScript.inCombat == true) {
+            int x = int.Parse(name.Substring(0,1));
+            int y = int.Parse(name.Substring(1,1));
+            grid.clearHighlights();
+
+            Debug.Log("X:" + x + " Y:" + y); 
+
+            if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].GetTileUnit().getIsFriendly()) { // select
+                grid.selectedTile = grid.getTiles()[x,y];
+                grid.selectedTile.setHighlight(4);
+                Debug.Log("Select Tile");
+            }
+            else if (!grid.getTiles()[x,y].getIsOccupied()){ // move
+                // stats.actionPoints;
+                
+                grid.moveTile(grid.selectedTile, grid.getTiles()[x,y]);
+                grid.selectedTile = grid.getTiles()[x,y];
+                Debug.Log("Move To Tile");
+                
+            }
+            else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].GetTileUnit().getIsFriendly()){ // attack
+                Debug.Log("Attack Tile");
+            }
+            else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].GetTileUnit().getIsDefeated()){ // recall
+            Debug.Log("Recall Tile"); 
+            }
+        }
+    }
+
     public void REEEDebug(){
         
 
         // for tests
-        grid.moveTile(grid.getTiles()[0,1], grid.getTiles()[0,2]);
+        
     }
     
 

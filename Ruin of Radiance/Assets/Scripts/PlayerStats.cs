@@ -7,7 +7,7 @@ public class PlayerStats : MonoBehaviour
 {
 
     public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints, healPower, megaHealPower, damage, slashDamage, sporeDamage, spawnCostReduction, 
-    recallCostReduction, boostedSpawnLevel, flipLevel;
+    recallCostReduction, boostedSpawnLevel, flipLevel, actionPoints = 5;
     public float critRate, creatureCritRate, shieldRate, lifestealRate;
     public bool hasHeal, hasMegaHeal, hasSlash, hasSporeBomb, hasBoostedSpawn, hasFlip;
     

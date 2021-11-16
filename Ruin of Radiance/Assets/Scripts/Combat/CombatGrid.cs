@@ -45,6 +45,10 @@ public class CombatGrid{
 
         Debug.Log("Moved:  [" + fromTile.getXCoord() + ", " + fromTile.getYCoord() + "]");
 
+        bool ocuTemp = toTile.getIsOccupied();
+        toTile.setIsOccupied(fromTile.getIsOccupied());
+        fromTile.setIsOccupied(ocuTemp);
+        
         //Snap Units
         fromTile.snapUnit();
         toTile.snapUnit();
@@ -71,6 +75,14 @@ public class CombatGrid{
         // add to inventory total depending on the unit type
         // subtract MC energy
         Debug.Log("Recalled creature from [" + ", " + "]");
+    }
+    public void clearHighlights() {
+        for (int i = 0; i < 7;++i) {
+            for (int j = 0; j < 3;++j) {
+                tiles[i,j].setHighlight(0);
+            }
+        }
+        Debug.Log("Cleared Highlights");
     }
 
     /*
