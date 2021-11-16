@@ -1514,10 +1514,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: tileSquareScript, Assembly-CSharp
-          m_MethodName: callSelectTile
-          m_Mode: 5
+        - m_Target: {fileID: 2008950418}
+          m_TargetAssemblyTypeName: CombatLogic, Assembly-CSharp
+          m_MethodName: REEEDebug
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

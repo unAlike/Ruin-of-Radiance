@@ -5,7 +5,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class CombatTile{
-    private CombatUnit tileUnit;
+    private CombatUnit tileUnit = null;
     private int xCoord, yCoord;
     private bool isOccupied;
     private int highlight;
@@ -74,7 +74,7 @@ public class CombatTile{
     }
     public void snapUnit() {
         // snaps unit to the grid
-        if(tileUnit.getUnitSprite() != null){
+        if(tileUnit.getUnitSprite()){
             tileUnit.getUnitSprite().transform.position = tileUnit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(.5f,-1.75f,0);
         }
         

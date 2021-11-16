@@ -61,6 +61,7 @@ public class CombatGrid{
 
     public void summonCreature() {
         // create new unit
+        // highlight where you want to put the unit
         // subtract from inventory total depending on the unit type
         // subtract MC energy
         Debug.Log("Summoned Creature to [" + ", " + "]");

@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
     
     private Vector2 movement;
     [SerializeField]
-    float moveSpeed = 1;
+    public float moveSpeed = 1;
     Camera mainCamera;
     [SerializeField]
     public bool inCombat = false;
@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movement *= 0;
         if(!inCombat){
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
