@@ -10,6 +10,7 @@ using Random = UnityEngine.Random;
 
 Functions
 - COMBAT LOGIC psuedocode functions
+- select tile logic
 - getTileOfUnit
 - moveUnitTO
 - spawnCreature
