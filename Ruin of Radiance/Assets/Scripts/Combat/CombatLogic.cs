@@ -9,24 +9,21 @@ using Random = UnityEngine.Random;
 /* to do list 
 
 Functions
-- COMBAT LOGIC psuedocode functions
+- COMBAT LOGIC
 - highlight tiles
-- load in enemies
-- attack logic
+- load in enemies as units, place them into spaces
+- When in combat display the available Action points
+- disable the stamina bar in combat
+- create buttons to have slash and spore bomb functions
+- move to tile needs to reduce the action points
+- attack if enemy is in range of selected tile + remove action points
 
 - spawnCreature
 - recallCreature
-- combatTile - snapUnit
 
-
--get Select tile (unit) working by clicking on unit
--determine if slected tile is ocupied and friendly
--display stats
--move by clicking
--apply movement to all units not just character
-- figure out end turn
-
--Disable grid box collider after combat started.
+- display stats
+- 
+- Disable grid box collider after combat started.
 
 -attack animation
 
@@ -60,13 +57,9 @@ public class CombatLogic : MonoBehaviour {
         // moveScript.inCombat = true;
 
         createPlayer();
-
-
-        //grid.tiles[0, 1].createUnit(Character);
-        //grid.tiles[0, 1].setIsOccupied(true);
         Character.setIsFriendly(true);
-        // Character.setActionPoints(3);
-        // Debug.Log("Action Points:" + Character.getActionPoints());
+        //GetComponent<BoxCollider2D>.delete
+        
         Debug.Log("Finished Start");
     }
     void Update() {
@@ -84,7 +77,8 @@ public class CombatLogic : MonoBehaviour {
         // Debug.Log("Player Created "); 
     }
     void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log("Collision in logic");
+        this.enabled = false; // disables the enemy collision
+        Debug.Log("Collision now disabled");
         //Starts Combat
         GameObject.Find("Character").transform.parent = gameObject.transform.GetChild(2).transform;
         Debug.Log("SetParent");
@@ -121,32 +115,34 @@ public class CombatLogic : MonoBehaviour {
             grid.clearHighlights();
 
             Debug.Log("X:" + x + " Y:" + y); 
-
-            if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].GetTileUnit().getIsFriendly()) { // select
-                grid.selectedTile = grid.getTiles()[x,y];
-                grid.selectedTile.setHighlight(4);
-                Debug.Log("Select Tile");
-            }
-            else if (!grid.getTiles()[x,y].getIsOccupied()){ // move
-                // stats.actionPoints;
-                
-                grid.moveTile(grid.selectedTile, grid.getTiles()[x,y]);
-                grid.selectedTile = grid.getTiles()[x,y];
-                Debug.Log("Move To Tile");
-                
-            }
-            else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].GetTileUnit().getIsFriendly()){ // attack
-                Debug.Log("Attack Tile");
-            }
-            else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].GetTileUnit().getIsDefeated()){ // recall
-            Debug.Log("Recall Tile"); 
-            }
+            
+            
+                if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].GetTileUnit().getIsFriendly()) { // select
+                    grid.selectedTile = grid.getTiles()[x,y];
+                    grid.selectedTile.setHighlight(4);
+                    // highlight available squares to move to
+                    Debug.Log("Selected Tile");
+                }
+                else if (!grid.getTiles()[x,y].getIsOccupied() && stats.actionPoints > 0 ){ // move
+                    // stats.actionPoints;
+                    
+                    grid.moveTile(grid.selectedTile, grid.getTiles()[x,y]);
+                    grid.selectedTile = grid.getTiles()[x,y];
+                    Debug.Log("Move To Tile");
+                    
+                }
+                else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].GetTileUnit().getIsFriendly() && stats.actionPoints > 0 ){ // attack
+                    Debug.Log("Attack Tile");
+                }
+                else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].GetTileUnit().getIsDefeated()){ // recall
+                Debug.Log("Recall Tile"); 
+                }
         }
     }
 
     public void REEEDebug(){
         
-
+        Debug.Log("Debug function called");
         // for tests
         
     }

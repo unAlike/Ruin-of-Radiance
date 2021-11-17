@@ -9,6 +9,7 @@ public class CombatUnit{
     private float scalingNum;
     private float critRate;
     private bool isFriendly, isDefeated;
+    
     public CombatUnit(GameObject unitSprite, int maxHealth, int currentHealth, int damage, float scalingNum, float critRate, bool isFriendly, bool isDefeated){
         this.unitSprite = unitSprite;
         this.maxHealth = maxHealth;
