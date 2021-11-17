@@ -46,6 +46,8 @@ public class CombatTile{
     public void setHighlight(int highlight1) {
         highlight = highlight1;
         // 0 - none, 1 - move, 2 - damage, 3 - MC, 4 - SelectedTile
+        // Image
+    
     }
     public int getHighlight() {
 
