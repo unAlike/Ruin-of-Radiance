@@ -13,7 +13,7 @@ public class CombatGrid{
         tiles = new CombatTile[7,3];
         for (int i = 0; i < 7;++i) {
             for (int j = 0; j < 3;++j) {
-            tiles[i,j] = new CombatTile(i,j);
+                tiles[i,j] = new CombatTile(i,j);
             }
         }
        Debug.Log("Created Grid");
@@ -26,7 +26,7 @@ public class CombatGrid{
         // find unit location
         for (int i = 0; i < 7;++i) {
             for (int j = 0; j < 3;++j) {
-                if (tiles[i,j].GetTileUnit() == Unit1) {
+                if (tiles[i,j].getTileUnit() == Unit1) {
                     Debug.Log("Got tile of unit");
                     return tiles[i,j];
                 }
@@ -37,10 +37,10 @@ public class CombatGrid{
     }
     public void moveTile(CombatTile fromTile, CombatTile toTile) {
         //Create Temp Unit for Swap
-        CombatUnit Temp = toTile.GetTileUnit();
+        CombatUnit Temp = toTile.getTileUnit();
         
         //Swap Units
-        toTile.setTileUnit(fromTile.GetTileUnit());
+        toTile.setTileUnit(fromTile.getTileUnit());
         fromTile.setTileUnit(Temp);
 
         Debug.Log("Moved:  [" + fromTile.getXCoord() + ", " + fromTile.getYCoord() + "]");
@@ -48,6 +48,10 @@ public class CombatGrid{
         bool ocuTemp = toTile.getIsOccupied();
         toTile.setIsOccupied(fromTile.getIsOccupied());
         fromTile.setIsOccupied(ocuTemp);
+
+        int highTemp = fromTile.getHighlight();
+        fromTile.setHighlight(toTile.getHighlight());
+        toTile.setHighlight(highTemp);
         
         //Snap Units
         fromTile.snapUnit();
