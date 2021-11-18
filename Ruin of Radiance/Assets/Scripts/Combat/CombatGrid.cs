@@ -24,8 +24,8 @@ public class CombatGrid{
     // fix return
     public CombatTile getTileOfUnit(CombatUnit Unit1) {
         // find unit location
-        for (int i = 0; i < 7;++i) {
-            for (int j = 0; j < 3;++j) {
+        for (int i = 0; i < 7;i++) {
+            for (int j = 0; j < 3;j++) {
                 if (tiles[i,j].getTileUnit() == Unit1) {
                     Debug.Log("Got tile of unit");
                     return tiles[i,j];
@@ -49,7 +49,7 @@ public class CombatGrid{
         toTile.setIsOccupied(fromTile.getIsOccupied());
         fromTile.setIsOccupied(ocuTemp);
 
-        int highTemp = fromTile.getHighlight();
+        Enums.highlight highTemp = fromTile.getHighlight();
         fromTile.setHighlight(toTile.getHighlight());
         toTile.setHighlight(highTemp);
         
