@@ -24,8 +24,8 @@ public class CombatGrid{
     // fix return
     public CombatTile getTileOfUnit(CombatUnit Unit1) {
         // find unit location
-        for (int i = 0; i < 7;++i) {
-            for (int j = 0; j < 3;++j) {
+        for (int i = 0; i < 7;i++) {
+            for (int j = 0; j < 3;j++) {
                 if (tiles[i,j].getTileUnit() == Unit1) {
                     Debug.Log("Got tile of unit");
                     return tiles[i,j];
@@ -49,7 +49,7 @@ public class CombatGrid{
         toTile.setIsOccupied(fromTile.getIsOccupied());
         fromTile.setIsOccupied(ocuTemp);
 
-        int highTemp = fromTile.getHighlight();
+        Enums.highlight highTemp = fromTile.getHighlight();
         fromTile.setHighlight(toTile.getHighlight());
         toTile.setHighlight(highTemp);
         
@@ -67,35 +67,7 @@ public class CombatGrid{
 
     }
 
-    public void summonCreature(CombatUnit unit1, int x, int y) {
-        // hit button to open inventory
-        // show how much mind energy it will use to spawn and recall
-        // select unit that you want to spawn
-        clearHighlights();
-        // unit1 = new CombatUnit(unit1,stats.maxHealth,stats.health,stats.damage,1,stats.creatureCritRate,true,false);
-        // standard health and damage for units?
-
-        tiles[x,y].setTileUnit(unit1);
-        tiles[x,y].setIsOccupied(true);
-        tiles[x,y].snapUnit();
-        
-        // highlight where you can put the unit (+- 1 in all directions)
-        // create unit on selected square
-
-        // subtract MC energy & action points
-        // subtract from inventory total depending on the unit type
-        Debug.Log("Summoned Creature to [" + ", " + "]");
-    }
-    public void recallCreature(CombatUnit unit1) {
-        // find unit and remove getTileOfUnit(unit1)
-
-        // inventory "x1 Unit"
-        // PlayerStats.numOfRats = PlayerStats.numOfRats+1;
-        // add to inventory total depending on the unit type 
-
-        // subtract MC energy
-        Debug.Log("Recalled creature from [" + ", " + "]");
-    }
+    
     public void clearHighlights() {
         for (int i = 0; i < 7;++i) {
             for (int j = 0; j < 3;++j) {

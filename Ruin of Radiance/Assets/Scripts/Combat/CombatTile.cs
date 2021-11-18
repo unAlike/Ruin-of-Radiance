@@ -8,7 +8,7 @@ public class CombatTile{
     private CombatUnit tileUnit = null;
     private int xCoord, yCoord;
     private bool isOccupied;
-    private int highlight;
+    private Enums.highlight highlight;
 
 // Check this
     public CombatTile(int x, int y){
@@ -43,13 +43,13 @@ public class CombatTile{
     public CombatUnit getTileUnit() {
         return tileUnit;
     }
-    public void setHighlight(int highlight1) {
+    public void setHighlight(Enums.highlight highlight1) {
         highlight = highlight1;
         // 0 - none, 1 - move, 2 - damage, 3 - MC, 4 - SelectedTile
         // Image  
     
     }
-    public int getHighlight() {
+    public Enums.highlight getHighlight() {
 
         return highlight; 
     }
