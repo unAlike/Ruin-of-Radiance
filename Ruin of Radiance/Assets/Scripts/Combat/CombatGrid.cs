@@ -13,7 +13,7 @@ public class CombatGrid{
         tiles = new CombatTile[7,3];
         for (int i = 0; i < 7;++i) {
             for (int j = 0; j < 3;++j) {
-            tiles[i,j] = new CombatTile(i,j);
+                tiles[i,j] = new CombatTile(i,j);
             }
         }
        Debug.Log("Created Grid");
@@ -26,7 +26,7 @@ public class CombatGrid{
         // find unit location
         for (int i = 0; i < 7;++i) {
             for (int j = 0; j < 3;++j) {
-                if (tiles[i,j].GetTileUnit() == Unit1) {
+                if (tiles[i,j].getTileUnit() == Unit1) {
                     Debug.Log("Got tile of unit");
                     return tiles[i,j];
                 }
@@ -37,14 +37,22 @@ public class CombatGrid{
     }
     public void moveTile(CombatTile fromTile, CombatTile toTile) {
         //Create Temp Unit for Swap
-        CombatUnit Temp = toTile.GetTileUnit();
+        CombatUnit Temp = toTile.getTileUnit();
         
         //Swap Units
-        toTile.setTileUnit(fromTile.GetTileUnit());
+        toTile.setTileUnit(fromTile.getTileUnit());
         fromTile.setTileUnit(Temp);
 
         Debug.Log("Moved:  [" + fromTile.getXCoord() + ", " + fromTile.getYCoord() + "]");
 
+        bool ocuTemp = toTile.getIsOccupied();
+        toTile.setIsOccupied(fromTile.getIsOccupied());
+        fromTile.setIsOccupied(ocuTemp);
+
+        int highTemp = fromTile.getHighlight();
+        fromTile.setHighlight(toTile.getHighlight());
+        toTile.setHighlight(highTemp);
+        
         //Snap Units
         fromTile.snapUnit();
         toTile.snapUnit();
@@ -59,57 +67,46 @@ public class CombatGrid{
 
     }
 
-    public void summonCreature() {
-        // create new unit
-        // highlight where you want to put the unit
+    public void summonCreature(CombatUnit unit1, int x, int y) {
+        // hit button to open inventory
+        // show how much mind energy it will use to spawn and recall
+        // select unit that you want to spawn
+        clearHighlights();
+        // unit1 = new CombatUnit(unit1,stats.maxHealth,stats.health,stats.damage,1,stats.creatureCritRate,true,false);
+        // standard health and damage for units?
+
+        tiles[x,y].setTileUnit(unit1);
+        tiles[x,y].setIsOccupied(true);
+        tiles[x,y].snapUnit();
+        
+        // highlight where you can put the unit (+- 1 in all directions)
+        // create unit on selected square
+
+        // subtract MC energy & action points
         // subtract from inventory total depending on the unit type
-        // subtract MC energy
         Debug.Log("Summoned Creature to [" + ", " + "]");
     }
-    public void recallCreature() {
-        // remove unit
-        // add to inventory total depending on the unit type
+    public void recallCreature(CombatUnit unit1) {
+        // find unit and remove getTileOfUnit(unit1)
+
+        // inventory "x1 Unit"
+        // PlayerStats.numOfRats = PlayerStats.numOfRats+1;
+        // add to inventory total depending on the unit type 
+
         // subtract MC energy
         Debug.Log("Recalled creature from [" + ", " + "]");
     }
+    public void clearHighlights() {
+        for (int i = 0; i < 7;++i) {
+            for (int j = 0; j < 3;++j) {
+                tiles[i,j].setHighlight(0);
+            }
+        }
+        Debug.Log("Cleared Highlights");
+    }
 
     /*
-    public void basicAttack(CombatTile unit1, int xCoord, int yCoord,int dmg) {
-        if(tiles[xCoord,yCoord].getIsOccupied()) {
-            if (tiles[xCoord,yCoord].tileUnit.getIsFriendly() == false){ // unit in space is enemy
-
-            tiles[xCoord,yCoord].takeDamage(dmg);
-            Debug.Log(""+ xCoord + ", "+ yCoord + " should have taken damage");
-            // unit1.tileUnit.setActionPoints(-1);
-            tiles[xCoord,yCoord].tileUnit.setHealth(-dmg);
-            Debug.Log(tiles[xCoord,yCoord].tileUnit.getHealth() + " is the enemies health");
-            }
-            else {
-                Debug.Log(""+ xCoord + ", "+ yCoord + " is a Friendly Unit");
-            }
-        }
-    }
-    public void specialAttack() {
-        
-    }
-    public void rangedAttack() {
-        
-    }
-    public CombatTile findUnit(Unit unit) {
-        for (int i = 0; i < 7;++i) {
-
-            for (int j = 0; j < 3;++j) {
-            // tiles[i,j];
-                if (tiles[i,j].tileUnit == unit) {
-                    // Debug.Log("Unit Found");
-                    return tiles[i,j];
-                }
-            }
-        }
-        Debug.Log("Unit not Found");
-        return tiles[-1,-1];
-
-    }
+   }
     public void highlightTiles(int xCoord, int yCoord, int range) {
         // highlight right
         
@@ -184,55 +181,7 @@ public class CombatGrid{
         Debug.Log("Drew Highlights");
 
     }
-    public void clearHighlight() {
-        SpriteRenderer grid = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>();
-        
-        for (int i = 0; i < 21; ++i) { // highlight to the right 0 - 6
-            GameObject moveSquare = GameObject.Find("tileMoveOverlay"+i);
-            moveSquare.transform.position = (new Vector3(10000,-20000,0));
-            
-            // Vector3 orignalPos = square.transform.position;
-            // grid.transform.position + (new Vector3(i,0,0))+
-            //square.transform.position = grid.transform.position;
-        }
-
-        Debug.Log("Finished Clearing Tiles");
-
-    }
-
-    public void selectTile(int xCoord, int yCoord){ // matters once we can spawn friendly creatures
-        
-        //Debug.Log("X: "+ xCoord + "  Y: " + yCoord);
-        CombatGrid grid = GameObject.Find("CombatGrid").GetComponent<CombatLogic>().grid;
-        CombatTile selectedTile = GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedTile;
-        
-        
-        if(tiles[xCoord,yCoord].getIsOccupied() && tiles[xCoord,yCoord].tileUnit.getIsFriendly()){ // if space is a unit
-            selectedTile = tiles[xCoord, yCoord];
-            Debug.Log("Selected Unit: " + xCoord + yCoord);
-            // grid.highlightTiles(selectedTile.xCoord,selectedTile.yCoord,stats.actionPoints);
-            
-        }
-        else if(tiles[xCoord,yCoord].getIsOccupied() && !tiles[xCoord,yCoord].tileUnit.getIsFriendly()){ // detects enemy
-            Debug.Log("Attack Enemy");
-            // basicAttack();
-        }
-        else if(!tiles[xCoord,yCoord].getIsOccupied()) { //empty space
-            Vector3 vect = new Vector3(xCoord-selectedTile.xCoord, yCoord-selectedTile.yCoord, 0);
-            //moveUnitTo
-            //GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedUnit
-            grid.clearHighlight();
-            Debug.Log("Running movement script");
-            grid.moveUnitTo(selectedTile,xCoord,yCoord,vect);
-            Debug.Log("x: "+ xCoord + " y: "+ yCoord + " fdsdsfwsjdhgfkjhsdagf  x:" + tiles[xCoord,yCoord].xCoord + " y:" + tiles[xCoord,yCoord].yCoord);
-            selectedTile = tiles[xCoord,yCoord];
-
-        }
-        else{
-            Debug.Log("None of the scripts ran");
-        }
-        Debug.Log("I AM RUNNING");
-        GameObject.Find("CombatGrid").GetComponent<CombatLogic>().selectedTile = selectedTile;
-    }
+   
+    
     */
 }

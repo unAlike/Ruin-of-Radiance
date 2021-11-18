@@ -40,12 +40,14 @@ public class CombatTile{
     public void setTileUnit(CombatUnit unit1) {
         tileUnit = unit1;
     }
-    public CombatUnit GetTileUnit() {
+    public CombatUnit getTileUnit() {
         return tileUnit;
     }
     public void setHighlight(int highlight1) {
         highlight = highlight1;
         // 0 - none, 1 - move, 2 - damage, 3 - MC, 4 - SelectedTile
+        // Image  
+    
     }
     public int getHighlight() {
 
@@ -74,8 +76,8 @@ public class CombatTile{
     }
     public void snapUnit() {
         // snaps unit to the grid
-        if(tileUnit.getUnitSprite()){
-            tileUnit.getUnitSprite().transform.position = tileUnit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(.5f,-1.75f,0);
+        if(tileUnit != null){
+            tileUnit.getUnitSprite().transform.position = tileUnit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(xCoord+.5f,yCoord-2.75f,0);
         }
         
         Debug.Log("Unit Snapped to grid");
