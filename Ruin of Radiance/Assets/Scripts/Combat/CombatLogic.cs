@@ -93,8 +93,8 @@ public class CombatLogic : MonoBehaviour {
         // snap enemies to grid
         
     }
-    public void endTurn() {
-
+    public void endTurn() { // end turn button?
+        enemyLogic();
         // character.fillActionPoints();
         // fill creature ap too
     }
@@ -140,6 +140,33 @@ public class CombatLogic : MonoBehaviour {
         }
     }
 
+    public void enemyLogic() {
+        // find all enemies
+         for(int i = 0; i < 7 ;++i) {
+            for (int j = 0; i<3 ;++i) {
+                if (grid.getTiles()[i,j].getIsOccupied() && grid.getTiles()[i,j].GetTileUnit().getIsFriendly()== false) { // if occupied and enemy
+                    
+                    CombatTile enemy = grid.getTiles()[i,j]; 
+                    for(int k = 1; i < 3; ++i) { // checks 6 squares in front of them for friendly units
+                        for (int m = -1; i < 2; ++i) {
+                            if (grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getIsOccupied() &&
+                            grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].GetTileUnit().getIsFriendly()) {
+                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
+                            }
+                        }
+                    }
+                    if (Random.value < .66) { // 2/3 chance they will move
+                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
+                        Debug.Log("Enemy moved closer");
+                    }
+                    else {
+                        Debug.Log("Enemy stood there menacingly, play sound?");
+                    }
+                }
+            }
+        }
+
+    }
     public void REEEDebug(){
         
         Debug.Log("Debug function called");
