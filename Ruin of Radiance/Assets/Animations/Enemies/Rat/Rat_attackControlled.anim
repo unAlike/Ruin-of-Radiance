@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rat_attackControlled
+  m_Name: rat_attackControlled
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
