@@ -26,13 +26,14 @@ GUI Things
 
 public class CombatLogic : MonoBehaviour {
     [SerializeField]
-    List<GameObject> enemies;
+    public List<Unit> enemies = new List<Unit>();
     Movement moveScript;
     public CombatGrid grid = new CombatGrid();
     CombatTile activeTile = new CombatTile(0, 1);
     CombatUnit Character;
     CombatUnit SpawnUnit;
     PlayerStats stats;
+    DefaultCreatures dc = new DefaultCreatures();
     void Start() {
         Debug.Log("Started Logic");
         stats = GameObject.Find("Character").GetComponent<PlayerStats>();
@@ -66,28 +67,18 @@ public class CombatLogic : MonoBehaviour {
     }
     public void spawnEnemies() {
         Debug.Log("Spawning Enemies " + enemies.Count);
-        for(int k = 0; k < enemies.Count; k++) {
-            CombatUnit unit1 = new CombatUnit(enemies[k],15 , 15 , 6, 1f,.25f, false, false , 5, 5, Enums.Enemy.Rat);
-            // create units with values 
-
-            for(int i = 6; i > 3; i--) {
-                for(int j = 2; j >= 0; j--) {
-
-                    if (!grid.getTiles()[i,j].getIsOccupied()) {
-
-                        // unit1.setUnitSprite(prefab1);
-                        grid.getTiles()[i,j].setTileUnit(unit1);
-                        grid.getTiles()[i,j].setIsOccupied(true);
-                        grid.getTiles()[i,j].snapUnit();
-                        Debug.Log("Enemy Spawned to " + i + ", " + j);
-                        goto LoopEnd;
-                    }
-
-                }
-                
+        for(int i=0; i<enemies.Count; i++){
+            CombatUnit unit2 = dc.getFromEnum(enemies[i].type);
+            if(enemies[i].obj) {
+                Destroy(unit2.getUnitSprite());
+                unit2.setUnitSprite(enemies[i].obj);
             }
-            LoopEnd:
-            Debug.Log("Enemy #" + (k+1) + " spawned");
+            unit2.getUnitSprite().gameObject.transform.parent = gameObject.transform.Find("CombatGrid");
+            if (!grid.getTiles()[enemies[i].x,enemies[i].y].getIsOccupied()) {
+                    grid.getTiles()[enemies[i].x,enemies[i].y].setTileUnit(unit2);
+                    grid.getTiles()[enemies[i].x,enemies[i].y].setIsOccupied(true);
+                    grid.getTiles()[enemies[i].x,enemies[i].y].snapUnit();
+                }
         }
         Debug.Log("ENEMIES SPAWNED *********************************************");
     }
