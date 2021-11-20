@@ -52,6 +52,8 @@ public class CombatTile {
 
         return highlight; 
     }
+
+    
     public void takeDamage(int damage) {
         
         tileUnit.setHealth(tileUnit.getHealth() - damage);
