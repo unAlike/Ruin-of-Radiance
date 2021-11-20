@@ -11,26 +11,19 @@ using Random = UnityEngine.Random;
 
 Functions
 - COMBAT LOGIC
-- load in enemies as units, place them into spaces
+- complete prefabs for all creatures
+- animations play for (attacking, being defeated?);
+
+
+GUI Things
 - When in combat display the available Action points
 - disable the stamina bar in combat
-- create buttons to have slash and spore bomb functions
-- move to tile needs to reduce the action points
-- attack if enemy is in range of selected tile + remove action points
+- specialty buttons for (slash, spore bomb, __ )
+- spawnCreature (implemented with GUI)
+- display stats for all creatures + enemies
 
-- spawnCreature
 - recallCreature
 
-- display stats
-- 
-- Disable grid box collider after combat started.
-
--attack animation
-
-Enemy Combat AI
--Health for enemy Creatures is displayed?
--Spawn Friendly creatures
--Health for friendly creatures
 
 */
 
@@ -59,15 +52,15 @@ public class CombatLogic : MonoBehaviour {
         createPlayer();
         
         Character.setIsFriendly(true);
-        //GetComponent<BoxCollider2D>.delete
         
         Debug.Log("Finished Start");
+
     }
     void Update() {
 
     }
     public void createPlayer() {
-        Character = new CombatUnit(GameObject.Find("Character"),stats.maxHealth,stats.health,stats.damage,1,stats.critRate,true,false);
+        Character = new CombatUnit(GameObject.Find("Character"),stats.maxHealth,stats.health,stats.damage,1,stats.critRate,true,false,0,0,Enums.Enemy.Character);
         grid.getTiles()[0,1].setTileUnit(Character);
         grid.getTiles()[0,1].setIsOccupied(true);
         // Character = new Unit();
@@ -77,8 +70,9 @@ public class CombatLogic : MonoBehaviour {
     public void spawnEnemies() {
         Debug.Log("Spawning Enemies " + enemies.Count);
         for(int k = 0; k < enemies.Count; k++) {
-            CombatUnit unit1 = new CombatUnit(enemies[k], 15, 15, 6, 1f,.25f, false, false);
-            
+            CombatUnit unit1 = new CombatUnit(enemies[k],15 , 15 , 6, 1f,.25f, false, false , 5, 5, Enums.Enemy.Rat);
+            // create units with values 
+
             for(int i = 6; i > 3; i--) {
                 for(int j = 2; j >= 0; j--) {
 
@@ -88,7 +82,7 @@ public class CombatLogic : MonoBehaviour {
                         grid.getTiles()[i,j].setTileUnit(unit1);
                         grid.getTiles()[i,j].setIsOccupied(true);
                         grid.getTiles()[i,j].snapUnit();
-                        Debug.Log("Unit Spawned to " + i + ", " + j + "Enemy Snapped");
+                        Debug.Log("Enemy Spawned to " + i + ", " + j);
                         goto LoopEnd;
                     }
 
@@ -96,8 +90,9 @@ public class CombatLogic : MonoBehaviour {
                 
             }
             LoopEnd:
-            Debug.Log("end");
+            Debug.Log("Enemy #" + (k+1) + " spawned");
         }
+        Debug.Log("ENEMIES SPAWNED *********************************************");
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
@@ -115,6 +110,7 @@ public class CombatLogic : MonoBehaviour {
         // swap for snapUnit function 
         grid.getTiles()[0,1].snapUnit();
         // snap enemies to grid
+        Destroy(GetComponent<BoxCollider2D>());
         spawnEnemies();
         
     }
@@ -132,7 +128,6 @@ public class CombatLogic : MonoBehaviour {
         // remove dead or captured creatures
 
     }
-
     public void clickTile(string name) {
         if(moveScript.inCombat == true) {
             int x = int.Parse(name.Substring(0,1));
@@ -159,16 +154,29 @@ public class CombatLogic : MonoBehaviour {
                         Debug.Log("Move To Tile");
                         RefreshHighlights();
                     }
-                        grid.selectedTile.setHighlight(Enums.highlight.Selected);
+                    grid.selectedTile.setHighlight(Enums.highlight.Selected);
                     
                     
                     
                 }
                 else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].getTileUnit().getIsFriendly() && stats.actionPoints > 0 ){ // attack
-                    Debug.Log("Attack Tile");
+                    if (GetDistanceBetweenTiles(grid.selectedTile, grid.getTiles()[x,y]) < 2) {
+                        Debug.Log("Attack Tile");
+                        if(grid.selectedTile.getTileUnit() == Character) {
+                            grid.attack(stats.damage,stats.critRate, x, y);
+                        }
+                        else {
+                            grid.attack(grid.selectedTile.getTileUnit().getDamage(),stats.creatureCritRate, x, y);
+                        }
+                        stats.actionPoints -= 2;
+                    }
+                    else {
+                        Debug.Log("Enemy out of Range!");
+                    }
+                    grid.selectedTile.setHighlight(Enums.highlight.Selected);
                 }
                 else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getTileUnit().getIsDefeated()){ // recall
-                Debug.Log("Recall Tile"); 
+                    Debug.Log("Recall Tile"); 
                 }
                 else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getHighlight() == Enums.highlight.Control) {
                     Debug.Log("Summoned Creature"); // if highlight is purple
@@ -177,8 +185,6 @@ public class CombatLogic : MonoBehaviour {
             HighlightField();
         }
     }
-
-
     public void enemyLogic() {
         // find all enemies
          for(int i = 0; i < 7 ;++i) {
@@ -204,7 +210,6 @@ public class CombatLogic : MonoBehaviour {
                 }
             }
         }
-
     }
     public void summonCreatureHighlight() {
         Debug.Log("Summoning Creature highlights");
@@ -240,19 +245,39 @@ public class CombatLogic : MonoBehaviour {
         Debug.Log("Summoned Creature to [" + ", " + "]");
     }
     public void recallCreature(CombatUnit unit1) {
-        // find unit and remove getTileOfUnit(unit1)
-
         // inventory "x1 Unit"
-        // PlayerStats.numOfRats = PlayerStats.numOfRats+1;
-        // add to inventory total depending on the unit type 
+        
+        switch(unit1.getCreatureType()){
+            case Enums.Enemy.Rat:
+                stats.numOfRats += 1;
+                break;
+            case Enums.Enemy.Pigeon:
+                stats.numOfPigeons += 1;
+                break;
+            case Enums.Enemy.Boar:
+                stats.numOfBoars += 1;
+                break;
+            case Enums.Enemy.Raccoon:
+                stats.numOfRaccoons += 1;
+                break;
+            case Enums.Enemy.Falcon:
+                stats.numOfFalcons += 1;
+                break;
+        }
+        
+        //  **
 
         // subtract MC energy
+        stats.mindEnergy -= unit1.getRecallCost();
+
+        // find unit and remove getTileOfUnit(unit1)
+        grid.getTileOfUnit(unit1).setTileUnit(null);
         Debug.Log("Recalled creature from [" + ", " + "]");
     }
     public void RefreshHighlights() {
         for(int i = 0; i < 7 ;++i) {
             for (int j = 0; j<3 ;++j) {
-                Debug.Log(i + ", " + j);
+                // Debug.Log(i + ", " + j);
                 switch(grid.getTiles()[i,j].getHighlight()){ // tile_Overlay.png
                     case Enums.highlight.None: // none
                         gameObject.transform.GetChild(0).gameObject.transform.Find(""+i+""+j).GetComponent<Image>().color = new Color(1,1,1,0);
@@ -307,7 +332,7 @@ public class CombatLogic : MonoBehaviour {
     public int GetDistanceBetweenTiles(CombatTile from, CombatTile to) {
         return (Math.Abs((from.getXCoord()-to.getXCoord())))+(Math.Abs(from.getYCoord()-to.getYCoord()));
     }
-    public void REEEDebug(){
+    public void ReDebug(){
         
         Debug.Log("Debug function called");
         // for tests

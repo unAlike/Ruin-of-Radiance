@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class CombatTile{
+public class CombatTile {
     private CombatUnit tileUnit = null;
     private int xCoord, yCoord;
     private bool isOccupied;
@@ -27,7 +27,6 @@ public class CombatTile{
     public void setXCoord(int x){
         xCoord = x;
     }
-    
     public int getXCoord(){
         return xCoord;
     }
@@ -56,7 +55,8 @@ public class CombatTile{
     public void takeDamage(int damage) {
         
         tileUnit.setHealth(tileUnit.getHealth() - damage);
-        Debug.Log("Damage Taken");
+        Debug.Log("Damage Taken at :" + xCoord + ", " + yCoord);
+        Debug.Log("Unit " + xCoord + ", " + yCoord + " has Health Left: " + tileUnit.getHealth());
 
         if(tileUnit.getHealth() > 0 ) {
             Debug.Log("Unit still standing");
@@ -82,15 +82,5 @@ public class CombatTile{
         
         Debug.Log("Unit Snapped to grid");
     }
-
-    /* // not using
-    public void deleteUnit() {
-        tileUnit = null;
-    }
-    public void createUnit(CombatUnit unit1){
-        tileUnit = unit1;
-    }
-    */
-
 
 }
