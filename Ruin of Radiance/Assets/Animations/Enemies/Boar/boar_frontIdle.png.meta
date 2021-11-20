@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 4eef65c01a405234fbfd5a753e87b8e1
+guid: 2188ee2baf7c6bb41b55b8f15b3e755c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3225657461020013720
-    second: rat_sideIdle_controlled_0
+      213: -1382726741508805879
+    second: boar_frontIdle_0
   - first:
-      213: -1579123598622511831
-    second: rat_sideIdle_controlled_1
+      213: -8099579983471570078
+    second: boar_frontIdle_1
   - first:
-      213: -6237482252335069044
-    second: rat_sideIdle_controlled_2
+      213: 5133794488599056543
+    second: boar_frontIdle_2
   - first:
-      213: 6911790167678557521
-    second: rat_sideIdle_controlled_3
+      213: 751186538312569193
+    second: boar_frontIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,8 +56,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_0
+      name: boar_frontIdle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 45
+        height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,20 +117,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86b40d421a92c33d0800000000000000
-      internalID: -3225657461020013720
+      spriteID: 90b2fe6ca519fcce0800000000000000
+      internalID: -1382726741508805879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_1
+      name: boar_frontIdle_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 45
         y: 0
-        width: 32
-        height: 32
+        width: 45
+        height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92d2baf1473d51ae0800000000000000
-      internalID: -1579123598622511831
+      spriteID: 263105f1be2889f80800000000000000
+      internalID: -8099579983471570078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_2
+      name: boar_frontIdle_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 90
         y: 0
-        width: 32
-        height: 32
+        width: 45
+        height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c88c3c860f20079a0800000000000000
-      internalID: -6237482252335069044
+      spriteID: f901eca23e6ee3740800000000000000
+      internalID: 5133794488599056543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_3
+      name: boar_frontIdle_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 135
         y: 0
-        width: 32
-        height: 32
+        width: 45
+        height: 45
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,8 +180,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15d948a898c9bef50800000000000000
-      internalID: 6911790167678557521
+      spriteID: 9611d283d20cc6a00800000000000000
+      internalID: 751186538312569193
       vertices: []
       indices: 
       edges: []

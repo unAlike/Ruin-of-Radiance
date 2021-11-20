@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 4eef65c01a405234fbfd5a753e87b8e1
+guid: 4607f490639abbd46883769ae3bd85f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3225657461020013720
-    second: rat_sideIdle_controlled_0
+      213: -139108619582654981
+    second: Falcon_sideAttack_0
   - first:
-      213: -1579123598622511831
-    second: rat_sideIdle_controlled_1
+      213: -5502503439243482531
+    second: Falcon_sideAttack_1
   - first:
-      213: -6237482252335069044
-    second: rat_sideIdle_controlled_2
+      213: -9061805203896243569
+    second: Falcon_sideAttack_2
   - first:
-      213: 6911790167678557521
-    second: rat_sideIdle_controlled_3
+      213: -8933711585538701594
+    second: Falcon_sideAttack_3
+  - first:
+      213: 6063320566847539536
+    second: Falcon_sideAttack_4
+  - first:
+      213: 8988071444605971180
+    second: Falcon_sideAttack_5
+  - first:
+      213: -2539372663517684629
+    second: Falcon_sideAttack_6
+  - first:
+      213: 7435272471344182969
+    second: Falcon_sideAttack_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,8 +68,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -103,13 +115,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_0
+      name: Falcon_sideAttack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
+        width: 35
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,20 +129,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86b40d421a92c33d0800000000000000
-      internalID: -3225657461020013720
+      spriteID: bf5b4909279c11ef0800000000000000
+      internalID: -139108619582654981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_1
+      name: Falcon_sideAttack_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 35
         y: 0
-        width: 32
-        height: 32
+        width: 35
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92d2baf1473d51ae0800000000000000
-      internalID: -1579123598622511831
+      spriteID: d5ae688864e23a3b0800000000000000
+      internalID: -5502503439243482531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_2
+      name: Falcon_sideAttack_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 70
         y: 0
-        width: 32
-        height: 32
+        width: 35
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c88c3c860f20079a0800000000000000
-      internalID: -6237482252335069044
+      spriteID: f8a6af5bd200e3280800000000000000
+      internalID: -9061805203896243569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_3
+      name: Falcon_sideAttack_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 105
         y: 0
-        width: 32
-        height: 32
+        width: 35
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -180,8 +192,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15d948a898c9bef50800000000000000
-      internalID: 6911790167678557521
+      spriteID: 6e68c2255a4150480800000000000000
+      internalID: -8933711585538701594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Falcon_sideAttack_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 35
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05984424eed352450800000000000000
+      internalID: 6063320566847539536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Falcon_sideAttack_5
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 0
+        width: 35
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea2297ab5b0cbc70800000000000000
+      internalID: 8988071444605971180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Falcon_sideAttack_6
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 35
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cd0b6440652ccd0800000000000000
+      internalID: -2539372663517684629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Falcon_sideAttack_7
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 0
+        width: 35
+        height: 35
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6f5be3be46f2760800000000000000
+      internalID: 7435272471344182969
       vertices: []
       indices: 
       edges: []

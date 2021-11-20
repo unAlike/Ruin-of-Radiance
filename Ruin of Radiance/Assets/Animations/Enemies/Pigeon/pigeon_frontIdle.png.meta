@@ -1,19 +1,31 @@
 fileFormatVersion: 2
-guid: 4eef65c01a405234fbfd5a753e87b8e1
+guid: 4eb9eecd8e87949489ced32acaeb0364
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3225657461020013720
-    second: rat_sideIdle_controlled_0
+      213: -4062304221015670253
+    second: Pigeon_frontFlap_0
   - first:
-      213: -1579123598622511831
-    second: rat_sideIdle_controlled_1
+      213: -419182276407952435
+    second: Pigeon_frontFlap_1
   - first:
-      213: -6237482252335069044
-    second: rat_sideIdle_controlled_2
+      213: -6667123104602522298
+    second: Pigeon_frontFlap_2
   - first:
-      213: 6911790167678557521
-    second: rat_sideIdle_controlled_3
+      213: 4057561533254060326
+    second: Pigeon_frontFlap_3
+  - first:
+      213: 1299270243226929959
+    second: Pigeon_frontFlap_4
+  - first:
+      213: -7578172964331284583
+    second: Pigeon_frontFlap_5
+  - first:
+      213: -3977727152389229930
+    second: Pigeon_frontFlap_6
+  - first:
+      213: 8064000624840293154
+    second: Pigeon_frontFlap_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -56,8 +68,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
-  spritePivot: {x: 0.5, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -103,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_0
+      name: Pigeon_frontFlap_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86b40d421a92c33d0800000000000000
-      internalID: -3225657461020013720
+      spriteID: 3128ac085dbcf97c0800000000000000
+      internalID: -4062304221015670253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_1
+      name: Pigeon_frontFlap_1
       rect:
         serializedVersion: 2
         x: 32
@@ -138,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92d2baf1473d51ae0800000000000000
-      internalID: -1579123598622511831
+      spriteID: dcb7096c0f3ce2af0800000000000000
+      internalID: -419182276407952435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_2
+      name: Pigeon_frontFlap_2
       rect:
         serializedVersion: 2
         x: 64
@@ -159,14 +171,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c88c3c860f20079a0800000000000000
-      internalID: -6237482252335069044
+      spriteID: 64dfd5c3cde9973a0800000000000000
+      internalID: -6667123104602522298
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rat_sideIdle_controlled_3
+      name: Pigeon_frontFlap_3
       rect:
         serializedVersion: 2
         x: 96
@@ -180,8 +192,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15d948a898c9bef50800000000000000
-      internalID: 6911790167678557521
+      spriteID: 629c5e377ba5f4830800000000000000
+      internalID: 4057561533254060326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pigeon_frontFlap_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72bc6c2076fe70210800000000000000
+      internalID: 1299270243226929959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pigeon_frontFlap_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997909ef6dbe4d690800000000000000
+      internalID: -7578172964331284583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pigeon_frontFlap_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 692f964da364cc8c0800000000000000
+      internalID: -3977727152389229930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pigeon_frontFlap_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b3228e7d519ef60800000000000000
+      internalID: 8064000624840293154
       vertices: []
       indices: 
       edges: []

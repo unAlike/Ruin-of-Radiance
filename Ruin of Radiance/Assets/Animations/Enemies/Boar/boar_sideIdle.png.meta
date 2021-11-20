@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 219c02d66e7175244a574a3533d7c577
+guid: 0a10c2cc392932549a730ab27de5ba31
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1656951941243941108
-    second: Pigeon_GroundAndSky_Unanimated_0
+      213: 8262237070469280978
+    second: boar_sideIdle_0
   - first:
-      213: -6099465754719086664
-    second: Pigeon_GroundAndSky_Unanimated_1
+      213: 7387023202624631038
+    second: boar_sideIdle_1
+  - first:
+      213: -8195437022935352051
+    second: boar_sideIdle_2
+  - first:
+      213: 9024088157987354663
+    second: boar_sideIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,59 +99,89 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pigeon_GroundAndSky_Unanimated_0
+      name: boar_sideIdle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 45
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0fc2440df25109e0800000000000000
-      internalID: -1656951941243941108
+      spriteID: 2d4b26327dc59a270800000000000000
+      internalID: 8262237070469280978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pigeon_GroundAndSky_Unanimated_1
+      name: boar_sideIdle_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 45
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 45
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b71f4266385a5ba0800000000000000
-      internalID: -6099465754719086664
+      spriteID: ef07204f67af38660800000000000000
+      internalID: 7387023202624631038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boar_sideIdle_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 45
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0d7adce275f34e80800000000000000
+      internalID: -8195437022935352051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boar_sideIdle_3
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 0
+        width: 45
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72835a63e500c3d70800000000000000
+      internalID: 9024088157987354663
       vertices: []
       indices: 
       edges: []
