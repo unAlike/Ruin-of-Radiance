@@ -1,31 +1,28 @@
 fileFormatVersion: 2
-guid: c08b2ace972bae340b0fdc93230f77b2
+guid: 0cf7cb1f75b05e341b4acbe3892e7142
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -284388638163825642
-    second: Rat_Attack_0
+      213: -640005730950331164
+    second: Raccoon_sideAttack_controlled_0
   - first:
-      213: -671448322994471273
-    second: Rat_Attack_1
+      213: -7520670481144518334
+    second: Raccoon_sideAttack_controlled_1
   - first:
-      213: 237780741983019432
-    second: Rat_Attack_2
+      213: -4812368221461560546
+    second: Raccoon_sideAttack_controlled_2
   - first:
-      213: -8734225929422637144
-    second: Rat_Attack_3
+      213: -3302766044266705082
+    second: Raccoon_sideAttack_controlled_3
   - first:
-      213: -8856388896005021851
-    second: Rat_Attack_4
+      213: -5953389488540145761
+    second: Raccoon_sideAttack_controlled_4
   - first:
-      213: -3092952472455665484
-    second: Rat_Attack_5
+      213: -2580155038976793308
+    second: Raccoon_sideAttack_controlled_5
   - first:
-      213: -3038192285825470256
-    second: Rat_Attack_6
-  - first:
-      213: 4751188050038841178
-    second: Rat_Attack_7
+      213: 752686582521582108
+    second: Raccoon_sideAttack_controlled_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,149 +108,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rat_Attack_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61c86145a06ad0cf0800000000000000
-      internalID: -284388638163825642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rat_Attack_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 79ef1e6ce498ea6f0800000000000000
-      internalID: -671448322994471273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rat_Attack_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a1a3543354cc4300800000000000000
-      internalID: 237780741983019432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rat_Attack_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a7f1c80bcbc9c680800000000000000
-      internalID: -8734225929422637144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rat_Attack_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56f18e4e839c71580800000000000000
-      internalID: -8856388896005021851
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rat_Attack_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b82d1c0d10a315d0800000000000000
-      internalID: -3092952472455665484
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Rat_Attack_6
+      name: Raccoon_sideAttack_controlled_0
       rect:
         serializedVersion: 2
         x: 0
@@ -267,14 +126,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d07a0c863c26d5d0800000000000000
-      internalID: -3038192285825470256
+      spriteID: 4e4cd78bd2e3e17f0800000000000000
+      internalID: -640005730950331164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rat_Attack_7
+      name: Raccoon_sideAttack_controlled_1
       rect:
         serializedVersion: 2
         x: 32
@@ -288,8 +147,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5f55afcb5c9fe140800000000000000
-      internalID: 4751188050038841178
+      spriteID: 2496d9a2b0631a790800000000000000
+      internalID: -7520670481144518334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raccoon_sideAttack_controlled_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13c76f7998073db0800000000000000
+      internalID: -4812368221461560546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raccoon_sideAttack_controlled_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64fc24318c73a22d0800000000000000
+      internalID: -3302766044266705082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raccoon_sideAttack_controlled_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9725067dcf416da0800000000000000
+      internalID: -5953389488540145761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raccoon_sideAttack_controlled_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425aa5c89a2713cd0800000000000000
+      internalID: -2580155038976793308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raccoon_sideAttack_controlled_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c12d66a7574127a00800000000000000
+      internalID: 752686582521582108
       vertices: []
       indices: 
       edges: []

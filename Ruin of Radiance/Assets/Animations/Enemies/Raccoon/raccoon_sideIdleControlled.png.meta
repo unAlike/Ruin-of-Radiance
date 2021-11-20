@@ -1,13 +1,31 @@
 fileFormatVersion: 2
-guid: 0c81031599c969d4887df434cd4795e4
+guid: 711792ff8923ed54ab60845cfc23f368
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2886168453701161697
-    second: Rat_Walk_0
+      213: -2162471205228992892
+    second: Raccoon_sideIdle_controlled_0
   - first:
-      213: -7874937582423934426
-    second: Rat_Walk_1
+      213: 253923141005319963
+    second: Raccoon_sideIdle_controlled_1
+  - first:
+      213: 7973462566721638059
+    second: Raccoon_sideIdle_controlled_2
+  - first:
+      213: 4898483276631835530
+    second: Raccoon_sideIdle_controlled_3
+  - first:
+      213: 2499626264315161794
+    second: raccoon_sideIdleControlled_0
+  - first:
+      213: -2233576269208313383
+    second: raccoon_sideIdleControlled_1
+  - first:
+      213: -1438627595494350536
+    second: raccoon_sideIdleControlled_2
+  - first:
+      213: 6899141981460516046
+    second: raccoon_sideIdleControlled_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -109,7 +127,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rat_Walk_0
+      name: raccoon_sideIdleControlled_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +141,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1d243b351542f7d0800000000000000
-      internalID: -2886168453701161697
+      spriteID: 2ccedb308d470b220800000000000000
+      internalID: 2499626264315161794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rat_Walk_1
+      name: raccoon_sideIdleControlled_1
       rect:
         serializedVersion: 2
         x: 32
@@ -144,8 +162,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62a7f33fdf996b290800000000000000
-      internalID: -7874937582423934426
+      spriteID: 9d1a817973eb001e0800000000000000
+      internalID: -2233576269208313383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raccoon_sideIdleControlled_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8312c76f2d7f80ce0800000000000000
+      internalID: -1438627595494350536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: raccoon_sideIdleControlled_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc40f3341daebf50800000000000000
+      internalID: 6899141981460516046
       vertices: []
       indices: 
       edges: []

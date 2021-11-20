@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 0c81031599c969d4887df434cd4795e4
+guid: 3defdc59799ca2c4bbdb2ea338ccf4d1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2886168453701161697
-    second: Rat_Walk_0
+      213: -3048878057635269275
+    second: rat_frontIdle_controlled_0
   - first:
-      213: -7874937582423934426
-    second: Rat_Walk_1
+      213: -8173650333984477335
+    second: rat_frontIdle_controlled_1
+  - first:
+      213: -5184055596237891736
+    second: rat_frontIdle_controlled_2
+  - first:
+      213: -8826276205383492683
+    second: rat_frontIdle_controlled_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -93,23 +99,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rat_Walk_0
+      name: rat_frontIdle_controlled_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1d243b351542f7d0800000000000000
-      internalID: -2886168453701161697
+      spriteID: 565ba2b6f8530b5d0800000000000000
+      internalID: -3048878057635269275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rat_Walk_1
+      name: rat_frontIdle_controlled_1
       rect:
         serializedVersion: 2
         x: 32
@@ -144,8 +138,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62a7f33fdf996b290800000000000000
-      internalID: -7874937582423934426
+      spriteID: 96f2a9cb35c519e80800000000000000
+      internalID: -8173650333984477335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rat_frontIdle_controlled_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8675d5ac6e88e08b0800000000000000
+      internalID: -5184055596237891736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rat_frontIdle_controlled_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb52a80e84c28580800000000000000
+      internalID: -8826276205383492683
       vertices: []
       indices: 
       edges: []

@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 0c81031599c969d4887df434cd4795e4
+guid: 984a13d09bb730d4ca9e9146a710f29f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2886168453701161697
-    second: Rat_Walk_0
+      213: -9057338417540701591
+    second: Raccoon_frontIdle_0
   - first:
-      213: -7874937582423934426
-    second: Rat_Walk_1
+      213: 8701661150517505418
+    second: Raccoon_frontIdle_1
+  - first:
+      213: 101491894092262704
+    second: Raccoon_frontIdle_2
+  - first:
+      213: 4411484714282780560
+    second: Raccoon_frontIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -50,8 +56,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -93,23 +99,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rat_Walk_0
+      name: Raccoon_frontIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -123,14 +117,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1d243b351542f7d0800000000000000
-      internalID: -2886168453701161697
+      spriteID: 962ecf372bedd4280800000000000000
+      internalID: -9057338417540701591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Rat_Walk_1
+      name: Raccoon_frontIdle_1
       rect:
         serializedVersion: 2
         x: 32
@@ -144,8 +138,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62a7f33fdf996b290800000000000000
-      internalID: -7874937582423934426
+      spriteID: a8da96886b282c870800000000000000
+      internalID: 8701661150517505418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raccoon_frontIdle_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d63f60752986100800000000000000
+      internalID: 101491894092262704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Raccoon_frontIdle_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09704ee79fdb83d30800000000000000
+      internalID: 4411484714282780560
       vertices: []
       indices: 
       edges: []

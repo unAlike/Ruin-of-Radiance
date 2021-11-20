@@ -24056,7 +24056,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 90a2ccd5f20d6f34ca01616b3bc7f778, type: 2}
+  - {fileID: 2100000, guid: e7479b8f3ac51e44b9ce9f976e98a482, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -133329,6 +133329,12 @@ MonoBehaviour:
   recallCostReduction: 0
   boostedSpawnLevel: 0
   flipLevel: 0
+  actionPoints: 5
+  numOfRats: 0
+  numOfPigeons: 0
+  numOfRaccoons: 0
+  numOfBoars: 0
+  numOfFalcons: 0
   critRate: 0
   creatureCritRate: 0
   shieldRate: 0
