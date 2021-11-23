@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Ruin of Radiance/Assets/Animations/Enemies/Falcon.meta
 guid: 40bff5538f51cc245a3c6ac00d5217b1
 folderAsset: yes
+=======
+guid: b128fa95cf9cabf4186d96b6c0d936f8
+>>>>>>> origin/WorldBuildingPlus:Ruin of Radiance/Assets/Scenes/01_Tutorial House.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
