@@ -8,7 +8,7 @@ public class CombatTile{
     private CombatUnit tileUnit = null;
     private int xCoord, yCoord;
     private bool isOccupied;
-    private int highlight;
+    private Enums.highlight highlight;
 
 // Check this
     public CombatTile(int x, int y){
@@ -40,15 +40,16 @@ public class CombatTile{
     public void setTileUnit(CombatUnit unit1) {
         tileUnit = unit1;
     }
-    public CombatUnit GetTileUnit() {
+    public CombatUnit getTileUnit() {
         return tileUnit;
     }
-    public void setHighlight(int highlight1) {
+    public void setHighlight(Enums.highlight highlight1) {
         highlight = highlight1;
         // 0 - none, 1 - move, 2 - damage, 3 - MC, 4 - SelectedTile
+        // Image  
+    
     }
-    public int getHighlight() {
-
+    public Enums.highlight getHighlight() {
         return highlight; 
     }
     public void takeDamage(int damage) {
@@ -74,8 +75,8 @@ public class CombatTile{
     }
     public void snapUnit() {
         // snaps unit to the grid
-        if(tileUnit!=null){
-            tileUnit.getUnitSprite().transform.position = tileUnit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(xCoord+.5f,-2.75f+yCoord,0);
+        if(tileUnit != null){
+            tileUnit.getUnitSprite().transform.position = tileUnit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(xCoord+.5f,yCoord-2.75f,0);
         }
         
         Debug.Log("Unit Snapped to grid");

@@ -85,6 +85,7 @@ public class GUIScript : MonoBehaviour
         else{
             CloseGui();
         }
+
     }
     public void OpenGui(){
         if(GameObject.Find("MenuPanel").transform.localPosition.y<140){
@@ -143,6 +144,8 @@ public class GUIScript : MonoBehaviour
                         stats.health += 5;
                         GameObject.Find("HealthBtn11").GetComponent<SkillTreeButton>().unlocked = true;
                         GameObject.Find("HealthBtn21").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("HealthBtn11").GetComponent<Button>().interactable = true;
+                        GameObject.Find("HealthBtn21").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         healthUpgradePoints++;
                         break;
@@ -150,6 +153,7 @@ public class GUIScript : MonoBehaviour
                         stats.skillPoints--;
                         stats.shieldRate += 5;
                         GameObject.Find("HealthBtn12").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("HealthBtn12").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         sheildPoints++;
                         break;
@@ -164,6 +168,7 @@ public class GUIScript : MonoBehaviour
                         stats.hasHeal=true;
                         stats.healPower+=1;
                         GameObject.Find("HealthBtn22").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("HealthBtn22").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         healPoints++;
                         break;
@@ -179,6 +184,8 @@ public class GUIScript : MonoBehaviour
                         stats.damage += 5;
                         GameObject.Find("DamageBtn11").GetComponent<SkillTreeButton>().unlocked = true;
                         GameObject.Find("DamageBtn21").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("DamageBtn11").GetComponent<Button>().interactable = true;
+                        GameObject.Find("DamageBtn21").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         damagePoints++;
                         break;
@@ -186,6 +193,7 @@ public class GUIScript : MonoBehaviour
                         stats.skillPoints--;
                         stats.critRate +=.05f;
                         GameObject.Find("DamageBtn12").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("DamageBtn12").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         critPoints++;
                         break;
@@ -200,6 +208,7 @@ public class GUIScript : MonoBehaviour
                         stats.hasSlash = true;
                         stats.slashDamage += 5;
                         GameObject.Find("DamageBtn22").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("DamageBtn22").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         slashPoints++;
                         break;
@@ -216,6 +225,8 @@ public class GUIScript : MonoBehaviour
                         stats.mindEnergy += 5;
                         GameObject.Find("MindBtn11").GetComponent<SkillTreeButton>().unlocked = true;
                         GameObject.Find("MindBtn21").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("MindBtn11").GetComponent<Button>().interactable = true;
+                        GameObject.Find("MindBtn21").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         mindEnergyPoints++;
                         break;
@@ -223,6 +234,7 @@ public class GUIScript : MonoBehaviour
                         stats.skillPoints--;
                         stats.spawnCostReduction+=1;
                         GameObject.Find("MindBtn12").GetComponent<SkillTreeButton>().unlocked=true;
+                        GameObject.Find("MindBtn12").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().unlocked = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         spawnPoints++;
@@ -238,6 +250,7 @@ public class GUIScript : MonoBehaviour
                         stats.hasBoostedSpawn=true;
                         stats.boostedSpawnLevel+=1;
                         GameObject.Find("MindBtn22").GetComponent<SkillTreeButton>().unlocked = true;
+                        GameObject.Find("MindBtn22").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         boostedSpawnPoints++;
                         break;
