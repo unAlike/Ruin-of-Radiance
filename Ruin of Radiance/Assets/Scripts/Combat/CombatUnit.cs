@@ -5,10 +5,6 @@ using System;
 
 [System.Serializable]
 public class CombatUnit : ICloneable {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/betterPrefabs
     private GameObject unitSprite;
     private int maxHealth, currentHealth, damage, summonCost, recallCost;
     private float scalingNum, critRate;
