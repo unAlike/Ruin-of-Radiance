@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: -5295007244449622117
     second: Raccoon_sideIdle_3
+  - first:
+      213: -2153853859956459284
+    second: raccoon_sideIdle_0
+  - first:
+      213: 2284825560509046409
+    second: raccoon_sideIdle_1
+  - first:
+      213: 860059315777497768
+    second: raccoon_sideIdle_2
+  - first:
+      213: -2635484641812812085
+    second: raccoon_sideIdle_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,13 +127,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Raccoon_sideIdle_0
+      name: raccoon_sideIdle_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 31
-        height: 26
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,20 +141,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87f0a15518bfe1a70800000000000000
-      internalID: 8799747254825652088
+      spriteID: ce8f0337359fb12e0800000000000000
+      internalID: -2153853859956459284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raccoon_sideIdle_1
+      name: raccoon_sideIdle_1
       rect:
         serializedVersion: 2
-        x: 33
+        x: 32
         y: 0
-        width: 31
-        height: 27
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c839963806bcffa0800000000000000
-      internalID: -5765533276549072698
+      spriteID: 98edfd3edb455bf10800000000000000
+      internalID: 2284825560509046409
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raccoon_sideIdle_2
+      name: raccoon_sideIdle_2
       rect:
         serializedVersion: 2
-        x: 65
+        x: 64
         y: 0
-        width: 31
-        height: 27
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52691db57d15e37f0800000000000000
-      internalID: -630976912385010139
+      spriteID: 8aaeea2146b8feb00800000000000000
+      internalID: 860059315777497768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Raccoon_sideIdle_3
+      name: raccoon_sideIdle_3
       rect:
         serializedVersion: 2
-        x: 97
+        x: 96
         y: 0
-        width: 31
-        height: 26
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,8 +204,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b97d57f17fa5486b0800000000000000
-      internalID: -5295007244449622117
+      spriteID: bceefb18ea0ec6bd0800000000000000
+      internalID: -2635484641812812085
       vertices: []
       indices: 
       edges: []

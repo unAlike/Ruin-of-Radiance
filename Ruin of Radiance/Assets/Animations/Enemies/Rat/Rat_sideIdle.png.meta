@@ -118,10 +118,10 @@ TextureImporter:
       name: Rat_sideIdle_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 26
-        height: 20
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,10 +139,10 @@ TextureImporter:
       name: Rat_sideIdle_1
       rect:
         serializedVersion: 2
-        x: 36
+        x: 32
         y: 0
-        width: 27
-        height: 21
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: Rat_sideIdle_2
       rect:
         serializedVersion: 2
-        x: 68
+        x: 64
         y: 0
-        width: 26
-        height: 22
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,10 +181,10 @@ TextureImporter:
       name: Rat_sideIdle_3
       rect:
         serializedVersion: 2
-        x: 100
+        x: 96
         y: 0
-        width: 26
-        height: 21
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

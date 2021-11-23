@@ -14,15 +14,12 @@ Functions
 - complete prefabs for all creatures
 - animations play for (attacking, being defeated?);
 
-
 GUI Things
 - When in combat display the available Action points
 - disable the stamina bar in combat
 - specialty buttons for (slash, spore bomb, __ )
 - spawnCreature (implemented with GUI)
 - display stats for all creatures + enemies
-
-- recallCreature
 
 
 */

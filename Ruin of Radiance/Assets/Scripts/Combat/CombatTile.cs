@@ -50,6 +50,10 @@ public class CombatTile{
     
     }
     public Enums.highlight getHighlight() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/betterPrefabs
         return highlight; 
     }
     public void takeDamage(int damage) {
