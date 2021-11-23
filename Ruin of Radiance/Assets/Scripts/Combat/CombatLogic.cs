@@ -69,21 +69,75 @@ public class CombatLogic : MonoBehaviour {
         // Debug.Log("Player Created "); 
     }
     public void spawnEnemies() {
+        CombatUnit unit;
         Debug.Log("Spawning Enemies " + enemies.Count);
-        for(int i=0; i<enemies.Count; i++){
-            CombatUnit unit2 = dc.getFromEnum(enemies[i].type);
-            if(enemies[i].obj) {
-                Destroy(unit2.getUnitSprite());
-                unit2.setUnitSprite(enemies[i].obj);
-            }
-            unit2.getUnitSprite().gameObject.transform.parent = gameObject.transform.Find("CombatGrid");
-            if (!grid.getTiles()[enemies[i].x,enemies[i].y].getIsOccupied()) {
-                    grid.getTiles()[enemies[i].x,enemies[i].y].setTileUnit(unit2);
-                    grid.getTiles()[enemies[i].x,enemies[i].y].setIsOccupied(true);
-                    grid.getTiles()[enemies[i].x,enemies[i].y].snapUnit();
+        int count = gameObject.transform.Find("CombatGrid").childCount;
+        for(int i = 0; i<count;i++){
+            if(gameObject.transform.Find("CombatGrid").GetChild(i).gameObject){
+                if(gameObject.transform.Find("CombatGrid").GetChild(i).name.Contains("Clone")){
+                    Destroy(gameObject.transform.Find("CombatGrid").GetChild(i).gameObject);
                 }
+            }
         }
-        Debug.Log("ENEMIES SPAWNED *********************************************");
+
+        for(int i=0; i<enemies.Count; i++){
+            if(enemies[i].type!=Enums.Enemy.None && enemies[i].type!=Enums.Enemy.Custom){
+                Destroy(enemies[i].obj);
+                unit = dc.getFromEnum(enemies[i].type);
+                unit.getUnitSprite().gameObject.transform.parent = gameObject.transform.Find("CombatGrid");
+                if (!grid.getTiles()[enemies[i].x,enemies[i].y].getIsOccupied()) {
+                        grid.getTiles()[enemies[i].x,enemies[i].y].setTileUnit(unit);
+                        grid.getTiles()[enemies[i].x,enemies[i].y].setIsOccupied(true);
+                        grid.getTiles()[enemies[i].x,enemies[i].y].snapUnit();
+                }
+            }
+            else{
+                unit = new CombatUnit(
+                            enemies[i].obj,
+                            enemies[i].health,
+                            enemies[i].health,
+                            enemies[i].damage,
+                            enemies[i].scale,
+                            enemies[i].crit,
+                            false,
+                            false,
+                            0,
+                            0,
+                            Enums.Enemy.Custom
+                        );
+                unit.getUnitSprite().gameObject.transform.parent = gameObject.transform.Find("CombatGrid");
+                if (!grid.getTiles()[enemies[i].x,enemies[i].y].getIsOccupied()) {
+                        grid.getTiles()[enemies[i].x,enemies[i].y].setTileUnit(unit);
+                        grid.getTiles()[enemies[i].x,enemies[i].y].setIsOccupied(true);
+                        grid.getTiles()[enemies[i].x,enemies[i].y].snapUnit();
+                }
+            }
+            Debug.Log("ENEMIES SPAWNED *********************************************");
+        }
+
+
+
+
+
+        //     CombatUnit unit2 = dc.getFromEnum(enemies[i].type);
+        //     if(enemies[i].obj) {
+        //         if(enemies[i].type!=Enums.Enemy.Custom){
+        //             Destroy(unit2.getUnitSprite());
+        //             unit2.setUnitSprite(enemies[i].obj);
+        //         }
+        //     }
+        //     if(enemies[i].health>0) unit2.setHealth(enemies[i].health);
+        //     if(enemies[i].damage>0) unit2.setDamage(enemies[i].damage);
+        //     if(enemies[i].crit>0) unit2.setCritRate(enemies[i].crit);
+
+        //     unit2.getUnitSprite().gameObject.transform.parent = gameObject.transform.Find("CombatGrid");
+        //     if (!grid.getTiles()[enemies[i].x,enemies[i].y].getIsOccupied()) {
+        //             grid.getTiles()[enemies[i].x,enemies[i].y].setTileUnit(unit2);
+        //             grid.getTiles()[enemies[i].x,enemies[i].y].setIsOccupied(true);
+        //             grid.getTiles()[enemies[i].x,enemies[i].y].snapUnit();
+        //         }
+        // }
+        // Debug.Log("ENEMIES SPAWNED *********************************************");
     }
 
     void OnTriggerEnter2D(Collider2D collision) {

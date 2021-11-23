@@ -31,7 +31,7 @@ public class CombatUnit : ICloneable {
     public int getHealth(){
         return currentHealth;
     }
-    public void setCritRate(int critRate1){
+    public void setCritRate(float critRate1){
         critRate=critRate1;
     }
     public float getCritRate(){
