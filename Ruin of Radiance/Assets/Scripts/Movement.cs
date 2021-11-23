@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
     
     private Vector2 movement;
     [SerializeField]
-    float moveSpeed = 1;
+    public float moveSpeed = 1;
     Camera mainCamera;
     [SerializeField]
     public bool inCombat = false;
@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        movement *= 0;
         if(!inCombat){
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
@@ -49,7 +50,6 @@ public class Movement : MonoBehaviour
                 if(stamina>0){
                     stamina-=.1f;
                     movement*=2f;
-                    Debug.Log("sprinting");
                 }
             }
             else{
@@ -78,7 +78,7 @@ public class Movement : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("combatGrid")) {
-            Debug.Log("Combat Collision started");
+            Debug.Log("Combat Collision detected");
 
             if(!enteringCombat && !inCombat){
                 enteringCombat = true;
