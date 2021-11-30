@@ -148,7 +148,7 @@ RectTransform:
   m_GameObject: {fileID: 5543284735283351088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 6437793724102508579}
   m_RootOrder: 0
@@ -338,6 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7362679456162734988}
   - component: {fileID: 7362679456162734991}
+  - component: {fileID: 1952589447}
   m_Layer: 0
   m_Name: LevelLoader
   m_TagString: Untagged
@@ -375,6 +376,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 4309359643107117400}
   transitionTime: 1
+--- !u!61 &1952589447
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7362679456162734990}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -9896.048, y: -4.796781}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.021484, y: 8.941829}
+  m_EdgeRadius: 0
 --- !u!1 &7362679456670088199
 GameObject:
   m_ObjectHideFlags: 0
