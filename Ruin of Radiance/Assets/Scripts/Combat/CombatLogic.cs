@@ -40,9 +40,9 @@ public class CombatLogic : MonoBehaviour {
         stats = GameObject.Find("Character").GetComponent<PlayerStats>();
 
         // makes grid invisible on start
-        Color tmp = GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
+        Color tmp = gameObject.transform.Find("CombatGrid").GetComponent<SpriteRenderer>().color;
         tmp.a = 0f;
-        GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = tmp;
+        gameObject.transform.Find("CombatGrid").GetComponent<SpriteRenderer>().color = tmp;
 
         // defines movement script
         moveScript = GameObject.Find("Character").GetComponent<Movement>();
@@ -56,6 +56,11 @@ public class CombatLogic : MonoBehaviour {
 
     }
     void Update() {
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("Space slammed"); 
+            endTurn();
+        }
 
     }
     public void createPlayer() {
@@ -138,6 +143,7 @@ public class CombatLogic : MonoBehaviour {
     public void endTurn() { // end turn button?
         Debug.Log("END TURN");
         enemyLogic();
+        stats.actionPoints = 5;
         // character.fillActionPoints();
         // fill creature ap too
     }
@@ -163,6 +169,7 @@ public class CombatLogic : MonoBehaviour {
                     Debug.Log("Summoned Creature"); // if highlight is purple
                     SummonCreature(dc.getFromEnum(stats.selectedType), grid.getTiles()[x,y]);
                     stats.decUnit(stats.selectedType);
+                    stats.mindEnergy -= dc.getFromEnum(stats.selectedType).getSummonCost();
                 }
 
             grid.clearHighlights();
