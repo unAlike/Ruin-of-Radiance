@@ -286,6 +286,7 @@ public class GUIScript : MonoBehaviour
     public void setSelectedUnit(int type){
         if(movement.inCombat){
             if(stats.hasUnits((Enums.Enemy)type)) stats.selectedType = (Enums.Enemy)type;
+            GameObject.Find("Character").gameObject.transform.parent.transform.parent.gameObject.GetComponent<CombatLogic>().summonCreatureHighlight();
         }
     }
     public void setInventoryCreatureButtons(bool enabled){

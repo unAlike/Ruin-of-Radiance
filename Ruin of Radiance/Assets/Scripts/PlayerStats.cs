@@ -66,5 +66,24 @@ public class PlayerStats : MonoBehaviour
         }
         return false;
     }
+    public void decUnit(Enums.Enemy e){
+        switch((int)e){
+            case 1:
+                numOfRats--;
+                break;
+            case 2:
+                numOfPigeons--;
+                break;
+            case 3:
+                numOfBoars--;
+                break;
+            case 4:
+                numOfRaccoons--;
+                break;
+            case 5:
+                numOfFalcons--;
+                break;
+        }
+    }
 
 }

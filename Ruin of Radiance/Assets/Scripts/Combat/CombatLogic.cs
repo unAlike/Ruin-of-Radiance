@@ -5,6 +5,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using System;
 using Random = UnityEngine.Random;
+using Cinemachine;
 
 
 /* to do list 
@@ -111,30 +112,6 @@ public class CombatLogic : MonoBehaviour {
             }
             Debug.Log("ENEMIES SPAWNED *********************************************");
         }
-
-
-
-
-
-        //     CombatUnit unit2 = dc.getFromEnum(enemies[i].type);
-        //     if(enemies[i].obj) {
-        //         if(enemies[i].type!=Enums.Enemy.Custom){
-        //             Destroy(unit2.getUnitSprite());
-        //             unit2.setUnitSprite(enemies[i].obj);
-        //         }
-        //     }
-        //     if(enemies[i].health>0) unit2.setHealth(enemies[i].health);
-        //     if(enemies[i].damage>0) unit2.setDamage(enemies[i].damage);
-        //     if(enemies[i].crit>0) unit2.setCritRate(enemies[i].crit);
-
-        //     unit2.getUnitSprite().gameObject.transform.parent = gameObject.transform.Find("CombatGrid");
-        //     if (!grid.getTiles()[enemies[i].x,enemies[i].y].getIsOccupied()) {
-        //             grid.getTiles()[enemies[i].x,enemies[i].y].setTileUnit(unit2);
-        //             grid.getTiles()[enemies[i].x,enemies[i].y].setIsOccupied(true);
-        //             grid.getTiles()[enemies[i].x,enemies[i].y].snapUnit();
-        //         }
-        // }
-        // Debug.Log("ENEMIES SPAWNED *********************************************");
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
@@ -147,7 +124,10 @@ public class CombatLogic : MonoBehaviour {
     }
     public void startCombat() {
         // puts player into the combat scene
-        GameObject.Find("CombatGrid").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        GameObject.Find("Character").transform.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = null;
+        gameObject.transform.Find("CombatGrid").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 100;
+        
         moveScript.inCombat = true;
         // swap for snapUnit function 
         grid.getTiles()[0,1].snapUnit();
@@ -157,6 +137,7 @@ public class CombatLogic : MonoBehaviour {
         
     }
     public void endTurn() { // end turn button?
+        Debug.Log("END TURN");
         enemyLogic();
         // character.fillActionPoints();
         // fill creature ap too
@@ -165,20 +146,30 @@ public class CombatLogic : MonoBehaviour {
         GameObject.Find("CombatGrid").SetActive(false);
         Debug.Log("You have ended the battle");
         moveScript.inCombat = false;
+        gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
+        GameObject.Find("Character").transform.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Character").transform;
 
         // allow for collecting creatures
         // remove dead or captured creatures
 
     }
     public void clickTile(string name) {
+
         if(moveScript.inCombat == true) {
+
             int x = int.Parse(name.Substring(0,1));
             int y = int.Parse(name.Substring(1,1));
+
+            if (!grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getHighlight() == Enums.highlight.Control) {
+                    Debug.Log("Summoned Creature"); // if highlight is purple
+                    SummonCreature(dc.getFromEnum(stats.selectedType), grid.getTiles()[x,y]);
+                    stats.decUnit(stats.selectedType);
+                }
+
             grid.clearHighlights();
             RefreshHighlights();
 
             Debug.Log("X:" + x + " Y:" + y); 
-            
             
                 if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getTileUnit().getIsFriendly()) { // select
                     grid.selectedTile = grid.getTiles()[x,y];
@@ -220,10 +211,7 @@ public class CombatLogic : MonoBehaviour {
                 else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getTileUnit().getIsDefeated()){ // recall
                     Debug.Log("Recall Tile"); 
                 }
-                else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getHighlight() == Enums.highlight.Control) {
-                    Debug.Log("Summoned Creature"); // if highlight is purple
-                    SummonCreature(SpawnUnit, grid.getTiles()[x,y]);
-                }
+                
             HighlightField();
         }
     }
@@ -255,24 +243,49 @@ public class CombatLogic : MonoBehaviour {
     }
     public void summonCreatureHighlight() {
         Debug.Log("Summoning Creature highlights");
-
+        grid.clearHighlights();
+        
         // highlight character + or - 1 in x & y
         CombatTile charLoc = grid.getTileOfUnit(Character);
-        for(int i = 0; i < 5; i++) { // show where you can highlight
-            for (int j = 0; j < 3; j++) {
-                if (grid.getTiles()[charLoc.getXCoord() -2 , charLoc.getYCoord()-1].getIsOccupied()) {
-                    grid.getTiles()[charLoc.getXCoord() -2 , charLoc.getYCoord()-1].setHighlight(Enums.highlight.Control);
+
+        for(int i = charLoc.getXCoord()-2; i<=charLoc.getXCoord()+2; i++){
+            for(int j = charLoc.getYCoord()-2; j<=charLoc.getYCoord()+2; j++){
+                if(!(i < 0 || i>6 || j<0 || j>2)){
+                    Debug.Log("Base");
+                    if (!grid.getTiles()[i,j].getIsOccupied()) {
+                        grid.getTiles()[i,j].setHighlight(Enums.highlight.Control);
+                        Debug.Log("Summoning");
+                    }
                 }
             }
         }
+        
+        RefreshHighlights();
+
+
+        // for(int i = 0; i < 5; i++) { // show where you can highlight
+        //     for (int j = 0; j < 3; j++) {
+        //         if((charLoc.getXCoord() - 2 < 0 || charLoc.getXCoord()-2>6 || charLoc.getYCoord()-1<0 || charLoc.getYCoord()-1>2)){
+        //             Debug.Log("Base");
+        //             if (grid.getTiles()[charLoc.getXCoord() -2 , charLoc.getYCoord()-1].getIsOccupied()) {
+        //                 grid.getTiles()[charLoc.getXCoord() -2 , charLoc.getYCoord()-1].setHighlight(Enums.highlight.Control);
+        //                 Debug.Log("Summoning");
+        //             }
+        //         }
+        //         else{
+                    
+        //         }
+        //     }
+        // }
+        
         Debug.Log("Summoning Creature");
     }
     public void SummonCreature(CombatUnit unit1, CombatTile unitLoc) {
-            
-        // CombatUnit cre = new CombatUnit(unit1, 15, 15, 6, 1f,.25f, false, false);
 
         if (!unitLoc.getIsOccupied()) {
-            // unit1.setUnitSprite(prefab1);
+            unit1.getUnitSprite().gameObject.transform.parent = gameObject.transform.Find("CombatGrid");
+            unit1.setIsFriendly(true);
+            unit1.getUnitSprite().GetComponent<SpriteRenderer>().flipX = true;
             grid.getTiles()[unitLoc.getXCoord(),unitLoc.getYCoord()].setTileUnit(unit1);
             grid.getTiles()[unitLoc.getXCoord(),unitLoc.getYCoord()].setIsOccupied(true);
             grid.getTiles()[unitLoc.getXCoord(),unitLoc.getYCoord()].snapUnit();
@@ -284,7 +297,7 @@ public class CombatLogic : MonoBehaviour {
 
         // subtract MC energy & action points
         // subtract from inventory total depending on the unit type
-        Debug.Log("Summoned Creature to [" + ", " + "]");
+        Debug.Log("Summoned Creature to [" + unitLoc.getXCoord()  + ", " + unitLoc.getYCoord() + "]");
     }
     public void recallCreature(CombatUnit unit1) {
         // inventory "x1 Unit"
@@ -374,6 +387,7 @@ public class CombatLogic : MonoBehaviour {
     public int GetDistanceBetweenTiles(CombatTile from, CombatTile to) {
         return (Math.Abs((from.getXCoord()-to.getXCoord())))+(Math.Abs(from.getYCoord()-to.getYCoord()));
     }
+
     public void ReDebug(){
         
         Debug.Log("Debug function called");
