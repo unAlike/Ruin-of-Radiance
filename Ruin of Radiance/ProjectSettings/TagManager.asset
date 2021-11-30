@@ -10,6 +10,8 @@ TagManager:
   - wall
   - combatGrid
   - character
+  - BossSceneChange
+  - LevelSceneChange
   layers:
   - Default
   - TransparentFX
