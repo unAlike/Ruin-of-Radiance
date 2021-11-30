@@ -29,7 +29,7 @@ public class LevelBackLoader : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
     public void LoadLastLevel() {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 2));
     }
 
     public void LoadBossLevel() {
