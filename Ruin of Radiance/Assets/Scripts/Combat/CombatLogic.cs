@@ -124,7 +124,6 @@ public class CombatLogic : MonoBehaviour {
     }
     public void startCombat() {
         // puts player into the combat scene
-        GameObject.Find("Character").transform.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = null;
         gameObject.transform.Find("CombatGrid").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 100;
         
@@ -134,7 +133,7 @@ public class CombatLogic : MonoBehaviour {
         // snap enemies to grid
         Destroy(GetComponent<BoxCollider2D>());
         spawnEnemies();
-        
+        Debug.Log("End Start");
     }
     public void endTurn() { // end turn button?
         Debug.Log("END TURN");
