@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class GUIScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    Button invBtn, mapBtn, sklBtn;
+    GameObject invBtn, mapBtn, sklBtn;
     EventSystem EventSystem;
     GameObject invPanel, mapPanel, sklPanel, hoverPanel, SkillPointText;
     string activeBtn;
@@ -17,6 +17,7 @@ public class GUIScript : MonoBehaviour
     int healthUpgradePoints, sheildPoints, lifestealPoints, healPoints, megaHealPoints = 0;
     int damagePoints, critPoints, creatureCritPoints, slashPoints, sporeBombPoints = 0;
     int mindEnergyPoints, spawnPoints, recallPoints, boostedSpawnPoints, flipPoints = 0;
+    Movement movement;
     
 
     void Start()
@@ -26,18 +27,32 @@ public class GUIScript : MonoBehaviour
         invPanel = GameObject.Find("InventoryPanel");
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
+        sklBtn = GameObject.Find("SkillTreeButton");
+        mapBtn = GameObject.Find("MapButton");
         hoverPanel = GameObject.Find("HoverPanel");
         SkillPointText = GameObject.Find("SkillPointText");
         hoverPanel.SetActive(false);
         GameObject.Find("HealthBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("DamageBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("MindBtn1").GetComponent<SkillTreeButton>().unlocked = true;
+        movement = GameObject.Find("Character").GetComponent<Movement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(movement.inCombat){
+            sklBtn.SetActive(false);
+            mapBtn.SetActive(false);
+            setInventoryCreatureButtons(true);
+        }
+        else{
+            sklBtn.SetActive(true);
+            mapBtn.SetActive(true);
+            setInventoryCreatureButtons(false);
+        }
         updateUIBars();
+        updateCreatureCounts();
         if(hoverPanel.activeSelf){
             Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
             pos.z = 20;
@@ -267,7 +282,65 @@ public class GUIScript : MonoBehaviour
             }
         }
         setPanel(obj);
+    }
+    public void setSelectedUnit(int type){
+        if(movement.inCombat){
+            if(stats.hasUnits((Enums.Enemy)type)) stats.selectedType = (Enums.Enemy)type;
+        }
+    }
+    public void setInventoryCreatureButtons(bool enabled){
+        if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Button>().enabled = false;
+        else GameObject.Find("Rat").GetComponent<Button>().enabled = enabled;
 
+        if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Button>().enabled = false;
+        else GameObject.Find("Pigeon").GetComponent<Button>().enabled = enabled;
+
+        if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Button>().enabled = false;
+        else GameObject.Find("Raccoon").GetComponent<Button>().enabled = enabled;
+
+        if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Button>().enabled = false;
+        else GameObject.Find("Falcon").GetComponent<Button>().enabled = enabled;
+
+        if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Button>().enabled = false;
+        else GameObject.Find("Boar").GetComponent<Button>().enabled = enabled;
+
+        if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Button>().enabled = false;
+        else GameObject.Find("Watering Can").GetComponent<Button>().enabled = enabled;
+
+        if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Button>().enabled = false;   
+        else GameObject.Find("Crystal").GetComponent<Button>().enabled = enabled;
+
+        
+    }
+    public void updateCreatureCounts(){
+        GameObject.Find("Rat").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRats;
+        GameObject.Find("Pigeon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfPigeons;
+        GameObject.Find("Raccoon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRaccoons;
+        GameObject.Find("Falcon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfFalcons;
+        GameObject.Find("Boar").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfBoars;
+        GameObject.Find("Watering Can").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfWateringCans;
+        GameObject.Find("Crystal").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfCrystals;
+
+        if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,0);
+        else GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,255);
+
+        if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,0);
+        else GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,255);
+
+        if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,0);
+        else GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,255);
+        
+        if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,0);
+        else GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,255);
+
+        if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,0);
+        else GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,255);
+
+        if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,0);
+        else GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,255);
+
+        if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,0);
+        else GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,255);
     }
 
 }
