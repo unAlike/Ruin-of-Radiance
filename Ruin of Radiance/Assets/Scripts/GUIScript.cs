@@ -290,58 +290,61 @@ public class GUIScript : MonoBehaviour
         }
     }
     public void setInventoryCreatureButtons(bool enabled){
-        if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Button>().enabled = false;
-        else GameObject.Find("Rat").GetComponent<Button>().enabled = enabled;
+        if(invPanel.activeSelf){
+            if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Rat").GetComponent<Button>().enabled = enabled;
 
-        if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Button>().enabled = false;
-        else GameObject.Find("Pigeon").GetComponent<Button>().enabled = enabled;
+            if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Pigeon").GetComponent<Button>().enabled = enabled;
 
-        if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Button>().enabled = false;
-        else GameObject.Find("Raccoon").GetComponent<Button>().enabled = enabled;
+            if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Raccoon").GetComponent<Button>().enabled = enabled;
 
-        if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Button>().enabled = false;
-        else GameObject.Find("Falcon").GetComponent<Button>().enabled = enabled;
+            if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Falcon").GetComponent<Button>().enabled = enabled;
 
-        if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Button>().enabled = false;
-        else GameObject.Find("Boar").GetComponent<Button>().enabled = enabled;
+            if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Boar").GetComponent<Button>().enabled = enabled;
 
-        if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Button>().enabled = false;
-        else GameObject.Find("Watering Can").GetComponent<Button>().enabled = enabled;
+            if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Watering Can").GetComponent<Button>().enabled = enabled;
 
-        if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Button>().enabled = false;   
-        else GameObject.Find("Crystal").GetComponent<Button>().enabled = enabled;
-
+            if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Button>().enabled = false;   
+            else GameObject.Find("Crystal").GetComponent<Button>().enabled = enabled;
+        }
         
     }
     public void updateCreatureCounts(){
-        GameObject.Find("Rat").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRats;
-        GameObject.Find("Pigeon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfPigeons;
-        GameObject.Find("Raccoon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRaccoons;
-        GameObject.Find("Falcon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfFalcons;
-        GameObject.Find("Boar").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfBoars;
-        GameObject.Find("Watering Can").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfWateringCans;
-        GameObject.Find("Crystal").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfCrystals;
+        if(invPanel.activeSelf){
+            GameObject.Find("Rat").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRats;
+            GameObject.Find("Pigeon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfPigeons;
+            GameObject.Find("Raccoon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRaccoons;
+            GameObject.Find("Falcon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfFalcons;
+            GameObject.Find("Boar").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfBoars;
+            GameObject.Find("Watering Can").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfWateringCans;
+            GameObject.Find("Crystal").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfCrystals;
 
-        if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,0);
-        else GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,255);
+            if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,255);
 
-        if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,0);
-        else GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,255);
+            if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,255);
 
-        if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,0);
-        else GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,255);
-        
-        if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,0);
-        else GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,255);
+            if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,255);
+            
+            if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,255);
 
-        if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,0);
-        else GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,255);
+            if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,255);
 
-        if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,0);
-        else GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,255);
+            if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,255);
 
-        if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,0);
-        else GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,255);
+            if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,255);
+        }
     }
 
 }
