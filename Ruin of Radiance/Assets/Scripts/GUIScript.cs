@@ -80,7 +80,9 @@ public class GUIScript : MonoBehaviour
                     sklPanel.SetActive(true);
                     break;
                 case null:
-                    openGUI=false;
+                    
+                    break;
+                default:
                     break;
                 // default:
                 //     openGUI = false;

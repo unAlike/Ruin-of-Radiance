@@ -35,6 +35,7 @@ public class CombatLogic : MonoBehaviour {
     CombatUnit SpawnUnit;
     PlayerStats stats;
     DefaultCreatures dc = new DefaultCreatures();
+    GameObject CombatButtonGUI;
     void Start() {
         Debug.Log("Started Logic");
         stats = GameObject.Find("Character").GetComponent<PlayerStats>();
@@ -51,6 +52,8 @@ public class CombatLogic : MonoBehaviour {
         createPlayer();
         
         Character.setIsFriendly(true);
+        CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
+        CombatButtonGUI.SetActive(false);
         
         Debug.Log("Finished Start");
 
@@ -139,6 +142,7 @@ public class CombatLogic : MonoBehaviour {
         Destroy(GetComponent<BoxCollider2D>());
         spawnEnemies();
         Debug.Log("End Start");
+        CombatButtonGUI.SetActive(true);
     }
     public void endTurn() { // end turn button?
         Debug.Log("END TURN");
@@ -148,11 +152,13 @@ public class CombatLogic : MonoBehaviour {
         // fill creature ap too
     }
     public void endCombat() {
+        CombatButtonGUI.SetActive(false);
+        GameObject.Find("Character").transform.parent = null;
         GameObject.Find("CombatGrid").SetActive(false);
         Debug.Log("You have ended the battle");
         moveScript.inCombat = false;
         gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
-        GameObject.Find("Character").transform.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Character").transform;
+        
 
         // allow for collecting creatures
         // remove dead or captured creatures
