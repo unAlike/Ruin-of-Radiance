@@ -52,8 +52,8 @@ public class CombatLogic : MonoBehaviour {
         createPlayer();
         
         Character.setIsFriendly(true);
-        CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
-        CombatButtonGUI.SetActive(false);
+        // CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
+        // CombatButtonGUI.SetActive(false);
         
         Debug.Log("Finished Start");
 
@@ -142,7 +142,6 @@ public class CombatLogic : MonoBehaviour {
         Destroy(GetComponent<BoxCollider2D>());
         spawnEnemies();
         Debug.Log("End Start");
-        CombatButtonGUI.SetActive(true);
     }
     public void endTurn() { // end turn button?
         Debug.Log("END TURN");
@@ -152,7 +151,6 @@ public class CombatLogic : MonoBehaviour {
         // fill creature ap too
     }
     public void endCombat() {
-        CombatButtonGUI.SetActive(false);
         GameObject.Find("Character").transform.parent = null;
         GameObject.Find("CombatGrid").SetActive(false);
         Debug.Log("You have ended the battle");
