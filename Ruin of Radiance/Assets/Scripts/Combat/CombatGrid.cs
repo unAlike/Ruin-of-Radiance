@@ -70,7 +70,7 @@ public class CombatGrid {
     public void clearHighlights() {
         for (int i = 0; i < 7;++i) {
             for (int j = 0; j < 3;++j) {
-                tiles[i,j].setHighlight(0);
+                tiles[i,j].setHighlight(Enums.highlight.None);
             }
         }
         Debug.Log("Cleared Highlights");

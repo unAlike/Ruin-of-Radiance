@@ -148,21 +148,53 @@ public class CombatLogic : MonoBehaviour {
         Debug.Log("END TURN");
         enemyLogic();
         stats.actionPoints = 5;
-        // character.fillActionPoints();
-        // fill creature ap too
+
+        HighlightField();
+        // Debug.Log("Highlights refreshed end of turn");
+    }
+    public void captureOp(){
+        for(int i = 0; i < 7 ;++i) {
+            for (int j = 0; j<3 ;++j) {
+                if(grid.getTiles()[i,j].getTileUnit() != Character) {
+                    if (grid.getTiles()[i,j].getIsOccupied() && grid.getTiles()[i,j].getTileUnit().getIsFriendly()== true) { // if occupied and enemy
+                        Debug.Log("Creature Found during check");
+                        grid.getTiles()[i,j].setHighlight(Enums.highlight.Control);
+                        grid.getTiles()[i,j].getTileUnit().setIsDefeated(true);
+                    }
+                }
+                else {
+                    Debug.Log("Character Found during check");
+                }
+            }
+        }
+
+    }
+    public bool checkWin() {
+        for(int i = 0; i < 7 ;++i) {
+            for (int j = 0; j<3 ;++j) {
+                if (grid.getTiles()[i,j].getIsOccupied() && grid.getTiles()[i,j].getTileUnit().getIsFriendly()== false) { // if occupied and enemy
+                return false;
+                }
+            }
+        }
+        return true;
+
     }
     public void endCombat() {
-        CombatButtonGUI.SetActive(false);
-        GameObject.Find("Character").transform.parent = null;
-        GameObject.Find("CombatGrid").SetActive(false);
-        Debug.Log("You have ended the battle");
-        moveScript.inCombat = false;
-        gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
-        
-
-        // allow for collecting creatures
-        // remove dead or captured creatures
-
+        if (checkWin()){
+            captureOp();
+            grid.clearHighlights();
+            RefreshHighlights();
+            CombatButtonGUI.SetActive(false);
+            GameObject.Find("Character").transform.parent = null;
+            GameObject.Find("CombatGrid").SetActive(false);
+            Debug.Log("You have ended the battle");
+            moveScript.inCombat = false;
+            gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
+            
+            // allow for collecting creatures
+            // remove dead or captured creatures
+        }
     }
     public void clickTile(string name) {
 
@@ -182,8 +214,12 @@ public class CombatLogic : MonoBehaviour {
             RefreshHighlights();
 
             Debug.Log("X:" + x + " Y:" + y); 
+
+            if (checkWin()) {
+                captureOp();
+            }
             
-                if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getTileUnit().getIsFriendly()) { // select
+                if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getTileUnit().getIsFriendly() && !grid.getTiles()[x,y].getTileUnit().getIsDefeated()) { // select
                     grid.selectedTile = grid.getTiles()[x,y];
                     grid.selectedTile.setHighlight(Enums.highlight.Selected);
                     RefreshHighlights();
@@ -204,7 +240,7 @@ public class CombatLogic : MonoBehaviour {
                     
                     
                 }
-                else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].getTileUnit().getIsFriendly() && stats.actionPoints > 0 ){ // attack
+                else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].getTileUnit().getIsFriendly() && !grid.getTiles()[x,y].getTileUnit().getIsDefeated() && stats.actionPoints > 0 ){ // attack
                     if (GetDistanceBetweenTiles(grid.selectedTile, grid.getTiles()[x,y]) < 2) {
                         Debug.Log("Attack Tile");
                         if(grid.selectedTile.getTileUnit() == Character) {
@@ -213,14 +249,24 @@ public class CombatLogic : MonoBehaviour {
                         else {
                             grid.attack(grid.selectedTile.getTileUnit().getDamage(),stats.creatureCritRate, x, y);
                         }
+
+                        if (grid.getTiles()[x,y].getTileUnit().getHealth() <= 0) {
+                            Debug.Log("Is Defeated, shoulda changed");
+                            grid.getTiles()[x,y].setHighlight(Enums.highlight.Control);
+                            grid.getTiles()[x,y].getTileUnit().setIsDefeated(true);
+                            RefreshHighlights();
+                        }
                         stats.actionPoints -= 2;
                     }
                     else {
                         Debug.Log("Enemy out of Range!");
                     }
+                    
                     grid.selectedTile.setHighlight(Enums.highlight.Selected);
                 }
                 else if (grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getTileUnit().getIsDefeated()){ // recall
+                    recallCreature(grid.getTiles()[x,y].getTileUnit());
+                    grid.getTiles()[x,y].setIsOccupied(false);
                     Debug.Log("Recall Tile"); 
                 }
                 
@@ -236,8 +282,7 @@ public class CombatLogic : MonoBehaviour {
                     CombatTile enemy = grid.getTiles()[i,j]; 
                     for(int k = 1; i < 3; ++i) { // checks 6 squares in front of them for friendly units
                         for (int m = -1; i < 2; ++i) {
-                            if (grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getIsOccupied() &&
-                            grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getTileUnit().getIsFriendly()) {
+                            if (grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getIsOccupied() && grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getTileUnit().getIsFriendly()) {
                                 grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
                             }
                         }
@@ -273,23 +318,7 @@ public class CombatLogic : MonoBehaviour {
         }
         
         RefreshHighlights();
-
-
-        // for(int i = 0; i < 5; i++) { // show where you can highlight
-        //     for (int j = 0; j < 3; j++) {
-        //         if((charLoc.getXCoord() - 2 < 0 || charLoc.getXCoord()-2>6 || charLoc.getYCoord()-1<0 || charLoc.getYCoord()-1>2)){
-        //             Debug.Log("Base");
-        //             if (grid.getTiles()[charLoc.getXCoord() -2 , charLoc.getYCoord()-1].getIsOccupied()) {
-        //                 grid.getTiles()[charLoc.getXCoord() -2 , charLoc.getYCoord()-1].setHighlight(Enums.highlight.Control);
-        //                 Debug.Log("Summoning");
-        //             }
-        //         }
-        //         else{
-                    
-        //         }
-        //     }
-        // }
-        
+     
         Debug.Log("Summoning Creature");
     }
     public void SummonCreature(CombatUnit unit1, CombatTile unitLoc) {
@@ -313,6 +342,7 @@ public class CombatLogic : MonoBehaviour {
     }
     public void recallCreature(CombatUnit unit1) {
         // inventory "x1 Unit"
+        Debug.Log("Creature Recalled");
         
         switch(unit1.getCreatureType()){
             case Enums.Enemy.Rat:
@@ -331,14 +361,12 @@ public class CombatLogic : MonoBehaviour {
                 stats.numOfFalcons += 1;
                 break;
         }
-        
-        //  **
-
-        // subtract MC energy
         stats.mindEnergy -= unit1.getRecallCost();
 
-        // find unit and remove getTileOfUnit(unit1)
+        grid.getTileOfUnit(unit1).setIsOccupied(false);
         grid.getTileOfUnit(unit1).setTileUnit(null);
+        Destroy(unit1.getUnitSprite());
+        
         Debug.Log("Recalled creature from [" + ", " + "]");
     }
     public void RefreshHighlights() {
@@ -387,10 +415,16 @@ public class CombatLogic : MonoBehaviour {
                     }       
                     else if(((actionsUsed) < stats.actionPoints) && grid.getTiles()[i,j].getIsOccupied() && !(grid.getTiles()[i,j].getTileUnit().getIsFriendly()) ) {
                         grid.getTiles()[i,j].setHighlight(Enums.highlight.Damage);
+                        Debug.Log("determined damage overlay");
                     }
-                    else if(grid.getTiles()[i,j].getIsOccupied() && (grid.getTiles()[i,j].getTileUnit().getIsDefeated()) ) {
-                        grid.getTiles()[i,j].setHighlight(Enums.highlight.Control);
+                    else {
+                        
                     }
+                    
+                }
+                if(grid.getTiles()[i,j].getIsOccupied() && (grid.getTiles()[i,j].getTileUnit().getIsDefeated()) ) {
+                    grid.getTiles()[i,j].setHighlight(Enums.highlight.Control);
+                    Debug.Log("Should have changed highlight to purple");
                 }
             }
         }
