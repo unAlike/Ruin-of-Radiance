@@ -278,27 +278,60 @@ public class CombatLogic : MonoBehaviour {
          for(int i = 0; i < 7 ;++i) {
             for (int j = 0; j<3 ;++j) {
                 if (grid.getTiles()[i,j].getIsOccupied() && grid.getTiles()[i,j].getTileUnit().getIsFriendly()== false) { // if occupied and enemy
-                    
                     CombatTile enemy = grid.getTiles()[i,j]; 
-                    for(int k = 1; i < 3; ++i) { // checks 6 squares in front of them for friendly units
-                        for (int m = -1; i < 2; ++i) {
-                            if (grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getIsOccupied() && grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getTileUnit().getIsFriendly()) {
-                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
+                    // int movementValue = 0;
+
+                     //if ((enemy.getXCoord() + movementValue > 0) || enemy.getXCoord() + movementValue > 0 ) {   }
+                     // movement 0-2 or up to 3 for birds, can move 1 and attack same turn
+
+            // before all check that x and y are inside the borders
+        
+            // checks in front of enemy   
+            for(int k = 1; k < 3; k++) { // -occupied and not friendly-
+                if (enemy.getXCoord() - k >= 0){ // checks for in bounds
+                    if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getIsOccupied() && !grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getTileUnit().getIsFriendly()) {
+                        // enemy is in front
+                        if(k==1){
+                            // attack
+                            // move back if needs balancing - roll crit? check for in bounds
+                        }
+                        else if (k==2){  // if friendlys are 2 spaces directly infront - move and attack
+                            // move one space and attack
+                        }
+                        else if (k==3) {
+                            // check critVal
+                            // if crit hits, move 2 and attack
+                            // else move 1 or 2, one if needs balancing
+                        }
+
+                    }
+                }
+            }
+            
+            for(int k = 1; k < 3; k++) { // -occupied and not friendly-
+                if (enemy.getXCoord() - k >= 0){ // checks for in bounds
+                    if (enemy.getYCoord() + 1 < 3) { // check underneath too
+                    
+                        if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getIsOccupied() && !grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getTileUnit().getIsFriendly()) {
+                            // enemy is in front
+                            if(k==1){
+                                // attack
+                                // move back if needs balancing - roll crit? check for in bounds
                             }
+                            else if (k==2){  // if friendlys are 2 spaces directly infront - move and attack
+                                // move one space and attack
+                            }
+                            else if (k==3) {
+                                // check critVal
+                                // if crit hits, move 2 and attack
+                                // else move 1 or 2, one if needs balancing
+                            }
+
                         }
                     }
-                    if (Random.value < .66) { // 2/3 chance they will move
-                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
-                        Debug.Log("Enemy moved closer");
-                    }
-                    else {
-                        Debug.Log("Enemy stood there menacingly, play sound?");
-                    }
-
-                // movement 0-2 or up to 3 for birds, can move 1 and attack same turn
-            // before all check that x and y are inside the borders
-        // check near
-                // if friendlys are 2 spaces directly infront - move and attack
+                }
+            }
+                
         // check above near
                 // if friendly characters are above or below 1 and 2 left, try to move up if +1 up is unoccupied
         // check row 
@@ -315,6 +348,27 @@ public class CombatLogic : MonoBehaviour {
 
                 // wait / coroutine inbetween enemy movements
                 // doesn't move if there is creature in that position
+
+
+                    
+                    for(int k = 1; i < 3; ++k) { // checks 6 squares in front of them for friendly units
+                        for (int m = -1; i < 2; ++m) {
+                            if (grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getIsOccupied() && grid.getTiles()[enemy.getXCoord()- k, enemy.getYCoord() + m].getTileUnit().getIsFriendly()) {
+                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
+                            }
+                        }
+                    }
+                    if (Random.value < .66) { // 2/3 chance they will move
+                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
+                        Debug.Log("Enemy moved closer");
+                    }
+                    else {
+                        Debug.Log("Enemy stood there menacingly, play sound?");
+                    }
+                
+
+
+                
                 }
             }
         }
