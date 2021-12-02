@@ -294,6 +294,27 @@ public class CombatLogic : MonoBehaviour {
                     else {
                         Debug.Log("Enemy stood there menacingly, play sound?");
                     }
+
+                // movement 0-2 or up to 3 for birds, can move 1 and attack same turn
+            // before all check that x and y are inside the borders
+        // check near
+                // if friendlys are 2 spaces directly infront - move and attack
+        // check above near
+                // if friendly characters are above or below 1 and 2 left, try to move up if +1 up is unoccupied
+        // check row 
+                // check row for friendlies, them move up to 2 tiles upon percent chance.
+        // check above, then below row
+                // else check row 1 up, or 1 down move accordingly if possible
+        // danger response
+                // low health is getTileUnit().getMaxHealth() / 4 > getTileUnit().getHealth();
+                // if low health, attack and move backwards
+
+                // scatter if low health for birds?
+
+                // special logic for "custom enemies" aka bosses
+
+                // wait / coroutine inbetween enemy movements
+                // doesn't move if there is creature in that position
                 }
             }
         }
