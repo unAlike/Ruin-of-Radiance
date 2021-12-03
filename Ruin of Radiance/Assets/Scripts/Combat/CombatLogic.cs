@@ -287,10 +287,11 @@ public class CombatLogic : MonoBehaviour {
             // before all check that x and y are inside the borders
         
             // checks in front of enemy   
-            for(int k = 1; k < 3; k++) { // -occupied and not friendly-
+            for(int k = 1; k < 3; k++) { // -occupied and friendly-
                 if (enemy.getXCoord() - k >= 0){ // checks for in bounds
-                    if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getIsOccupied() && !grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getTileUnit().getIsFriendly()) {
+                    if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getTileUnit().getIsFriendly()) {
                         // enemy is in front
+                        Debug.Log("Enemy Option 1");
                         if(k==1){
                             // attack
                             // move back if needs balancing - roll crit? check for in bounds
@@ -312,22 +313,44 @@ public class CombatLogic : MonoBehaviour {
                 if (enemy.getXCoord() - k >= 0){ // checks for in bounds
                     if (enemy.getYCoord() + 1 < 3) { // check underneath too
                     
-                        if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getIsOccupied() && !grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getTileUnit().getIsFriendly()) {
-                            // enemy is in front
+                        if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord() + 1].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()+1].getTileUnit().getIsFriendly()) {
+                            // enemy is above
+                            Debug.Log("Enemy Option 2 Above");
                             if(k==1){
-                                // attack
-                                // move back if needs balancing - roll crit? check for in bounds
+                                // check for empty space above 
+                                // move up and attack
+
                             }
-                            else if (k==2){  // if friendlys are 2 spaces directly infront - move and attack
-                                // move one space and attack
+                            else if (k==2){  // if friendlys are up 1 over 2 left 
+                                // if crit hits, move up 1, 1 left and attack
+                                // else just move up 1
                             }
                             else if (k==3) {
-                                // check critVal
-                                // if crit hits, move 2 and attack
-                                // else move 1 or 2, one if needs balancing
+                                // check for empty space above
+                                // move up one square
                             }
 
                         }
+                            // check underneath
+                        if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord() - 1].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()-1].getTileUnit().getIsFriendly()) {
+                            // enemy is in front
+                            Debug.Log("Enemy Option 2 Below");
+                            if(k==1){
+                                // check for empty space above 
+                                // move up and attack
+
+                            }
+                            else if (k==2){  // if friendlys are up 1 over 2 left 
+                                // if crit hits, move up 1, 1 left and attack
+                                // else just move up 1
+                            }
+                            else if (k==3) {
+                                // check for empty space above
+                                // move up one square
+                            }
+
+                        }    
+
                     }
                 }
             }
