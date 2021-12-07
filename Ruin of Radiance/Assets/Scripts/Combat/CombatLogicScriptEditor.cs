@@ -181,6 +181,11 @@ public class CombatLogicScriptEditor : Editor{
             Debug.Log("No Combat Running");
         }
     }
+    [MenuItem("RoR/Debug")]
+    static void GameDebug(){
+        GameObject.Find("Canvas").GetComponent<GUIScript>().GetGameQuest("Idk").completed = false;
+        GameObject.Find("Canvas").GetComponent<GUIScript>().ReopulateQuests();
+    }
     
 }
 [Serializable]

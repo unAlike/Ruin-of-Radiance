@@ -6,9 +6,11 @@ public class GameQuest: MonoBehaviour
 {
     public string Title, Description;
     public bool completed;
+    public bool available;
     public GameQuest(string Title, string Description){
         this.Title = Title;
         this.Description = Description;
         completed = false;
+        available = false;
     }
 }

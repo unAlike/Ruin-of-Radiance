@@ -359,25 +359,84 @@ public class GUIScript : MonoBehaviour
         questPanel.SetActive(true);
     }
     public void PopulateQuests(){
+        foreach(Transform t in GameObject.Find("Content").transform){
+            GameObject.Destroy(t.gameObject);
+        }
         foreach(Quest q in quests){
             GameObject item = Instantiate(Resources.Load<GameObject>("QuestItem"),Vector3.zero,Quaternion.identity);
             GameQuest gamequest = item.AddComponent<GameQuest>();
             gamequest.Title = q.Title;
             gamequest.Description = q.Description;
             gamequest.completed = q.completed;
+            gamequest.available = q.available;
             item.transform.GetChild(0).gameObject.GetComponent<Text>().text = gamequest.Title;
 
-            item.transform.position = GameObject.Find("Content").transform.position;
+            //item.transform.position = GameObject.Find("Content").transform.position;
+            item.transform.position = new Vector3(0,0,0);
             item.transform.parent = GameObject.Find("Content").transform;
             item.transform.localScale = new Vector3(1,1,1);
             item.transform.localPosition = new Vector3(0,-30-(50*quests.IndexOf(q)),0);
             item.GetComponent<Button>().onClick.AddListener(delegate { QuestInfo(gamequest);});
+            if(!gamequest.available){
+                item.GetComponent<Button>().interactable = false;
+            }
+            if(gamequest.completed){
+                item.GetComponent<Button>().interactable = false;
+                Color color;
+                ColorUtility.TryParseHtmlString("#3F9044", out color);
+                item.transform.GetChild(0).gameObject.GetComponent<Text>().color = color;
+            }
+        }
+    }
+    public void ReopulateQuests(){
+        Debug.Log("Repop");
+        foreach(Quest q in quests){
+            Debug.Log(q.Title);
+            GameObject item = GameObject.Find("Content").transform.GetChild(quests.IndexOf(q)).gameObject;
+            GameQuest gamequest = item.GetComponent<GameQuest>();
+            gamequest.Title = q.Title;
+            gamequest.Description = q.Description;
+            gamequest.completed = q.completed;
+            gamequest.available = q.available;
+            item.transform.GetChild(0).gameObject.GetComponent<Text>().text = gamequest.Title;
+            item.GetComponent<Button>().onClick.AddListener(delegate { QuestInfo(gamequest);});
+
+            if(gamequest.completed){
+                item.GetComponent<Button>().interactable = false;
+                Color color;
+                ColorUtility.TryParseHtmlString("#3F9044", out color);
+                item.transform.GetChild(0).gameObject.GetComponent<Text>().color = color;
+            }
+            else{
+                if(!gamequest.available){
+                    item.GetComponent<Button>().interactable = false;
+                }
+                else{
+                    item.GetComponent<Button>().interactable = false;
+                
+                    item.GetComponent<Button>().interactable = true;
+                    Color color;
+                    ColorUtility.TryParseHtmlString("#00FF06", out color);
+                    item.transform.GetChild(0).gameObject.GetComponent<Text>().color = color;
+                }
+            }
+
+            
+            
         }
     }
     public void QuestInfo(GameQuest gq){
         GameObject questInfo = GameObject.Find("QuestInfo");
         questInfo.transform.GetChild(0).gameObject.GetComponent<Text>().text = gq.Title;
         questInfo.transform.GetChild(1).gameObject.GetComponent<Text>().text = gq.Description;
+    }
+    public Quest GetGameQuest(string s){
+        foreach(Quest gq in quests){
+            if(gq.Title == s){
+                return gq;
+            }
+        }
+        return null;
     }
 
 }
