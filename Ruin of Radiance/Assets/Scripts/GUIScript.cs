@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class GUIScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    GameObject invBtn, mapBtn, sklBtn;
+    GameObject invBtn, mapBtn, sklBtn, questBtn;
     EventSystem EventSystem;
-    GameObject invPanel, mapPanel, sklPanel, hoverPanel, SkillPointText;
+    GameObject invPanel, mapPanel, sklPanel, hoverPanel, SkillPointText, questPanel;
     string activeBtn;
     [SerializeField]
     bool openGUI = false;
@@ -18,17 +19,24 @@ public class GUIScript : MonoBehaviour
     int damagePoints, critPoints, creatureCritPoints, slashPoints, sporeBombPoints = 0;
     int mindEnergyPoints, spawnPoints, recallPoints, boostedSpawnPoints, flipPoints = 0;
     Movement movement;
+    [SerializeField]
+    List<Quest> quests = new List<Quest>();
     
 
     void Start()
     {
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         stats = GameObject.Find("Character").GetComponent<PlayerStats>();
+
         invPanel = GameObject.Find("InventoryPanel");
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
+        questPanel = GameObject.Find("QuestPanel");
+
         sklBtn = GameObject.Find("SkillTreeButton");
+        questBtn = GameObject.Find("QuestButton");
         mapBtn = GameObject.Find("MapButton");
+
         hoverPanel = GameObject.Find("HoverPanel");
         SkillPointText = GameObject.Find("SkillPointText");
         hoverPanel.SetActive(false);
@@ -36,6 +44,7 @@ public class GUIScript : MonoBehaviour
         GameObject.Find("DamageBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("MindBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         movement = GameObject.Find("Character").GetComponent<Movement>();
+        PopulateQuests();
     }
 
     // Update is called once per frame
@@ -44,11 +53,13 @@ public class GUIScript : MonoBehaviour
         if(movement.inCombat){
             sklBtn.SetActive(false);
             mapBtn.SetActive(false);
+            questBtn.SetActive(false);
             setInventoryCreatureButtons(true);
         }
         else{
             sklBtn.SetActive(true);
             mapBtn.SetActive(true);
+            questBtn.SetActive(true);
             setInventoryCreatureButtons(false);
         }
         updateUIBars();
@@ -60,35 +71,6 @@ public class GUIScript : MonoBehaviour
         }
         if(EventSystem.currentSelectedGameObject){
             openGUI=true;
-            switch(EventSystem.currentSelectedGameObject.name){
-                case "InventoryButton":
-                    Debug.Log(EventSystem.currentSelectedGameObject.name);
-                    invPanel.SetActive(true);
-                    mapPanel.SetActive(false);
-                    sklPanel.SetActive(false);
-                    break;
-                case "MapButton":
-                    Debug.Log(EventSystem.currentSelectedGameObject.name);
-                    invPanel.SetActive(false);
-                    mapPanel.SetActive(true);
-                    sklPanel.SetActive(false);
-                    break;
-                case "SkillTreeButton":
-                    Debug.Log(EventSystem.currentSelectedGameObject.name);
-                    invPanel.SetActive(false);
-                    mapPanel.SetActive(false);
-                    sklPanel.SetActive(true);
-                    break;
-                case null:
-                    
-                    break;
-                default:
-                    break;
-                // default:
-                //     openGUI = false;
-                //     break;
-                
-            }
         }
         else{
             openGUI = false;
@@ -347,6 +329,55 @@ public class GUIScript : MonoBehaviour
             if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,0);
             else GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,255);
         }
+    }
+    public void OpenInventory(){
+        openGUI = true;
+        invPanel.SetActive(true);
+        mapPanel.SetActive(false);
+        sklPanel.SetActive(false);
+        questPanel.SetActive(false);
+    }
+    public void OpenMap(){
+        openGUI = true;
+        invPanel.SetActive(false);
+        mapPanel.SetActive(true);
+        sklPanel.SetActive(false);
+        questPanel.SetActive(false);
+    }
+    public void OpenSkillTree(){
+        openGUI = true;
+        invPanel.SetActive(false);
+        mapPanel.SetActive(false);
+        sklPanel.SetActive(true);
+        questPanel.SetActive(false);
+    }
+    public void OpenQuests(){
+        openGUI = true;
+        invPanel.SetActive(false);
+        mapPanel.SetActive(false);
+        sklPanel.SetActive(false);
+        questPanel.SetActive(true);
+    }
+    public void PopulateQuests(){
+        foreach(Quest q in quests){
+            GameObject item = Instantiate(Resources.Load<GameObject>("QuestItem"),Vector3.zero,Quaternion.identity);
+            GameQuest gamequest = item.AddComponent<GameQuest>();
+            gamequest.Title = q.Title;
+            gamequest.Description = q.Description;
+            gamequest.completed = q.completed;
+            item.transform.GetChild(0).gameObject.GetComponent<Text>().text = gamequest.Title;
+
+            item.transform.position = GameObject.Find("Content").transform.position;
+            item.transform.parent = GameObject.Find("Content").transform;
+            item.transform.localScale = new Vector3(1,1,1);
+            item.transform.localPosition = new Vector3(0,-30-(50*quests.IndexOf(q)),0);
+            item.GetComponent<Button>().onClick.AddListener(delegate { QuestInfo(gamequest);});
+        }
+    }
+    public void QuestInfo(GameQuest gq){
+        GameObject questInfo = GameObject.Find("QuestInfo");
+        questInfo.transform.GetChild(0).gameObject.GetComponent<Text>().text = gq.Title;
+        questInfo.transform.GetChild(1).gameObject.GetComponent<Text>().text = gq.Description;
     }
 
 }
