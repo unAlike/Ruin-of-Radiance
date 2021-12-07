@@ -55,7 +55,7 @@ public class CombatTile{
     public void takeDamage(int damage) {
         
         tileUnit.setHealth(tileUnit.getHealth() - damage);
-        Debug.Log("Damage Taken");
+        Debug.Log("Damage Taken at [" + xCoord + "," + yCoord + "]");
 
         if(tileUnit.getHealth() > 0 ) {
             Debug.Log("Unit still standing");
