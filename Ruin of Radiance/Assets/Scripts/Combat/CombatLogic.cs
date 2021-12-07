@@ -390,7 +390,7 @@ public class CombatLogic : MonoBehaviour {
         */
         Debug.Log("Enemy Total logic start: " + enemyTotal);
         for(int enemyTrack = 1; enemyTrack <= enemyTotal ; ++enemyTrack) {
-        Debug.Log("Start of Loop : Enemy Track: " + enemyTrack);
+            Debug.Log("Start of Loop : Enemy Track: " + enemyTrack);
             switch(enemyTrack) { // decide which enemy moves first
                 case 1:
                 enemy=enemy1;
@@ -424,47 +424,49 @@ public class CombatLogic : MonoBehaviour {
             }
             
             // CombatTile enemy = grid.getTiles()[i,j];
-            bool enemyMoved = false;
-            Debug.Log("Enemy" + enemyTrack + " : Y Coord "+ enemy.getYCoord());
-            
-            // Debug.Log(enemyTrack +" Enemy at" + enemy.getYCoord());
-            if (!enemyMoved) { // in front near
-                for(int k = 1; k <= 3; ++k) { // -occupied and friendly-
-                    if (!enemyMoved) {
-                        if (enemy.getXCoord() - k >= 0){ // checks for in bounds
-                            if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getTileUnit().getIsFriendly()) {
-                                // enemy is in front
-                                Debug.Log("Straight ");
-                                if(k==1){
-                                    Debug.Log("Straight 1");
-                                    grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord(),enemy.getYCoord());  // attack
-                                    enemyMoved = true;
-                                    // move back if needs balancing - roll crit? check for in bounds
-                                }
-                                else if (k==2){  // if friendlys are 2 spaces directly infront - move and attack
-                                Debug.Log("Straight 2 - Move and Attack");
-                                    // move one space and attack
-                                    if (!grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()].getIsOccupied()) {
-                                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()]);
-                                        enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()];
-                                        grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
+            if (enemy.getTileUnit() != null){
+                bool enemyMoved = false;
+                Debug.Log("Enemy" + enemyTrack + " : Y Coord "+ enemy.getYCoord());
+                
+                // Debug.Log(enemyTrack +" Enemy at" + enemy.getYCoord());
+                if (!enemyMoved) { // in front near
+                    for(int k = 1; k <= 3; ++k) { // -occupied and friendly-
+                        if (!enemyMoved) {
+                            if (enemy.getXCoord() - k >= 0){ // checks for in bounds
+                                if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()].getTileUnit().getIsFriendly()) {
+                                    // enemy is in front
+                                    Debug.Log("Straight ");
+                                    if(k==1){
+                                        Debug.Log("Straight 1");
+                                        grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord(),enemy.getYCoord());  // attack
                                         enemyMoved = true;
+                                        // move back if needs balancing - roll crit? check for in bounds
                                     }
-                                }
-                                else if (k==3) {
-                                    if (!grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()].getIsOccupied()) {
-                                        Debug.Log("Straight 3");
-                                        if (checkCrit(enemy.getTileUnit().getCritRate())&& (!grid.getTiles()[enemy.getXCoord()-2, enemy.getYCoord()].getIsOccupied())) { // if crit hits, move 2 and attack
-                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-2, enemy.getYCoord()]); // move 2
-                                                enemy = grid.getTiles()[enemy.getXCoord()-2,enemy.getYCoord()];
-                                                grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord()); // attack
-                                                enemyMoved = true;
-                                            Debug.Log("Crit Hit move 3");
-                                        }
-                                        else { // move only one
-                                            grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()]); // move 1
+                                    else if (k==2){  // if friendlys are 2 spaces directly infront - move and attack
+                                    Debug.Log("Straight 2 - Move and Attack");
+                                        // move one space and attack
+                                        if (!grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()].getIsOccupied()) {
+                                            grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()]);
                                             enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()];
+                                            grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
                                             enemyMoved = true;
+                                        }
+                                    }
+                                    else if (k==3) {
+                                        if (!grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()].getIsOccupied()) {
+                                            Debug.Log("Straight 3");
+                                            if (checkCrit(enemy.getTileUnit().getCritRate())&& (!grid.getTiles()[enemy.getXCoord()-2, enemy.getYCoord()].getIsOccupied())) { // if crit hits, move 2 and attack
+                                                    grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-2, enemy.getYCoord()]); // move 2
+                                                    enemy = grid.getTiles()[enemy.getXCoord()-2,enemy.getYCoord()];
+                                                    grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord()); // attack
+                                                    enemyMoved = true;
+                                                Debug.Log("Crit Hit move 3");
+                                            }
+                                            else { // move only one
+                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()]); // move 1
+                                                enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()];
+                                                enemyMoved = true;
+                                            }
                                         }
                                     }
                                 }
@@ -472,161 +474,161 @@ public class CombatLogic : MonoBehaviour {
                         }
                     }
                 }
-            }
-            
-            if (!enemyMoved) { // above and below near
-                for(int k = 1; k <= 3; ++k) { // -occupied and not friendly-
-                    if (!enemyMoved) { // above near
-                        if (enemy.getXCoord() - k >= 0){ // checks for in bounds
-                            if (enemy.getYCoord() + 1 < 3) { // check underneath too
-                                if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord() + 1].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()+1].getTileUnit().getIsFriendly()) {
-                                    // enemy is above
-                                    Debug.Log("Above");
-                                    if(k==1){ 
-                                        Debug.Log("Above 1");
-                                        // check for empty space above 
-                                        // move up and attack 
-                                        if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1].getIsOccupied()) { // check for empty space above
-                                            grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1]);
-                                            enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()+1];
-                                            grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
-                                            enemyMoved = true;
-                                        }
-                                    }
-                                    else if (k==2){
-                                        Debug.Log("Above 2");  // if friendlys are up 1 over 2 left
-                                        if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1].getIsOccupied()) { // check for empty space above
-                                            if (checkCrit(enemy.getTileUnit().getCritRate())) { // if crit hits, move up 1, 1 left and attack
-                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()+1]);
-                                                enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()+1];
+                
+                if (!enemyMoved) { // above and below near
+                    for(int k = 1; k <= 3; ++k) { // -occupied and not friendly-
+                        if (!enemyMoved) { // above near
+                            if (enemy.getXCoord() - k >= 0){ // checks for in bounds
+                                if (enemy.getYCoord() + 1 < 3) { // check underneath too
+                                    if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord() + 1].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()+1].getTileUnit().getIsFriendly()) {
+                                        // enemy is above
+                                        Debug.Log("Above");
+                                        if(k==1){ 
+                                            Debug.Log("Above 1");
+                                            // check for empty space above 
+                                            // move up and attack 
+                                            if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1].getIsOccupied()) { // check for empty space above
+                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1]);
+                                                enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()+1];
                                                 grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
                                                 enemyMoved = true;
                                             }
-                                            else { // else just move up 1
-                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1]);
+                                        }
+                                        else if (k==2){
+                                            Debug.Log("Above 2");  // if friendlys are up 1 over 2 left
+                                            if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1].getIsOccupied()) { // check for empty space above
+                                                if (checkCrit(enemy.getTileUnit().getCritRate())) { // if crit hits, move up 1, 1 left and attack
+                                                    grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()+1]);
+                                                    enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()+1];
+                                                    grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
+                                                    enemyMoved = true;
+                                                }
+                                                else { // else just move up 1
+                                                    grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1]);
+                                                    enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()+1];
+                                                    enemyMoved = true;
+                                                }
+                                            }
+                                        }
+                                        else if (k==3) {
+                                            Debug.Log("Above 3");
+                                            if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1].getIsOccupied()) { // check for empty space above
+                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1]); // move up one square
                                                 enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()+1];
                                                 enemyMoved = true;
                                             }
                                         }
                                     }
-                                    else if (k==3) {
-                                        Debug.Log("Above 3");
-                                        if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1].getIsOccupied()) { // check for empty space above
-                                            grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()+1]); // move up one square
-                                            enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()+1];
-                                            enemyMoved = true;
-                                        }
-                                    }
                                 }
                             }
                         }
-                    }
-                    
-                    if (!enemyMoved) { // below near
-                        if (enemy.getYCoord()-1 > 0) {       // check underneath
-                            if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord() - 1].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()-1].getTileUnit().getIsFriendly()) {
-                                // enemy is in front
-                                Debug.Log("Enemy Option 2 - Below");
-                                if(k==1){
-                                    Debug.Log("B 1");
-                                    // check for empty space below
-                                    // move down and attack
-                                    if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1].getIsOccupied()) {
-                                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1]);
-                                        enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()-1];
-                                        grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
-                                        enemyMoved = true;
-                                    }
-                                }
-                                else if (k==2){  // if friendlys are up 1 over 2 left 
-                                    Debug.Log("B 2");
-                                    if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1].getIsOccupied()) { // check for empty space above
-                                        if (checkCrit(enemy.getTileUnit().getCritRate())) { // if crit hits, move down 1, 1 left and attack
-                                            grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()-1]);
-                                            enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()-1];
+                        
+                        if (!enemyMoved) { // below near
+                            if (enemy.getYCoord()-1 >= 0) {       // check underneath
+                                if (grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord() - 1].getIsOccupied() && grid.getTiles()[enemy.getXCoord() - k, enemy.getYCoord()-1].getTileUnit().getIsFriendly()) {
+                                    // enemy is in front
+                                    Debug.Log("Enemy Option 2 - Below");
+                                    if(k==1){
+                                        Debug.Log("B 1");
+                                        // check for empty space below
+                                        // move down and attack
+                                        if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1].getIsOccupied()) {
+                                            grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1]);
+                                            enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()-1];
                                             grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
                                             enemyMoved = true;
                                         }
-                                        else { // else just move up 1
+                                    }
+                                    else if (k==2){  // if friendlys are up 1 over 2 left 
+                                        Debug.Log("B 2");
+                                        if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1].getIsOccupied()) { // check for empty space above
+                                            if (checkCrit(enemy.getTileUnit().getCritRate())) { // if crit hits, move down 1, 1 left and attack
+                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()-1]);
+                                                enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()-1];
+                                                grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());
+                                                enemyMoved = true;
+                                            }
+                                            else { // else just move up 1
+                                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1]);
+                                                enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()-1];
+                                                enemyMoved = true;
+                                            }
+                                        }
+                                    }
+                                    else if (k==3) {
+                                        Debug.Log("B 3");
+                                        if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1].getIsOccupied()) { // check for empty space above
+                                            // move up one square
                                             grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1]);
                                             enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()-1];
                                             enemyMoved = true;
                                         }
                                     }
+
+                                }    
+
+                            }
+                        }
+                    }
+                }
+                // checks full board
+                if (!enemyMoved) { // last resort, search full board
+                    bool friendlyUnitAlive = false;
+                    bool enemyBehind = false;
+                    bool enemyFar = false;
+                    bool enemyFoward = false;
+                    int q = 0, s = 0;
+                    Debug.Log("Full Board");
+                    for(q = 0; q < 7; ++q) { 
+                        for (s = 0; s < 3; ++s) {
+                            if (grid.getTiles()[q,s].getIsOccupied() && grid.getTiles()[q,s].getTileUnit().getIsFriendly()) {
+                                friendlyUnitAlive = true;
+                                if (enemy.getXCoord()-1 > grid.getTiles()[q,s].getXCoord()) {
+                                    enemyFoward = true;
                                 }
-                                else if (k==3) {
-                                    Debug.Log("B 3");
-                                    if (!grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1].getIsOccupied()) { // check for empty space above
-                                        // move up one square
-                                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord(), enemy.getYCoord()-1]);
-                                        enemy = grid.getTiles()[enemy.getXCoord(),enemy.getYCoord()-1];
+                                if (enemy.getXCoord()+1 < grid.getTiles()[q,s].getXCoord()) {
+                                    enemyBehind = true;    
+                                }
+                                if (enemy.getXCoord()-3 < grid.getTiles()[q,s].getXCoord()) {
+                                    enemyFar = true;    
+                                }
+                            }
+                        }
+                    }
+                    if (friendlyUnitAlive) {
+                        if (enemyBehind == false && enemyFoward) {
+                            if (enemy.getXCoord() - 2 >= 0) {
+                                if (!grid.getTiles()[enemy.getXCoord()-1 , enemy.getYCoord()].getIsOccupied()) {
+                                    grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
+                                    enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()];
+                                    Debug.Log("Full Board check move 1 : Enemy Number "+ enemyTrack);
+                                    Debug.Log("EnemyNumber " + enemyTrack + " p1 : [ "+ enemy.getXCoord() + "," + enemy.getYCoord() + "] ");
+
+                                    if (enemyFar && checkCrit(0.25f) ) {
+                                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()]);
+                                        enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()];
+                                        Debug.Log("Crit Hit move 1 more forward");
+                                        enemyMoved = true;
+                                        Debug.Log("EnemyNumber " + enemyTrack + " after crit : [ "+ enemy.getXCoord() + "," + enemy.getYCoord() + "] ");
+                                    }
+                                    else{
+                                        Debug.Log("No Crit");
                                         enemyMoved = true;
                                     }
                                 }
-
-                            }    
-
-                        }
-                    }
-                }
-            }
-            // checks full board
-            if (!enemyMoved) { // last resort, search full board
-                bool friendlyUnitAlive = false;
-                bool enemyBehind = false;
-                bool enemyFar = false;
-                bool enemyFoward = false;
-                int q = 0, s = 0;
-                Debug.Log("Full Board");
-                for(q = 0; q < 7; ++q) { 
-                    for (s = 0; s < 3; ++s) {
-                        if (grid.getTiles()[q,s].getIsOccupied() && grid.getTiles()[q,s].getTileUnit().getIsFriendly()) {
-                            friendlyUnitAlive = true;
-                            if (enemy.getXCoord()-1 > grid.getTiles()[q,s].getXCoord()) {
-                                enemyFoward = true;
-                            }
-                            if (enemy.getXCoord()+1 < grid.getTiles()[q,s].getXCoord()) {
-                                enemyBehind = true;    
-                            }
-                            if (enemy.getXCoord()-3 < grid.getTiles()[q,s].getXCoord()) {
-                                enemyFar = true;    
                             }
                         }
-                    }
-                }
-                if (friendlyUnitAlive) {
-                    if (enemyBehind == false && enemyFoward) {
-                        if (enemy.getXCoord() - 2 >= 0) {
-                            if (!grid.getTiles()[enemy.getXCoord()-1 , enemy.getYCoord()].getIsOccupied()) {
-                                grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()- 1, enemy.getYCoord()]);
-                                enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()];
-                                Debug.Log("Full Board check move 1 : Enemy Number "+ enemyTrack);
-                                Debug.Log("EnemyNumber " + enemyTrack + " p1 : [ "+ enemy.getXCoord() + "," + enemy.getYCoord() + "] ");
-
-                                if (enemyFar && checkCrit(0.25f) ) {
-                                    grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()-1, enemy.getYCoord()]);
-                                    enemy = grid.getTiles()[enemy.getXCoord()-1,enemy.getYCoord()];
-                                    Debug.Log("Crit Hit move 1 more forward");
-                                    enemyMoved = true;
-                                    Debug.Log("EnemyNumber " + enemyTrack + " after crit : [ "+ enemy.getXCoord() + "," + enemy.getYCoord() + "] ");
+                        if (enemy.getXCoord() +1 <= 6 && enemyBehind) { 
+                                if (enemy.getXCoord() +1 <= 6) {
+                                    if (!grid.getTiles()[enemy.getXCoord()+1, enemy.getYCoord()].getIsOccupied()) {
+                                        grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()+1, enemy.getYCoord()]);
+                                        enemy = grid.getTiles()[enemy.getXCoord()+1,enemy.getYCoord()];
+                                        enemyMoved = true;
+                                        Debug.Log("Enemy " + enemyTrack + " mvoed backwards to [ "+ enemy.getXCoord() + "," + enemy.getYCoord() + "] ");
+                                    }
                                 }
-                                else{
-                                    Debug.Log("No Crit");
-                                    enemyMoved = true;
-                                }
-                            }
+                            
                         }
-                    }
-                    if (enemy.getXCoord() +1 <= 6 && enemyBehind) { 
-                            if (enemy.getXCoord() +1 <= 6) {
-                                if (!grid.getTiles()[enemy.getXCoord()+1, enemy.getYCoord()].getIsOccupied()) {
-                                    grid.moveTile(enemy, grid.getTiles()[enemy.getXCoord()+1, enemy.getYCoord()]);
-                                    enemy = grid.getTiles()[enemy.getXCoord()+1,enemy.getYCoord()];
-                                    enemyMoved = true;
-                                    Debug.Log("Enemy " + enemyTrack + " mvoed backwards to [ "+ enemy.getXCoord() + "," + enemy.getYCoord() + "] ");
-                                }
-                            }
-                        
                     }
                 }
             }
