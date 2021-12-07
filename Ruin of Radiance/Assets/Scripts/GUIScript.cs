@@ -366,7 +366,7 @@ public class GUIScript : MonoBehaviour
             GameObject item = Instantiate(Resources.Load<GameObject>("QuestItem"),Vector3.zero,Quaternion.identity);
             GameQuest gamequest = item.AddComponent<GameQuest>();
             gamequest.Title = q.Title;
-            gamequest.Description = q.Description;
+            gamequest.Description = q.Description.Replace("\\n", "\n");
             gamequest.completed = q.completed;
             gamequest.available = q.available;
             item.transform.GetChild(0).gameObject.GetComponent<Text>().text = gamequest.Title;
@@ -395,7 +395,7 @@ public class GUIScript : MonoBehaviour
             GameObject item = GameObject.Find("Content").transform.GetChild(quests.IndexOf(q)).gameObject;
             GameQuest gamequest = item.GetComponent<GameQuest>();
             gamequest.Title = q.Title;
-            gamequest.Description = q.Description;
+            gamequest.Description = q.Description.Replace("\\n", "\n");
             gamequest.completed = q.completed;
             gamequest.available = q.available;
             item.transform.GetChild(0).gameObject.GetComponent<Text>().text = gamequest.Title;
@@ -428,7 +428,7 @@ public class GUIScript : MonoBehaviour
     public void QuestInfo(GameQuest gq){
         GameObject questInfo = GameObject.Find("QuestInfo");
         questInfo.transform.GetChild(0).gameObject.GetComponent<Text>().text = gq.Title;
-        questInfo.transform.GetChild(1).gameObject.GetComponent<Text>().text = gq.Description;
+        questInfo.transform.GetChild(1).gameObject.GetComponent<Text>().text = gq.Description.Replace("\\n", "\n");
     }
     public Quest GetGameQuest(string s){
         foreach(Quest gq in quests){

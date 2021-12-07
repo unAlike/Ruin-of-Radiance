@@ -1896,8 +1896,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6203415392787689006}
   m_HandleRect: {fileID: 134983921420680398}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.36040315
+  m_Value: 1.0000014
+  m_Size: 0.17888577
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2013,8 +2013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 404.2398}
+  m_AnchoredPosition: {x: 0, y: -0.0010013968}
+  m_SizeDelta: {x: 0, y: 814.4264}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &7876529264189594078
 GameObject:
@@ -3441,18 +3441,71 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openGUI: 0
   quests:
-  - Title: Idk
-    Description: This is a test
+  - Title: First Roots
+    Description: Beat 1 Rat + Capture Rat\nUse Rat to fight second Rat\nLeave House
     completed: 0
-  - Title: OBJ 2
-    Description: WEWEEEEEEEE
+    available: 1
+  - Title: New in Town
+    Description: Go to Garden\nLook around
     completed: 0
-  - Title: Quest 3
-    Description: Ur MOM
+    available: 0
+  - Title: Breaking into Al CaTrash
+    Description: Talk to Al Trashino
     completed: 0
-  - Title: Quest 4
-    Description: Ur a lovely person
+    available: 0
+  - Title: Second Chance
+    Description: Al Trashino Gives you a second chance and gives you items maybe?
     completed: 0
+    available: 0
+  - Title: Pigeon Brain
+    Description: Get rid of # of pigeons in Uptown for Al Trashino\nFind Tank Sinatra
+    completed: 0
+    available: 0
+  - Title: Fly me to the Raccoon
+    Description: Find Tank Sinatra in Downtown
+    completed: 0
+    available: 0
+  - Title: 'New in Town 2: Racoon Boogaloo'
+    Description: Beat Racoons in Racoon Woods to prove your Worth\nCapture # of Racoons
+    completed: 0
+    available: 0
+  - Title: Tank Attack
+    Description: Go fight Al Trashino
+    completed: 0
+    available: 0
+  - Title: The God-Twin
+    Description: Fight Al Trashino at the Night Club
+    completed: 0
+    available: 0
+  - Title: Turning a New Leaf
+    Description: 
+    completed: 0
+    available: 0
+  - Title: Take down Tank Sinatra
+    Description: Go to the Wood Fort
+    completed: 0
+    available: 0
+  - Title: Life is a Highway
+    Description: 
+    completed: 0
+    available: 0
+  - Title: King of New York
+    Description: 
+    completed: 0
+    available: 0
+  - Title: Awfully Boaring - Side Quest
+    Description: Find the Boar Lord in the Rat Slums\nFight Rat Tenants\nTalk to
+      Boar Lord
+    completed: 0
+    available: 0
+  - Title: Boar Bar break in - Side Quest
+    Description: Get in to the Bar\Take on the Owner of the Bar
+    completed: 0
+    available: 0
+  - Title: Prey of Wall Street - Side Quest
+    Description: Go To Talon Hedge Funds\nFight your way to Jordan Belfalcon
+    completed: 0
+    available: 0
 --- !u!1 &8162634891286980616
 GameObject:
   m_ObjectHideFlags: 0

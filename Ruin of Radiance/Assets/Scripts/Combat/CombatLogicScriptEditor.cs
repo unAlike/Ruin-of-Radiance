@@ -183,7 +183,6 @@ public class CombatLogicScriptEditor : Editor{
     }
     [MenuItem("RoR/Debug")]
     static void GameDebug(){
-        GameObject.Find("Canvas").GetComponent<GUIScript>().GetGameQuest("Idk").completed = false;
         GameObject.Find("Canvas").GetComponent<GUIScript>().ReopulateQuests();
     }
     
