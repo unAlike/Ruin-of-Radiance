@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/01_Tutorial House.unity
     guid: 5115b3be280984e45a398ed6d9cc37be
   - enabled: 1
