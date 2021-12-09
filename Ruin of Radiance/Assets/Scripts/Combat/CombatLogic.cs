@@ -268,6 +268,7 @@ public class CombatLogic : MonoBehaviour {
                         Debug.Log("Attack Tile");
                         if(grid.selectedTile.getTileUnit() == Character) {
                             grid.attack(stats.damage,stats.critRate, x, y);
+                            grid.triggerAttackAnim(grid.selectedTile);
                         }
                         else {
                             grid.attack(grid.selectedTile.getTileUnit().getDamage(),stats.creatureCritRate, x, y);
