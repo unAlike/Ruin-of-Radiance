@@ -158,11 +158,13 @@ public class CombatLogic : MonoBehaviour {
         Debug.Log("End Start");
         CombatButtonGUI.SetActive(true);
         defineEnemies();
+        gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
     }
     public void endTurn() { // end turn button?
         Debug.Log("END TURN");
         enemyLogic();
         stats.actionPoints = 5;
+        gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
 
         HighlightField();
         // Debug.Log("Highlights refreshed end of turn");
@@ -258,6 +260,7 @@ public class CombatLogic : MonoBehaviour {
                         grid.selectedTile = grid.getTiles()[x,y];
                         Debug.Log("Move To Tile");
                         RefreshHighlights();
+                        gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
                     }
                     grid.selectedTile.setHighlight(Enums.highlight.Selected);
                     
@@ -283,6 +286,7 @@ public class CombatLogic : MonoBehaviour {
                             RefreshHighlights();
                         }
                         stats.actionPoints -= 2;
+                        gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
                     }
                     else {
                         Debug.Log("Enemy out of Range!");
