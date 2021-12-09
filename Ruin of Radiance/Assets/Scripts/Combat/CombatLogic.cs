@@ -62,6 +62,8 @@ public class CombatLogic : MonoBehaviour {
 
         createPlayer();
         
+        
+
         Character.setIsFriendly(true);
         CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
         CombatButtonGUI.SetActive(false);
@@ -159,6 +161,9 @@ public class CombatLogic : MonoBehaviour {
         CombatButtonGUI.SetActive(true);
         defineEnemies();
         gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
+        // FOR PLAYTEST
+        stats.health = Character.getHealth();
+        GameObject.Find("Canvas").GetComponent<GUIScript>().updateUIBars();
     }
     public void endTurn() { // end turn button?
         Debug.Log("END TURN");
@@ -724,9 +729,9 @@ public class CombatLogic : MonoBehaviour {
         // RefreshHighlights();
         if (inCombat) {
             stats.health = Character.getHealth();
-            Debug.Log("Character Health: " + stats.health);
+            // Debug.Log("Character Health: " + stats.health);
             GameObject.Find("Canvas").GetComponent<GUIScript>().updateUIBars();
-            Character.getHealth();
+            // Character.getHealth();
             if(Character.getHealth() <= 0) {
                 loseCondition();
             }
