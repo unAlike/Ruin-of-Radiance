@@ -225,8 +225,9 @@ public class CombatLogic : MonoBehaviour {
             if (!grid.getTiles()[x,y].getIsOccupied() && grid.getTiles()[x,y].getHighlight() == Enums.highlight.Control) {
                 
                     Debug.Log("Summoned Creature"); // if highlight is purple
+                    //if (stats.mindEnergy - SpawnUnit.getSummonCost() >= 0) {
                     SummonCreature(dc.getFromEnum(stats.selectedType), grid.getTiles()[x,y]);
-                    
+                    // }
                     
                 }
           
@@ -248,7 +249,7 @@ public class CombatLogic : MonoBehaviour {
                     // highlight available squares to move to
                     Debug.Log("Selected Tile: ");
                 }
-                else if (!grid.getTiles()[x,y].getIsOccupied() && stats.actionPoints > 0 ){ // move
+                else if (!grid.getTiles()[x,y].getIsOccupied() && stats.actionPoints > 0 && grid.selectedTile.getTileUnit().getHealth() > 0) { // move
                     // stats.actionPoints;
                     if(GetDistanceBetweenTiles(grid.getTiles()[x,y],grid.selectedTile)<=stats.actionPoints){
                         stats.actionPoints -= GetDistanceBetweenTiles(grid.getTiles()[x,y],grid.selectedTile);
@@ -262,7 +263,7 @@ public class CombatLogic : MonoBehaviour {
                     
                     
                 }
-                else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].getTileUnit().getIsFriendly() && !grid.getTiles()[x,y].getTileUnit().getIsDefeated() && stats.actionPoints > 0 ){ // attack
+                else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].getTileUnit().getIsFriendly() && !grid.getTiles()[x,y].getTileUnit().getIsDefeated() && stats.actionPoints > 0 && grid.selectedTile.getTileUnit().getHealth() > 0){ // attack
                     if (GetDistanceBetweenTiles(grid.selectedTile, grid.getTiles()[x,y]) < 2) {
                         Debug.Log("Attack Tile");
                         if(grid.selectedTile.getTileUnit() == Character) {
@@ -418,9 +419,9 @@ public class CombatLogic : MonoBehaviour {
                                         grid.attack(enemy.getTileUnit().getDamage(), enemy.getTileUnit().getCritRate(),enemy.getXCoord()-1,enemy.getYCoord());  // attack
                                         grid.triggerAttackAnim(enemy);
                                         enemyMoved = true;
-                                        StartCoroutine("enemyDelayCoroutine");
-                                        while(!enemyDelay){Debug.Log("1"); }
-                                        enemyDelay = false;
+                                        //StartCoroutine("enemyDelayCoroutine");
+                                        //while(!enemyDelay){Debug.Log("1"); }
+                                        // enemyDelay = false;
                                         // move back if needs balancing - roll crit? check for in bounds
                                     }
                                     else if (k==2){  // if friendlys are 2 spaces directly infront - move and attack
@@ -778,6 +779,9 @@ public class CombatLogic : MonoBehaviour {
             // subtract from inventory total depending on the unit type
             Debug.Log("Summoned Creature to [" + unitLoc.getXCoord()  + ", " + unitLoc.getYCoord() + "]");
             stats.decUnit(stats.selectedType);
+        }
+        else {
+            Debug.Log("Creature not spawned ");
         }
     }
     public void recallCreature(CombatUnit unit1) {
