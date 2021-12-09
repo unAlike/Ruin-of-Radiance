@@ -203,6 +203,7 @@ public class CombatLogic : MonoBehaviour {
             captureOp();
             grid.clearHighlights();
             RefreshHighlights();
+            stats.mindEnergy = stats.maxMindEnergy;
             CombatButtonGUI.SetActive(false);
             GameObject.Find("Character").transform.parent = null;
             GameObject.Find("CombatGrid").SetActive(false);
@@ -719,6 +720,7 @@ public class CombatLogic : MonoBehaviour {
         // RefreshHighlights();
         if (inCombat) {
             stats.health = Character.getHealth();
+            Debug.Log("Character Health: " + stats.health);
             GameObject.Find("Canvas").GetComponent<GUIScript>().updateUIBars();
             Character.getHealth();
             if(Character.getHealth() <= 0) {
