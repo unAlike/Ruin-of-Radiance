@@ -55,8 +55,8 @@ public class CombatTile{
     public void takeDamage(int damage) {
         
         tileUnit.setHealth(tileUnit.getHealth() - damage);
-        Debug.Log("Damage Taken");
-
+        Debug.Log("Damage Taken at [" + xCoord + "," + yCoord + "]");
+        
         if(tileUnit.getHealth() > 0 ) {
             Debug.Log("Unit still standing");
         }
@@ -64,6 +64,8 @@ public class CombatTile{
             tileUnit.setIsDefeated(true);
             Debug.Log("He definitely dead");
         }
+        
+        
     }
     public void healUnit(int heal) {
         if(tileUnit.getHealth() + heal <= tileUnit.getMaxHealth()){
