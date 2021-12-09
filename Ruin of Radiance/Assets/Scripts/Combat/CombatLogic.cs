@@ -248,8 +248,8 @@ public class CombatLogic : MonoBehaviour {
                     RefreshHighlights();
                     // highlight available squares to move to
                     Debug.Log("Selected Tile: ");
-                }
-                else if (!grid.getTiles()[x,y].getIsOccupied() && stats.actionPoints > 0 && grid.selectedTile.getTileUnit().getHealth() > 0) { // move
+                }// && grid.selectedTile.getTileUnit().getHealth() > 0
+                else if (!grid.getTiles()[x,y].getIsOccupied() && stats.actionPoints > 0 ) { // move
                     // stats.actionPoints;
                     if(GetDistanceBetweenTiles(grid.getTiles()[x,y],grid.selectedTile)<=stats.actionPoints){
                         stats.actionPoints -= GetDistanceBetweenTiles(grid.getTiles()[x,y],grid.selectedTile);
@@ -262,8 +262,8 @@ public class CombatLogic : MonoBehaviour {
                     
                     
                     
-                }
-                else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].getTileUnit().getIsFriendly() && !grid.getTiles()[x,y].getTileUnit().getIsDefeated() && stats.actionPoints > 0 && grid.selectedTile.getTileUnit().getHealth() > 0){ // attack
+                } // && grid.selectedTile.getTileUnit().getHealth() > 0
+                else if (grid.getTiles()[x,y].getIsOccupied() && !grid.getTiles()[x,y].getTileUnit().getIsFriendly() && !grid.getTiles()[x,y].getTileUnit().getIsDefeated() && stats.actionPoints > 0 ){ // attack
                     if (GetDistanceBetweenTiles(grid.selectedTile, grid.getTiles()[x,y]) < 2) {
                         Debug.Log("Attack Tile");
                         if(grid.selectedTile.getTileUnit() == Character) {
