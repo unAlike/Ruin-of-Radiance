@@ -44,6 +44,12 @@ public class GUIScript : MonoBehaviour
         GameObject.Find("DamageBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("MindBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         movement = GameObject.Find("Character").GetComponent<Movement>();
+        if (movement != null) {
+            Debug.Log(" movement found");
+        }
+        else {
+            Debug.Log(" movement NOT found");
+        }
         PopulateQuests();
     }
 

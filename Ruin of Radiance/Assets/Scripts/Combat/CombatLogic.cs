@@ -45,6 +45,7 @@ public class CombatLogic : MonoBehaviour {
     CombatTile enemy4;
     CombatTile enemy5;
     CombatTile enemy6; 
+    GameObject StaminaBar;
     bool enemyDelay = false;
 
     void Start() {
@@ -62,7 +63,7 @@ public class CombatLogic : MonoBehaviour {
 
         createPlayer();
         
-        
+        StaminaBar = GameObject.Find("StaminaBar");
 
         Character.setIsFriendly(true);
         CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
@@ -163,6 +164,7 @@ public class CombatLogic : MonoBehaviour {
         gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
         // FOR PLAYTEST
         stats.health = Character.getHealth();
+        StaminaBar.SetActive(false);
         GameObject.Find("Canvas").GetComponent<GUIScript>().updateUIBars();
     }
     public void endTurn() { // end turn button?
@@ -208,16 +210,20 @@ public class CombatLogic : MonoBehaviour {
     public void endCombat() {
         if (checkWin()){
             captureOp();
+            stats.actionPoints = 5;
             grid.clearHighlights();
             RefreshHighlights();
             stats.mindEnergy = stats.maxMindEnergy;
             CombatButtonGUI.SetActive(false);
             GameObject.Find("Character").transform.parent = null;
-            GameObject.Find("CombatGrid").SetActive(false);
+            gameObject.transform.Find("CombatGrid").gameObject.SetActive(false);
+            // GameObject.Find("CombatGrid").SetActive(false);
+
             Debug.Log("You have ended the battle");
+            
+            StaminaBar.SetActive(true);
             moveScript.inCombat = false;
             gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
-            
             inCombat = false;
             // allow for collecting creatures
             // remove dead or captured creatures
