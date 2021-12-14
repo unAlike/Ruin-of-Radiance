@@ -59,18 +59,64 @@ public class CombatGrid {
     }
     public void attack(int damage, float critRate, int xCoord, int yCoord) {
         // determines damage being delt, critRate, and attacked square location
+        
         Debug.Log("Attacked:  [" + xCoord + ", " + yCoord + "]");
         if (Random.value < critRate) {
             damage = (int) (damage*(1.5));
         }
         Debug.Log("Dealt " + damage + " damage");
         tiles[xCoord,yCoord].takeDamage(damage);
+        updateAnimatorControllers();
 
+    }
+    public void triggerAttackAnim(CombatTile tile1) {
+        Animator controller = tile1.getTileUnit().getUnitSprite().GetComponent<Animator>();
+        Debug.Log(controller.gameObject.name);
+        controller.SetTrigger("attack");
+        Debug.Log("Attacked ANIMATION ****************");
+        updateAnimatorControllers();
+    }
+
+    public void updateAnimatorControllers() {
+    GameObject gridContainer = GameObject.Find("CombatGrid");
+
+    for(int i = 0; i < 7 ;++i) {
+        for (int j = 0; j<3 ;++j) {
+            if (getTiles()[i,j].getTileUnit() != null) {
+
+                
+            
+            Animator controller = getTiles()[i,j].getTileUnit().getUnitSprite().GetComponent<Animator>();
+
+            if (getTiles()[i,j].getTileUnit().getIsDefeated()){
+                // isDefeated bool
+                controller.SetBool("isDefeated", true);
+
+            }
+            else { 
+                if (GameObject.Find("Character").GetComponent<Movement>().inCombat) {
+                    controller.SetBool("inCombat", true);
+                    Debug.Log("");
+                }
+                if (getTiles()[i,j].getTileUnit().getIsFriendly()){
+                    // friendly float
+                    controller.SetFloat("friendly", 1);
+                }
+                if (getTiles()[i,j].getTileUnit().getIsDefeated()){
+                    
+                }
+            }
+
+
+            }
+        }
+    }
+    
     }
     public void clearHighlights() {
         for (int i = 0; i < 7;++i) {
             for (int j = 0; j < 3;++j) {
-                tiles[i,j].setHighlight(0);
+                tiles[i,j].setHighlight(Enums.highlight.None);
             }
         }
         Debug.Log("Cleared Highlights");

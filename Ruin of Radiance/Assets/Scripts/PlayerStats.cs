@@ -8,9 +8,11 @@ public class PlayerStats : MonoBehaviour
 
     public int health, maxHealth, mindEnergy, maxMindEnergy, skillPoints, healPower, megaHealPower, damage, slashDamage, sporeDamage, spawnCostReduction, 
     recallCostReduction, boostedSpawnLevel, flipLevel, actionPoints = 5;
-    public int numOfRats = 0,numOfPigeons = 0,numOfRaccoons = 0,numOfBoars = 0,numOfFalcons = 0;
+    public int numOfRats = 0,numOfPigeons = 0,numOfRaccoons = 0,numOfBoars = 0,numOfFalcons = 0,numOfWateringCans=0,numOfCrystals=0;
     public float critRate, creatureCritRate, shieldRate, lifestealRate;
     public bool hasHeal, hasMegaHeal, hasSlash, hasSporeBomb, hasBoostedSpawn, hasFlip;
+    public Enums.Enemy selectedType;
+    public bool placingUnit = false;
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,45 @@ public class PlayerStats : MonoBehaviour
 
         if(GameObject.Find("Health Bar")){
             GameObject.Find("Health Bar").GetComponent<Slider>().value = health;
+        }
+    }
+    public bool hasUnits(Enums.Enemy enemy){
+        switch((int)enemy){
+            case 1:
+                if(numOfRats>0)return true;
+                break;
+            case 2:
+                if(numOfPigeons>0)return true;
+                break;
+            case 3:
+                if(numOfBoars>0)return true;
+                break;
+            case 4:
+                if(numOfRaccoons>0)return true;
+                break;
+            case 5:
+                if(numOfFalcons>0)return true;
+                break;
+        }
+        return false;
+    }
+    public void decUnit(Enums.Enemy e){
+        switch((int)e){
+            case 1:
+                numOfRats--;
+                break;
+            case 2:
+                numOfPigeons--;
+                break;
+            case 3:
+                numOfBoars--;
+                break;
+            case 4:
+                numOfRaccoons--;
+                break;
+            case 5:
+                numOfFalcons--;
+                break;
         }
     }
 

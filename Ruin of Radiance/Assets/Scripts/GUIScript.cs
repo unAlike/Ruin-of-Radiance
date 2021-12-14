@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class GUIScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    Button invBtn, mapBtn, sklBtn;
+    GameObject invBtn, mapBtn, sklBtn, questBtn;
     EventSystem EventSystem;
-    GameObject invPanel, mapPanel, sklPanel, hoverPanel, SkillPointText;
+    GameObject invPanel, mapPanel, sklPanel, hoverPanel, SkillPointText, questPanel;
     string activeBtn;
     [SerializeField]
     bool openGUI = false;
@@ -17,27 +18,52 @@ public class GUIScript : MonoBehaviour
     int healthUpgradePoints, sheildPoints, lifestealPoints, healPoints, megaHealPoints = 0;
     int damagePoints, critPoints, creatureCritPoints, slashPoints, sporeBombPoints = 0;
     int mindEnergyPoints, spawnPoints, recallPoints, boostedSpawnPoints, flipPoints = 0;
+    Movement movement;
+    [SerializeField]
+    List<Quest> quests = new List<Quest>();
     
 
     void Start()
     {
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         stats = GameObject.Find("Character").GetComponent<PlayerStats>();
+
         invPanel = GameObject.Find("InventoryPanel");
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
+        questPanel = GameObject.Find("QuestPanel");
+
+        sklBtn = GameObject.Find("SkillTreeButton");
+        questBtn = GameObject.Find("QuestButton");
+        mapBtn = GameObject.Find("MapButton");
+
         hoverPanel = GameObject.Find("HoverPanel");
         SkillPointText = GameObject.Find("SkillPointText");
         hoverPanel.SetActive(false);
         GameObject.Find("HealthBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("DamageBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("MindBtn1").GetComponent<SkillTreeButton>().unlocked = true;
+        movement = GameObject.Find("Character").GetComponent<Movement>();
+        PopulateQuests();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(movement.inCombat){
+            sklBtn.SetActive(false);
+            mapBtn.SetActive(false);
+            questBtn.SetActive(false);
+            setInventoryCreatureButtons(true);
+        }
+        else{
+            sklBtn.SetActive(true);
+            mapBtn.SetActive(true);
+            questBtn.SetActive(true);
+            setInventoryCreatureButtons(false);
+        }
         updateUIBars();
+        updateCreatureCounts();
         if(hoverPanel.activeSelf){
             Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
             pos.z = 20;
@@ -45,33 +71,6 @@ public class GUIScript : MonoBehaviour
         }
         if(EventSystem.currentSelectedGameObject){
             openGUI=true;
-            switch(EventSystem.currentSelectedGameObject.name){
-                case "InventoryButton":
-                    Debug.Log(EventSystem.currentSelectedGameObject.name);
-                    invPanel.SetActive(true);
-                    mapPanel.SetActive(false);
-                    sklPanel.SetActive(false);
-                    break;
-                case "MapButton":
-                    Debug.Log(EventSystem.currentSelectedGameObject.name);
-                    invPanel.SetActive(false);
-                    mapPanel.SetActive(true);
-                    sklPanel.SetActive(false);
-                    break;
-                case "SkillTreeButton":
-                    Debug.Log(EventSystem.currentSelectedGameObject.name);
-                    invPanel.SetActive(false);
-                    mapPanel.SetActive(false);
-                    sklPanel.SetActive(true);
-                    break;
-                case null:
-                    openGUI=false;
-                    break;
-                // default:
-                //     openGUI = false;
-                //     break;
-                
-            }
         }
         else{
             openGUI = false;
@@ -267,7 +266,177 @@ public class GUIScript : MonoBehaviour
             }
         }
         setPanel(obj);
+    }
+    public void setSelectedUnit(int type){
+        if(movement.inCombat){
+            if(stats.hasUnits((Enums.Enemy)type)) stats.selectedType = (Enums.Enemy)type;
+            GameObject.Find("Character").gameObject.transform.parent.transform.parent.gameObject.GetComponent<CombatLogic>().summonCreatureHighlight();
+        }
+    }
+    public void setInventoryCreatureButtons(bool enabled){
+        if(invPanel.activeSelf){
+            if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Rat").GetComponent<Button>().enabled = enabled;
 
+            if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Pigeon").GetComponent<Button>().enabled = enabled;
+
+            if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Raccoon").GetComponent<Button>().enabled = enabled;
+
+            if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Falcon").GetComponent<Button>().enabled = enabled;
+
+            if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Boar").GetComponent<Button>().enabled = enabled;
+
+            if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Button>().enabled = false;
+            else GameObject.Find("Watering Can").GetComponent<Button>().enabled = enabled;
+
+            if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Button>().enabled = false;   
+            else GameObject.Find("Crystal").GetComponent<Button>().enabled = enabled;
+        }
+        
+    }
+    public void updateCreatureCounts(){
+        if(invPanel.activeSelf){
+            GameObject.Find("Rat").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRats;
+            GameObject.Find("Pigeon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfPigeons;
+            GameObject.Find("Raccoon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfRaccoons;
+            GameObject.Find("Falcon").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfFalcons;
+            GameObject.Find("Boar").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfBoars;
+            GameObject.Find("Watering Can").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfWateringCans;
+            GameObject.Find("Crystal").transform.GetChild(0).GetComponent<Text>().text = "x" + stats.numOfCrystals;
+
+            if(stats.numOfRats<=0) GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Rat").GetComponent<Image>().color = new Color(255,255,255,255);
+
+            if(stats.numOfPigeons<=0) GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Pigeon").GetComponent<Image>().color = new Color(255,255,255,255);
+
+            if(stats.numOfRaccoons<=0) GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Raccoon").GetComponent<Image>().color = new Color(255,255,255,255);
+            
+            if(stats.numOfFalcons<=0) GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Falcon").GetComponent<Image>().color = new Color(255,255,255,255);
+
+            if(stats.numOfBoars<=0) GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Boar").GetComponent<Image>().color = new Color(255,255,255,255);
+
+            if(stats.numOfWateringCans<=0) GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Watering Can").GetComponent<Image>().color = new Color(255,255,255,255);
+
+            if(stats.numOfCrystals<=0) GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,0);
+            else GameObject.Find("Crystal").GetComponent<Image>().color = new Color(255,255,255,255);
+        }
+    }
+    public void OpenInventory(){
+        openGUI = true;
+        invPanel.SetActive(true);
+        mapPanel.SetActive(false);
+        sklPanel.SetActive(false);
+        questPanel.SetActive(false);
+    }
+    public void OpenMap(){
+        openGUI = true;
+        invPanel.SetActive(false);
+        mapPanel.SetActive(true);
+        sklPanel.SetActive(false);
+        questPanel.SetActive(false);
+    }
+    public void OpenSkillTree(){
+        openGUI = true;
+        invPanel.SetActive(false);
+        mapPanel.SetActive(false);
+        sklPanel.SetActive(true);
+        questPanel.SetActive(false);
+    }
+    public void OpenQuests(){
+        openGUI = true;
+        invPanel.SetActive(false);
+        mapPanel.SetActive(false);
+        sklPanel.SetActive(false);
+        questPanel.SetActive(true);
+    }
+    public void PopulateQuests(){
+        foreach(Transform t in GameObject.Find("Content").transform){
+            GameObject.Destroy(t.gameObject);
+        }
+        foreach(Quest q in quests){
+            GameObject item = Instantiate(Resources.Load<GameObject>("QuestItem"),Vector3.zero,Quaternion.identity);
+            GameQuest gamequest = item.AddComponent<GameQuest>();
+            gamequest.Title = q.Title;
+            gamequest.Description = q.Description.Replace("\\n", "\n");
+            gamequest.completed = q.completed;
+            gamequest.available = q.available;
+            item.transform.GetChild(0).gameObject.GetComponent<Text>().text = gamequest.Title;
+
+            //item.transform.position = GameObject.Find("Content").transform.position;
+            item.transform.position = new Vector3(0,0,0);
+            item.transform.parent = GameObject.Find("Content").transform;
+            item.transform.localScale = new Vector3(1,1,1);
+            item.transform.localPosition = new Vector3(0,-30-(50*quests.IndexOf(q)),0);
+            item.GetComponent<Button>().onClick.AddListener(delegate { QuestInfo(gamequest);});
+            if(!gamequest.available){
+                item.GetComponent<Button>().interactable = false;
+            }
+            if(gamequest.completed){
+                item.GetComponent<Button>().interactable = false;
+                Color color;
+                ColorUtility.TryParseHtmlString("#3F9044", out color);
+                item.transform.GetChild(0).gameObject.GetComponent<Text>().color = color;
+            }
+        }
+    }
+    public void ReopulateQuests(){
+        Debug.Log("Repop");
+        foreach(Quest q in quests){
+            Debug.Log(q.Title);
+            GameObject item = GameObject.Find("Content").transform.GetChild(quests.IndexOf(q)).gameObject;
+            GameQuest gamequest = item.GetComponent<GameQuest>();
+            gamequest.Title = q.Title;
+            gamequest.Description = q.Description.Replace("\\n", "\n");
+            gamequest.completed = q.completed;
+            gamequest.available = q.available;
+            item.transform.GetChild(0).gameObject.GetComponent<Text>().text = gamequest.Title;
+            item.GetComponent<Button>().onClick.AddListener(delegate { QuestInfo(gamequest);});
+
+            if(gamequest.completed){
+                item.GetComponent<Button>().interactable = false;
+                Color color;
+                ColorUtility.TryParseHtmlString("#3F9044", out color);
+                item.transform.GetChild(0).gameObject.GetComponent<Text>().color = color;
+            }
+            else{
+                if(!gamequest.available){
+                    item.GetComponent<Button>().interactable = false;
+                }
+                else{
+                    item.GetComponent<Button>().interactable = false;
+                
+                    item.GetComponent<Button>().interactable = true;
+                    Color color;
+                    ColorUtility.TryParseHtmlString("#00FF06", out color);
+                    item.transform.GetChild(0).gameObject.GetComponent<Text>().color = color;
+                }
+            }
+
+            
+            
+        }
+    }
+    public void QuestInfo(GameQuest gq){
+        GameObject questInfo = GameObject.Find("QuestInfo");
+        questInfo.transform.GetChild(0).gameObject.GetComponent<Text>().text = gq.Title;
+        questInfo.transform.GetChild(1).gameObject.GetComponent<Text>().text = gq.Description.Replace("\\n", "\n");
+    }
+    public Quest GetGameQuest(string s){
+        foreach(Quest gq in quests){
+            if(gq.Title == s){
+                return gq;
+            }
+        }
+        return null;
     }
 
 }

@@ -145,10 +145,45 @@ public class CombatLogicScriptEditor : Editor{
                     unit.getUnitSprite().transform.position = unit.getUnitSprite().transform.parent.GetComponent<SpriteRenderer>().transform.position + new Vector3(element.FindPropertyRelative("x").intValue+.5f,element.FindPropertyRelative("y").intValue-2.75f,0);
                 }
             }
-            
         }
         serializedObject.Update();
 		list.DoLayoutList();
 		serializedObject.ApplyModifiedProperties();
     }
+    [MenuItem("RoR/Combat/Exit Combat")]
+    static void Exit(){
+        // logic.endCombat();
+        if(GameObject.Find("Character").transform.parent){
+            CombatLogic logic = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            logic.endCombat();
+        }
+        else{
+            Debug.Log("No Combat Running");
+        }
+    }
+    [MenuItem("RoR/Combat/End Turn")]
+    static void EndTurn(){
+        if(GameObject.Find("Character").transform.parent){
+            CombatLogic logic = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            logic.endTurn();
+        }
+        else{
+            Debug.Log("No Combat Running");
+        }
+    }
+    [MenuItem("RoR/Combat/Debug")]
+    static void DebugLogic(){
+        if(GameObject.Find("Character").transform.parent){
+            CombatLogic logic = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            logic.ReDebug();
+        }
+        else{
+            Debug.Log("No Combat Running");
+        }
+    }
+    [MenuItem("RoR/Debug")]
+    static void GameDebug(){
+        GameObject.Find("Canvas").GetComponent<GUIScript>().ReopulateQuests();
+    }
+    
 }

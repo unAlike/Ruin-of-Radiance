@@ -25,8 +25,16 @@ public class CombatUnit : ICloneable {
         this.type = type;
         Debug.Log("Created combatUnit");
     }
-    public void setHealth(int health){
+    public void setHealth(int health){ 
         currentHealth=health;
+        
+        if(currentHealth>=0 && maxHealth>=0){
+            Debug.Log("MaxHealth: " + maxHealth + " \nCurHealth: " + currentHealth + "\n" + ((float)maxHealth/(float)currentHealth));
+            unitSprite.transform.GetChild(0).localScale = new Vector3(1/((float)maxHealth/(float)currentHealth),0.08769075f,0);
+        }
+        else unitSprite.transform.GetChild(0).gameObject.SetActive(false);
+       
+        
     }
     public int getHealth(){
         return currentHealth;

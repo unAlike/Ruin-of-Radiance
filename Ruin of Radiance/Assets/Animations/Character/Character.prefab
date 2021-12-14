@@ -615,6 +615,8 @@ MonoBehaviour:
   numOfRaccoons: 0
   numOfBoars: 0
   numOfFalcons: 0
+  numOfWateringCans: 0
+  numOfCrystals: 0
   critRate: 0
   creatureCritRate: 0
   shieldRate: 0
@@ -625,6 +627,8 @@ MonoBehaviour:
   hasSporeBomb: 0
   hasBoostedSpawn: 0
   hasFlip: 0
+  selectedType: 0
+  placingUnit: 0
 --- !u!114 &8585060457875674008
 MonoBehaviour:
   m_ObjectHideFlags: 0

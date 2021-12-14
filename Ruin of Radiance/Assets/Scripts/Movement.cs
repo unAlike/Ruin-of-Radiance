@@ -48,13 +48,13 @@ public class Movement : MonoBehaviour
             mag = Mathf.Sqrt(Mathf.Pow(movement.x,2) + Mathf.Pow(movement.y,2));
             if(Input.GetKey(KeyCode.LeftShift)){
                 if(stamina>0){
-                    stamina-=.1f;
+                    stamina-=.5f;
                     movement*=2f;
                 }
             }
             else{
                 if(stamina<100){
-                    stamina+=.1f;
+                    stamina+=.25f;
                 }
             }
         }
@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit something");
+        // Debug.Log("Hit something");
         if (collision.gameObject.CompareTag("wall")) {
 
             // does nothing
@@ -78,7 +78,7 @@ public class Movement : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("combatGrid")) {
-            Debug.Log("Combat Collision detected");
+            // Debug.Log("Combat Collision detected");
 
             if(!enteringCombat && !inCombat){
                 enteringCombat = true;
