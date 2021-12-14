@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7787029326137315476}
   - component: {fileID: 7284160980913779147}
   - component: {fileID: 5691036040519320603}
+  - component: {fileID: 8517181572274673364}
   m_Layer: 5
   m_Name: FalconTower
   m_TagString: Untagged
@@ -75,6 +76,241 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8517181572274673364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313245659045340597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 313245659045340597}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &497652534500460807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1796771997613353335}
+  - component: {fileID: 8255248886806189947}
+  - component: {fileID: 3845437180643748912}
+  - component: {fileID: 3008019066531506048}
+  - component: {fileID: 3186709529861648404}
+  m_Layer: 5
+  m_Name: SporeBomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1796771997613353335
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497652534500460807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7419542133112479694}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 77.2, y: -31.3}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8255248886806189947
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497652534500460807}
+  m_CullTransparentMesh: 1
+--- !u!114 &3845437180643748912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497652534500460807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 31c3c330bf5d8bb42b7caea7664878e3, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3008019066531506048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497652534500460807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 3845437180643748912}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3186709529861648404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497652534500460807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setAbilitiesPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 497652534500460807}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &916953739114899480
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +322,7 @@ GameObject:
   - component: {fileID: 3391416439626344403}
   - component: {fileID: 5243825274133272165}
   - component: {fileID: 7101612335846533878}
+  - component: {fileID: 8983266871064705719}
   m_Layer: 5
   m_Name: TrashFort
   m_TagString: Untagged
@@ -150,6 +387,338 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8983266871064705719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916953739114899480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 916953739114899480}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1321948730578725678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7425258304493271690}
+  - component: {fileID: 167489861208782171}
+  - component: {fileID: 679710627471604219}
+  - component: {fileID: 9119934812327446528}
+  - component: {fileID: 1218087054572367678}
+  - component: {fileID: 828845774256767151}
+  m_Layer: 5
+  m_Name: AbilitiesButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7425258304493271690
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948730578725678}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.42016527}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8162634892268642990}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 136.6, y: 199.70007}
+  m_SizeDelta: {x: 104.9209, y: 62}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &167489861208782171
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948730578725678}
+  m_CullTransparentMesh: 1
+--- !u!114 &679710627471604219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948730578725678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e0773e977ecafaf4a87fcb3c32b7850a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 1
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9119934812327446528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948730578725678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 679710627471604219}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8162634891256970682}
+        m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+        m_MethodName: OpenAbilities
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1218087054572367678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948730578725678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2b73c60db64cb4399c4936ef223807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!331 &828845774256767151
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321948730578725678}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 1ffdb50b21d6fde4e9b755e75a49ef78, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1756376682582374235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6911593752439351288}
+  - component: {fileID: 7671368083740278170}
+  - component: {fileID: 3221997013597371519}
+  m_Layer: 5
+  m_Name: Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6911593752439351288
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756376682582374235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4526696179410580147}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 73.972, y: 48.09}
+  m_SizeDelta: {x: 147.95, y: 17.13}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7671368083740278170
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756376682582374235}
+  m_CullTransparentMesh: 1
+--- !u!114 &3221997013597371519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756376682582374235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0.07741523, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!1 &1939224786209505912
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +730,7 @@ GameObject:
   - component: {fileID: 7722322205262718326}
   - component: {fileID: 6584705478268911336}
   - component: {fileID: 8379491550274061505}
+  - component: {fileID: 1711282113829420635}
   m_Layer: 5
   m_Name: BoarBar
   m_TagString: Untagged
@@ -225,6 +795,63 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1711282113829420635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939224786209505912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 1939224786209505912}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2130757183622638685
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,6 +1156,86 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2650257994604715363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7419542133112479694}
+  - component: {fileID: 6968687212955451369}
+  - component: {fileID: 7870971468232750175}
+  m_Layer: 5
+  m_Name: AbilitiesPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7419542133112479694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650257994604715363}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7086474175353037063}
+  - {fileID: 1863141362152065974}
+  - {fileID: 4446164862179185792}
+  - {fileID: 1796771997613353335}
+  - {fileID: 4526696179410580147}
+  m_Father: {fileID: 8162634892268642990}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.0025634766, y: -131.98001}
+  m_SizeDelta: {x: 0.0050354, y: -252.88}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6968687212955451369
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650257994604715363}
+  m_CullTransparentMesh: 1
+--- !u!114 &7870971468232750175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650257994604715363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d08be74921b950e4a81f02c21af9250a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &2679465433272559062
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +1247,7 @@ GameObject:
   - component: {fileID: 5819870398014357262}
   - component: {fileID: 2267706630206070150}
   - component: {fileID: 2785331572244245275}
+  - component: {fileID: 2038594572054514126}
   m_Layer: 5
   m_Name: Alcatrash
   m_TagString: Untagged
@@ -604,6 +1312,63 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2038594572054514126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679465433272559062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 2679465433272559062}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2739080264886714945
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +1459,7 @@ GameObject:
   - component: {fileID: 5132633354484136203}
   - component: {fileID: 7952987625031872934}
   - component: {fileID: 2596137911683363142}
+  - component: {fileID: 4565139996281836466}
   m_Layer: 5
   m_Name: StarterHouse
   m_TagString: Untagged
@@ -758,6 +1524,63 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4565139996281836466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3146514730538253157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3146514730538253157}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3158310204209718152
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +1650,7 @@ RectTransform:
   - {fileID: 5312126199512994146}
   - {fileID: 6948040141523391649}
   m_Father: {fileID: 8162634892268642990}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1188,6 +2011,184 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b73c60db64cb4399c4936ef223807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4873703155375262887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4446164862179185792}
+  - component: {fileID: 8218387751199165455}
+  - component: {fileID: 5381549330365886683}
+  - component: {fileID: 8778605942652048886}
+  - component: {fileID: 2127168198653710665}
+  m_Layer: 5
+  m_Name: Slash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4446164862179185792
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873703155375262887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7419542133112479694}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 75.8, y: 37.2}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8218387751199165455
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873703155375262887}
+  m_CullTransparentMesh: 1
+--- !u!114 &5381549330365886683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873703155375262887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: fcc2525ec48c41042a9742c0993034b4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8778605942652048886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873703155375262887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 5381549330365886683}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2127168198653710665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4873703155375262887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setAbilitiesPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 4873703155375262887}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4905246223843860099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +2639,184 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b73c60db64cb4399c4936ef223807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5702186748263975720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7086474175353037063}
+  - component: {fileID: 2737139595441386985}
+  - component: {fileID: 7331523803786622503}
+  - component: {fileID: 3436848889933237585}
+  - component: {fileID: 4037940791809280886}
+  m_Layer: 5
+  m_Name: MinorHeal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7086474175353037063
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702186748263975720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7419542133112479694}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -85.2, y: 37.2}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2737139595441386985
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702186748263975720}
+  m_CullTransparentMesh: 1
+--- !u!114 &7331523803786622503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702186748263975720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 00541865f6559f244b9b46c43b471622, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3436848889933237585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702186748263975720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7331523803786622503}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4037940791809280886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5702186748263975720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setAbilitiesPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 5702186748263975720}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6023086940466001818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +3330,419 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b73c60db64cb4399c4936ef223807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6616580961786289173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4526696179410580147}
+  - component: {fileID: 6843107390506230997}
+  - component: {fileID: 9003904284588575034}
+  m_Layer: 5
+  m_Name: AbilitiesHoverPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4526696179410580147
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616580961786289173}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6911593752439351288}
+  - {fileID: 4473337408080808917}
+  m_Father: {fileID: 7419542133112479694}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -143.61499, y: 171.23868}
+  m_SizeDelta: {x: 149.71, y: 58.839996}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &6843107390506230997
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616580961786289173}
+  m_CullTransparentMesh: 1
+--- !u!114 &9003904284588575034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6616580961786289173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.35686275, g: 0.3137255, b: 0.20784315, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6646079389232884013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1863141362152065974}
+  - component: {fileID: 1278450630844933896}
+  - component: {fileID: 202724463618287556}
+  - component: {fileID: 357439160388259904}
+  - component: {fileID: 5909990580772384578}
+  m_Layer: 5
+  m_Name: MajorHeal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1863141362152065974
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646079389232884013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7419542133112479694}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -85.2, y: -30.8}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1278450630844933896
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646079389232884013}
+  m_CullTransparentMesh: 1
+--- !u!114 &202724463618287556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646079389232884013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: b0a4706ebf7901148878a656aa7cd12b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &357439160388259904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646079389232884013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 202724463618287556}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5909990580772384578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646079389232884013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setAbilitiesPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 6646079389232884013}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableAbilitiesHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &6746131836399850093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4473337408080808917}
+  - component: {fileID: 2611197746527513108}
+  - component: {fileID: 1548753002398103295}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4473337408080808917
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746131836399850093}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4526696179410580147}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 75.28, y: 24.8}
+  m_SizeDelta: {x: 142.38, y: 33.61}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2611197746527513108
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746131836399850093}
+  m_CullTransparentMesh: 1
+--- !u!114 &1548753002398103295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746131836399850093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.2706924, g: 0.7264151, b: 0.2777366, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 11
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!1 &6752812490743690208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770245960263872243}
+  - component: {fileID: 6345932532502984405}
+  - component: {fileID: 3018239410731356601}
+  m_Layer: 5
+  m_Name: Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &770245960263872243
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752812490743690208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4116904353644203639}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 73.972, y: 48.09}
+  m_SizeDelta: {x: 147.95, y: 17.13}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &6345932532502984405
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752812490743690208}
+  m_CullTransparentMesh: 1
+--- !u!114 &3018239410731356601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752812490743690208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0.07741523, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!1 &6841743987577249839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2277,6 +3869,85 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &7005699561842488718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 315716972429268997}
+  - component: {fileID: 5715532400678010190}
+  - component: {fileID: 2700559838437626119}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &315716972429268997
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005699561842488718}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4116904353644203639}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 75.28, y: 24.8}
+  m_SizeDelta: {x: 142.38, y: 33.61}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5715532400678010190
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005699561842488718}
+  m_CullTransparentMesh: 1
+--- !u!114 &2700559838437626119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005699561842488718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.2706924, g: 0.7264151, b: 0.2777366, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 11
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
 --- !u!1 &7101757713353602355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,6 +4152,7 @@ GameObject:
   - component: {fileID: 3646131259323122282}
   - component: {fileID: 7905084756720372910}
   - component: {fileID: 8359328545322460605}
+  - component: {fileID: 826562139774979935}
   m_Layer: 5
   m_Name: Downtown
   m_TagString: Untagged
@@ -2545,6 +4217,63 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &826562139774979935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7998101036516910867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 7998101036516910867}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8141493608838093270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,8 +4390,9 @@ RectTransform:
   - {fileID: 7722322205262718326}
   - {fileID: 7787029326137315476}
   - {fileID: 3391416439626344403}
+  - {fileID: 4116904353644203639}
   m_Father: {fileID: 8162634892268642990}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2890,7 +4620,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2902,7 +4632,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634890839816482}
@@ -2918,7 +4648,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3398,7 +5128,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3410,7 +5140,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634891097232389}
@@ -3426,7 +5156,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3698,7 +5428,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3710,7 +5440,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634891163756991}
@@ -3726,7 +5456,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4192,7 +5922,7 @@ RectTransform:
   - {fileID: 8162634891427160328}
   - {fileID: 8162634891195351729}
   m_Father: {fileID: 8162634892268642990}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0.39733684}
@@ -4495,11 +6225,11 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
-          m_Mode: 2
+          m_MethodName: enableSkillTreeHoverPanel
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 8162634891334267420}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -4507,11 +6237,11 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
-          m_Mode: 1
+          m_MethodName: setSkillTreePanel
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 8162634891334267420}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -4523,7 +6253,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4716,7 +6446,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4728,7 +6458,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634891338639492}
@@ -4744,7 +6474,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5236,11 +6966,11 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
-          m_Mode: 1
+          m_MethodName: setSkillTreePanel
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 8162634891654201018}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -5248,11 +6978,11 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
-          m_Mode: 2
+          m_MethodName: enableSkillTreeHoverPanel
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 8162634891654201018}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -5264,7 +6994,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5611,7 +7341,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5623,7 +7353,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634891730493903}
@@ -5639,7 +7369,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5836,7 +7566,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8162634892268642990}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6104,9 +7834,11 @@ RectTransform:
   - {fileID: 2709846107188287068}
   - {fileID: 8162634891286980631}
   - {fileID: 8162634891078825917}
+  - {fileID: 7425258304493271690}
   - {fileID: 8162634891965461430}
   - {fileID: 4858577536116611745}
   - {fileID: 8162634891316975913}
+  - {fileID: 7419542133112479694}
   - {fileID: 8162634890803766155}
   - {fileID: 8162634892672104679}
   m_Father: {fileID: 8162634892610899514}
@@ -6300,7 +8032,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6312,7 +8044,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634892300068715}
@@ -6328,7 +8060,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6521,11 +8253,11 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
-          m_Mode: 1
+          m_MethodName: setSkillTreePanel
+          m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -6533,11 +8265,11 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
-          m_Mode: 2
+          m_MethodName: enableSkillTreeHoverPanel
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 8162634892397824028}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -6549,7 +8281,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6742,7 +8474,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6754,7 +8486,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634892447329426}
@@ -6770,7 +8502,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7038,7 +8770,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7050,7 +8782,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634892483428573}
@@ -7066,7 +8798,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7295,7 +9027,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7307,7 +9039,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634892645184782}
@@ -7323,7 +9055,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7370,7 +9102,7 @@ RectTransform:
   - {fileID: 5341163548992223979}
   - {fileID: 1572771435730217949}
   m_Father: {fileID: 8162634892268642990}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7427,7 +9159,7 @@ GameObject:
   - component: {fileID: 8162634892707215457}
   - component: {fileID: 8162634892707215458}
   m_Layer: 5
-  m_Name: HoverPanel
+  m_Name: SkillTreeHoverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7676,7 +9408,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7688,7 +9420,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634892720771132}
@@ -7704,7 +9436,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7972,7 +9704,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7984,7 +9716,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634892768979269}
@@ -8000,7 +9732,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8193,7 +9925,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: enableHoverPanel
+          m_MethodName: enableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8205,7 +9937,7 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: setPanel
+          m_MethodName: setSkillTreePanel
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 8162634892785761359}
@@ -8221,7 +9953,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8162634891256970682}
           m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
-          m_MethodName: disableHoverPanel
+          m_MethodName: disableSkillTreeHoverPanel
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8625,6 +10357,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b73c60db64cb4399c4936ef223807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8906620868567382329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4116904353644203639}
+  - component: {fileID: 3129830122289452108}
+  - component: {fileID: 5665143004174128478}
+  m_Layer: 5
+  m_Name: MapHoverPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4116904353644203639
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906620868567382329}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 770245960263872243}
+  - {fileID: 315716972429268997}
+  m_Father: {fileID: 8162634890803766155}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -143.61499, y: 171.23868}
+  m_SizeDelta: {x: 149.71, y: 58.839996}
+  m_Pivot: {x: 0, y: 0}
+--- !u!222 &3129830122289452108
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906620868567382329}
+  m_CullTransparentMesh: 1
+--- !u!114 &5665143004174128478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8906620868567382329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.35686275, g: 0.3137255, b: 0.20784315, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8950795794865429583
 GameObject:
   m_ObjectHideFlags: 0
@@ -8636,6 +10445,7 @@ GameObject:
   - component: {fileID: 7191957545899757023}
   - component: {fileID: 5446554723455406192}
   - component: {fileID: 7001352659732775337}
+  - component: {fileID: 5676268710185607038}
   m_Layer: 5
   m_Name: Office
   m_TagString: Untagged
@@ -8700,6 +10510,63 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5676268710185607038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950795794865429583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8950795794865429583}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &9213285380923885528
 GameObject:
   m_ObjectHideFlags: 0
@@ -8711,6 +10578,7 @@ GameObject:
   - component: {fileID: 7001963362822172411}
   - component: {fileID: 415442148296875849}
   - component: {fileID: 8585111841558838994}
+  - component: {fileID: 2620643201810133298}
   m_Layer: 5
   m_Name: Uptown
   m_TagString: Untagged
@@ -8775,3 +10643,60 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2620643201810133298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9213285380923885528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: setMapPanel
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 9213285380923885528}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: enableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8162634891256970682}
+          m_TargetAssemblyTypeName: GUIScript, Assembly-CSharp
+          m_MethodName: disableMapHoverPanel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
