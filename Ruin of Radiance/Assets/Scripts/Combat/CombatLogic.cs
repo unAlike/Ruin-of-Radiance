@@ -61,33 +61,20 @@ public class CombatLogic : MonoBehaviour {
         // moveScript.inCombat = true;
 
         createPlayer();
-        
-        
 
         Character.setIsFriendly(true);
         CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
         CombatButtonGUI.SetActive(false);
-        
         Debug.Log("Finished Start");
 
     }
     void Update() {
-        /*   
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log("Space slammed"); 
-            endTurn();
-        }
-        */
-        
 
     }
     public void createPlayer() {
         Character = new CombatUnit(GameObject.Find("Character"),stats.maxHealth,stats.health,stats.damage,1,stats.critRate,true,false,0,0,Enums.Enemy.Character);
         grid.getTiles()[0,1].setTileUnit(Character);
         grid.getTiles()[0,1].setIsOccupied(true);
-        // Character = new Unit();
-        // Character.unitSprite = GameObject.Find("Dynamic Sprite");
-        // Debug.Log("Player Created "); 
     }
     public void spawnEnemies() {
         CombatUnit unit;
@@ -141,17 +128,21 @@ public class CombatLogic : MonoBehaviour {
         this.enabled = false; // disables the enemy collision
         Debug.Log("Collision now disabled");
         //Starts Combat
+        GameObject.Find("Character").transform.Find("Character VCam").parent = null;
+        GameObject.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = null;
         GameObject.Find("Character").transform.parent = gameObject.transform.GetChild(2).transform;
         Debug.Log("SetParent");
         startCombat();
     }
     public void startCombat() {
         inCombat = true;
+        moveScript.inCombat = true;
+        
         // puts player into the combat scene
         gameObject.transform.Find("CombatGrid").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 100;
         
-        moveScript.inCombat = true;
+        
         // swap for snapUnit function 
         grid.getTiles()[0,1].snapUnit();
         // snap enemies to grid
@@ -216,6 +207,8 @@ public class CombatLogic : MonoBehaviour {
             GameObject.Find("CombatGrid").SetActive(false);
             Debug.Log("You have ended the battle");
             moveScript.inCombat = false;
+            GameObject.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Character").transform;
+            GameObject.Find("Character VCam").transform.parent = GameObject.Find("Character").transform;
             gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
             
             inCombat = false;

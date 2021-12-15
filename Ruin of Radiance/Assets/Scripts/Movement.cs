@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -27,8 +28,11 @@ public class Movement : MonoBehaviour
     public AudioClip[] walkDirt, walkConcrete;
     enum Material {DIRT,CONCRETE,CRYSTAL};
     Material groundMaterial;
+    Scene activeScene;
     void Start()
     {
+        activeScene = SceneManager.GetActiveScene();
+        DontDestroyOnLoad(gameObject);
         tilemap = GameObject.Find("Ground").GetComponent<Tilemap>();
         audioSource = GameObject.Find("CharacterAudioSource").GetComponent<AudioSource>();
         character = GetComponent<Rigidbody2D>();
@@ -41,6 +45,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(activeScene!=SceneManager.GetActiveScene()) Start();
         movement *= 0;
         if(!inCombat){
             movement.x = Input.GetAxisRaw("Horizontal");

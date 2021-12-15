@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GUIScript : MonoBehaviour
 {
@@ -21,10 +22,11 @@ public class GUIScript : MonoBehaviour
     Movement movement;
     [SerializeField]
     List<Quest> quests = new List<Quest>();
-    
+    Scene activeScene;
 
     void Start()
     {
+        activeScene = SceneManager.GetActiveScene();
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         stats = GameObject.Find("Character").GetComponent<PlayerStats>();
 
@@ -62,51 +64,53 @@ public class GUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(movement){
-            if(movement.inCombat){
-                sklBtn.SetActive(false);
-                mapBtn.SetActive(false);
-                questBtn.SetActive(false);
-                abilitiesPanel.SetActive(true);
-                abilBtn.SetActive(true);
-                setInventoryCreatureButtons(true);
+        if(activeScene!=SceneManager.GetActiveScene()) Start();
+        if(GameObject.Find("Character")!=null){
+            if(movement){
+                if(movement.inCombat){
+                    sklBtn.SetActive(false);
+                    mapBtn.SetActive(false);
+                    questBtn.SetActive(false);
+                    abilitiesPanel.SetActive(true);
+                    abilBtn.SetActive(true);
+                    setInventoryCreatureButtons(true);
+                }
+                else{
+                    sklBtn.SetActive(true);
+                    mapBtn.SetActive(true);
+                    questBtn.SetActive(true);
+                    setInventoryCreatureButtons(false);
+                    abilitiesPanel.SetActive(false);
+                    abilBtn.SetActive(false);
+                }
             }
             else{
-                sklBtn.SetActive(true);
-                mapBtn.SetActive(true);
-                questBtn.SetActive(true);
-                setInventoryCreatureButtons(false);
-                abilitiesPanel.SetActive(false);
-                abilBtn.SetActive(false);
+                movement = GameObject.Find("Character").GetComponent<Movement>();
+            }
+            updateUIBars();
+            updateCreatureCounts();
+            if(SkillTreeHoverPanel.activeSelf){
+                Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
+                pos.z = 20;
+                SkillTreeHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            }
+            if(AbilitiesHoverPanel.activeSelf){
+                Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
+                pos.z = 20;
+                AbilitiesHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            }
+            if(MapHoverPanel.activeSelf){
+                Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
+                pos.z = 20;
+                MapHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            }
+            if(EventSystem.currentSelectedGameObject){
+                openGUI=true;
+            }
+            else{
+                openGUI = false;
             }
         }
-        else{
-            movement = GameObject.Find("Character").GetComponent<Movement>();
-        }
-        updateUIBars();
-        updateCreatureCounts();
-        if(SkillTreeHoverPanel.activeSelf){
-            Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
-            pos.z = 20;
-            SkillTreeHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
-        }
-        if(AbilitiesHoverPanel.activeSelf){
-            Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
-            pos.z = 20;
-            AbilitiesHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
-        }
-        if(MapHoverPanel.activeSelf){
-            Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
-            pos.z = 20;
-            MapHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
-        }
-        if(EventSystem.currentSelectedGameObject){
-            openGUI=true;
-        }
-        else{
-            openGUI = false;
-        }
-        
     }
     public void FixedUpdate(){
         if(openGUI){
