@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toSceneName: 02_Uptown
   pos: {x: -16.5, y: 29}
+  clip: {fileID: 0}
   transition: {fileID: 1303888817}
   currentMusic: {fileID: 8300000, guid: b29208ca1b8bf1e4ebf10b6d00c5fbc8, type: 3}
 --- !u!1 &283870045
