@@ -350,7 +350,7 @@ public class CombatLogic : MonoBehaviour {
             RefreshHighlights();
             stats.mindEnergy = stats.maxMindEnergy;
             stats.actionPoints = 5;
-            
+            StaminaBar.SetActive(true);
             CombatButtonGUI.SetActive(false);
             GameObject.Find("Character").transform.parent = null;
             // GameObject.Find("CombatGrid").SetActive(false);
@@ -362,6 +362,8 @@ public class CombatLogic : MonoBehaviour {
             gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
             GameObject.Find("Character").transform.Find("Music").GetComponent<AudioSource>().clip = prevAudio;
             GameObject.Find("Character").transform.Find("Music").GetComponent<AudioSource>().Play();
+            DontDestroyOnLoad(GameObject.Find("Character"));
+            
             GameObject.Find("Canvas").GetComponent<GUIScript>().openGUI = false;
             inCombat = false;
             // allow for collecting creatures
