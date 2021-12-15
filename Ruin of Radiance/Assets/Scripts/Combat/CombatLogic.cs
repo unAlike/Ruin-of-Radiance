@@ -349,6 +349,8 @@ public class CombatLogic : MonoBehaviour {
             grid.clearHighlights();
             RefreshHighlights();
             stats.mindEnergy = stats.maxMindEnergy;
+            stats.actionPoints = 5;
+            
             CombatButtonGUI.SetActive(false);
             GameObject.Find("Character").transform.parent = null;
             // GameObject.Find("CombatGrid").SetActive(false);
@@ -364,6 +366,7 @@ public class CombatLogic : MonoBehaviour {
             inCombat = false;
             // allow for collecting creatures
             // remove dead or captured creatures
+            
         }
         
     }
