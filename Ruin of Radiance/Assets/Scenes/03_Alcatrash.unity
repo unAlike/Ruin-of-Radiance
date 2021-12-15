@@ -311,11 +311,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 222624977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4862e3b90dfcfab4a809536eacfd2d3a, type: 3}
+  m_Script: {fileID: 11500000, guid: afd229d6911aaab4f9d839c509efbaff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toSceneName: 02_Uptown
+  pos: {x: 85, y: 6}
   transition: {fileID: 222624978}
-  transitionTime: 1
+  currentMusic: {fileID: 8300000, guid: b29208ca1b8bf1e4ebf10b6d00c5fbc8, type: 3}
 --- !u!1 &318549926
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +600,92 @@ PrefabInstance:
     - target: {fileID: 4283361028672104106, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[1].Title
+      value: Take Down Al Trashino
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[2].Title
+      value: Take Down Tank Sinatra
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[3].Title
+      value: I refuse to pay Taxes - Boris
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[4].Title
+      value: 3 Million in 3 Hours - Jordan
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[5].Title
+      value: Pay the Boar Tab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[6].Title
+      value: Tou Byfore
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[1].available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[2].available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[3].available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[4].available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[5].available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[6].available
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[0].Description
+      value: Escape the first house
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[1].Description
+      value: Al Trashino can be found in the UpTown Area below pigeon park, east
+        of the raccoon alley.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[2].Description
+      value: Tank Sinatra can be found in the DownTown Area, south of the plaza,
+        in the middle of the Raccoon Woods.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[3].Description
+      value: Go fight Boris north of the plaza in the Rat Slums. His large house
+        can be found by directly traveling north from the plaze.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[4].Description
+      value: Go find Jordan Belfalcon in the Falcon Hedge Funds. Directly east of
+        Boris's manision, find a dirt path and you'll find the greedy talons.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[5].Description
+      value: Find the Boar Bar Owner directly east of the Raccoon Woods. Follow the
+        path towards the middle road and you'll find the bar in the alleyway.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8162634891256970682, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
+      propertyPath: quests.Array.data[6].Description
+      value: After finding all the minions of the Final Boss, Follow the birdge in
+        DownTown to find the mega-skyscraper where he resides.
       objectReference: {fileID: 0}
     - target: {fileID: 8162634891256970683, guid: 225db4d2baf66a24ba926cd931738f54, type: 3}
       propertyPath: m_Pivot.x
