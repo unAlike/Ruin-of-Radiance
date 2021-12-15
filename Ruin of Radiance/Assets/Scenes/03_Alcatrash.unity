@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1638491616124002281, guid: 5369dd830fc186940b26aa828850f7eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1638491616662878436, guid: 5369dd830fc186940b26aa828850f7eb, type: 3}
       propertyPath: m_Name
       value: CombatInteraction
@@ -148,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1638491616662878437, guid: 5369dd830fc186940b26aa828850f7eb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -133.73
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1638491616662878437, guid: 5369dd830fc186940b26aa828850f7eb, type: 3}
       propertyPath: m_LocalRotation.w
