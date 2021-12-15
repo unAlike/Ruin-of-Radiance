@@ -138,6 +138,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatInteraction
       objectReference: {fileID: 0}
+    - target: {fileID: 1638491616662878436, guid: 5369dd830fc186940b26aa828850f7eb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1638491616662878437, guid: 5369dd830fc186940b26aa828850f7eb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -465,6 +469,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &169662372 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4309359643107117400, guid: a50fef15c5903fd47baacba3a1d8819e, type: 3}
+  m_PrefabInstance: {fileID: 2074158356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &214382037
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3593,7 +3602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4575363787929800349, guid: cdab0a1c6911fa342ae26cf3627a595c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8526421387274165858, guid: cdab0a1c6911fa342ae26cf3627a595c, type: 3}
       propertyPath: m_SortingOrder
@@ -3609,11 +3618,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdab0a1c6911fa342ae26cf3627a595c, type: 3}
---- !u!95 &1761899403 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4309359643107117400, guid: a50fef15c5903fd47baacba3a1d8819e, type: 3}
-  m_PrefabInstance: {fileID: 2074158356}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1842138305
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,5 +3983,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7d391910fae9242a9fa594157b7420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 1761899403}
+  transition: {fileID: 169662372}
   transitionTime: 1
