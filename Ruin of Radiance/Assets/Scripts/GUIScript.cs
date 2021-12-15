@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GUIScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    GameObject invBtn, mapBtn, sklBtn, questBtn;
+    GameObject invBtn, mapBtn, sklBtn, questBtn,abilBtn;
     EventSystem EventSystem;
-    GameObject invPanel, mapPanel, sklPanel, hoverPanel, SkillPointText, questPanel;
+    GameObject invPanel, mapPanel, sklPanel, SkillTreeHoverPanel, SkillPointText, questPanel, abilitiesPanel, AbilitiesHoverPanel, MapHoverPanel;
     string activeBtn;
     [SerializeField]
     bool openGUI = false;
@@ -21,10 +22,11 @@ public class GUIScript : MonoBehaviour
     Movement movement;
     [SerializeField]
     List<Quest> quests = new List<Quest>();
-    
+    Scene activeScene;
 
     void Start()
     {
+        activeScene = SceneManager.GetActiveScene();
         EventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
         stats = GameObject.Find("Character").GetComponent<PlayerStats>();
 
@@ -32,14 +34,26 @@ public class GUIScript : MonoBehaviour
         mapPanel = GameObject.Find("MapPanel");
         sklPanel = GameObject.Find("SkillTreePanel");
         questPanel = GameObject.Find("QuestPanel");
+        abilitiesPanel = GameObject.Find("AbilitiesPanel");
 
         sklBtn = GameObject.Find("SkillTreeButton");
         questBtn = GameObject.Find("QuestButton");
         mapBtn = GameObject.Find("MapButton");
+        abilBtn = GameObject.Find("AbilitiesButton");
 
-        hoverPanel = GameObject.Find("HoverPanel");
+        SkillTreeHoverPanel = GameObject.Find("SkillTreeHoverPanel");
+        AbilitiesHoverPanel = GameObject.Find("AbilitiesHoverPanel");
+        MapHoverPanel = GameObject.Find("MapHoverPanel");
         SkillPointText = GameObject.Find("SkillPointText");
-        hoverPanel.SetActive(false);
+
+        abilitiesPanel.SetActive(false);
+        
+        abilBtn.SetActive(false);
+
+        SkillTreeHoverPanel.SetActive(false);
+        AbilitiesHoverPanel.SetActive(false);
+        MapHoverPanel.SetActive(false);
+
         GameObject.Find("HealthBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("DamageBtn1").GetComponent<SkillTreeButton>().unlocked = true;
         GameObject.Find("MindBtn1").GetComponent<SkillTreeButton>().unlocked = true;
@@ -56,32 +70,53 @@ public class GUIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(movement.inCombat){
-            sklBtn.SetActive(false);
-            mapBtn.SetActive(false);
-            questBtn.SetActive(false);
-            setInventoryCreatureButtons(true);
+        if(activeScene!=SceneManager.GetActiveScene()) Start();
+        if(GameObject.Find("Character")!=null){
+            if(movement){
+                if(movement.inCombat){
+                    sklBtn.SetActive(false);
+                    mapBtn.SetActive(false);
+                    questBtn.SetActive(false);
+                    abilitiesPanel.SetActive(true);
+                    abilBtn.SetActive(true);
+                    setInventoryCreatureButtons(true);
+                }
+                else{
+                    sklBtn.SetActive(true);
+                    mapBtn.SetActive(true);
+                    questBtn.SetActive(true);
+                    setInventoryCreatureButtons(false);
+                    abilitiesPanel.SetActive(false);
+                    abilBtn.SetActive(false);
+                }
+            }
+            else{
+                movement = GameObject.Find("Character").GetComponent<Movement>();
+            }
+            updateUIBars();
+            updateCreatureCounts();
+            if(SkillTreeHoverPanel.activeSelf){
+                Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
+                pos.z = 20;
+                SkillTreeHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            }
+            if(AbilitiesHoverPanel.activeSelf){
+                Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
+                pos.z = 20;
+                AbilitiesHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            }
+            if(MapHoverPanel.activeSelf){
+                Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
+                pos.z = 20;
+                MapHoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
+            }
+            if(EventSystem.currentSelectedGameObject){
+                openGUI=true;
+            }
+            else{
+                openGUI = false;
+            }
         }
-        else{
-            sklBtn.SetActive(true);
-            mapBtn.SetActive(true);
-            questBtn.SetActive(true);
-            setInventoryCreatureButtons(false);
-        }
-        updateUIBars();
-        updateCreatureCounts();
-        if(hoverPanel.activeSelf){
-            Vector3 pos = Input.mousePosition + new Vector3(3,3,0);
-            pos.z = 20;
-            hoverPanel.transform.position = Camera.main.ScreenToWorldPoint(pos);
-        }
-        if(EventSystem.currentSelectedGameObject){
-            openGUI=true;
-        }
-        else{
-            openGUI = false;
-        }
-        
     }
     public void FixedUpdate(){
         if(openGUI){
@@ -104,25 +139,97 @@ public class GUIScript : MonoBehaviour
         }
     }
 
-    public void enableHoverPanel(){
-        hoverPanel.SetActive(true);
+    public void enableSkillTreeHoverPanel(){
+        SkillTreeHoverPanel.SetActive(true);
     }
-    public void disableHoverPanel(){
-        hoverPanel.SetActive(false);
+    public void disableSkillTreeHoverPanel(){
+        SkillTreeHoverPanel.SetActive(false);
+    }
+    public void enableAbilitiesHoverPanel(){
+        AbilitiesHoverPanel.SetActive(true);
+    }
+    public void disableAbilitiesHoverPanel(){
+        AbilitiesHoverPanel.SetActive(false);
+    }
+    public void enableMapHoverPanel(){
+        MapHoverPanel.SetActive(true);
+    }
+    public void disableMapHoverPanel(){
+        MapHoverPanel.SetActive(false);
     }
 
-    public void setPanel(GameObject g){
+    public void setSkillTreePanel(GameObject g){
         if(!g.GetComponent<SkillTreeButton>().unlocked){
-            hoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.red;
-            hoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().color = Color.red;
+            SkillTreeHoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.red;
+            SkillTreeHoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().color = Color.red;
         } 
         else {
-            hoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.green;
-            hoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().color = Color.green;
+            SkillTreeHoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.green;
+            SkillTreeHoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().color = Color.green;
         }
-        hoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().skillName;
-        hoverPanel.gameObject.transform.GetChild(1).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().desc;
-        hoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().currentPoints + "/" + g.GetComponent<SkillTreeButton>().maxPoints;
+        SkillTreeHoverPanel.gameObject.transform.GetChild(0).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().skillName;
+        SkillTreeHoverPanel.gameObject.transform.GetChild(1).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().desc;
+        SkillTreeHoverPanel.gameObject.transform.GetChild(2).GetComponent<Text>().text = g.GetComponent<SkillTreeButton>().currentPoints + "/" + g.GetComponent<SkillTreeButton>().maxPoints;
+    }
+    public void setMapPanel(GameObject g){
+        switch(g.name){
+            case "StarterHouse":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Starter House";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Tutorial";
+                break;
+            case "Uptown":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Uptown";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "The domain of Al Trashino, the mob boss that resides in Alcatrash";
+                break;
+            case "Alcatrash":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Alcatrash";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Home of Al Trashino... What a dump";
+                break;
+            case "Downtown":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Downtown";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "A mysterious figure rules this section of the city";
+                break;
+            case "Office":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Office";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "The home of a plant lover";
+                break;
+            case "BoarBar":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Boar Bar";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "The Watering Hole";
+                break;
+            case "FalconTower":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Falcon Tower";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Roost of Jordan BelFalcon";
+                break;
+            case "TrashFort":
+                MapHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Trash Fort";
+                MapHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Home of Tank Sinatra";
+                break;
+            default:
+                break;
+        }
+    }
+    public void setAbilitiesPanel(GameObject g){
+        switch(g.name){
+            case "MinorHeal":
+                AbilitiesHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Minor Heal";
+                AbilitiesHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Heals 2 Health";
+                break;
+            case "MajorHeal":
+                AbilitiesHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Minor Heal";
+                AbilitiesHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Heals 10 Health";
+                break;
+            case "Slash":
+                AbilitiesHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Slash";
+                AbilitiesHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Use Slash Attack";
+                break;
+            case "SporeBomb":
+                AbilitiesHoverPanel.transform.GetChild(0).GetComponent<Text>().text = "Spore Bomb";
+                AbilitiesHoverPanel.transform.GetChild(1).GetComponent<Text>().text = "Use Spore Bomb";
+                break;
+            default:
+                break;
+        }
     }
     public void updateUIBars(){
         GameObject.Find("HealthValue").GetComponent<Text>().text = (stats.health + "/" + stats.maxHealth);
@@ -271,7 +378,7 @@ public class GUIScript : MonoBehaviour
                 }
             }
         }
-        setPanel(obj);
+        setSkillTreePanel(obj);
     }
     public void setSelectedUnit(int type){
         if(movement.inCombat){
@@ -364,6 +471,14 @@ public class GUIScript : MonoBehaviour
         sklPanel.SetActive(false);
         questPanel.SetActive(true);
     }
+    public void OpenAbilities(){
+        openGUI = true;
+        invPanel.SetActive(false);
+        mapPanel.SetActive(false);
+        sklPanel.SetActive(false);
+        questPanel.SetActive(false);
+
+    }
     public void PopulateQuests(){
         foreach(Transform t in GameObject.Find("Content").transform){
             GameObject.Destroy(t.gameObject);
@@ -443,6 +558,46 @@ public class GUIScript : MonoBehaviour
             }
         }
         return null;
+    }
+    public void UseMinorHeal(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseMinorHeal();
+            }
+        }
+    }
+    public void UserMajorHeal(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseMajorHeal();
+            }
+        }
+    }
+    public void UseSlash(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseSlash();
+            }
+        }
+    }
+    public void HightlightSlash(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.HighlightSlash();
+            }
+        }
+    }
+    public void UseSporeBomb(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseSporeBomb();
+            }
+        }
     }
 
 }

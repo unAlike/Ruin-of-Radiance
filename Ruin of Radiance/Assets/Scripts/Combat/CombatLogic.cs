@@ -34,7 +34,7 @@ public class CombatLogic : MonoBehaviour {
     CombatUnit Character;
     CombatUnit SpawnUnit;
     PlayerStats stats;
-    bool inCombat = false;
+    public bool inCombat = false;
     DefaultCreatures dc = new DefaultCreatures();
     GameObject CombatButtonGUI;
     int enemyTotal = 0;
@@ -45,7 +45,6 @@ public class CombatLogic : MonoBehaviour {
     CombatTile enemy4;
     CombatTile enemy5;
     CombatTile enemy6; 
-    GameObject StaminaBar;
     bool enemyDelay = false;
 
     void Start() {
@@ -62,33 +61,20 @@ public class CombatLogic : MonoBehaviour {
         // moveScript.inCombat = true;
 
         createPlayer();
-        
-        StaminaBar = GameObject.Find("StaminaBar");
 
         Character.setIsFriendly(true);
         CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
         CombatButtonGUI.SetActive(false);
-        
         Debug.Log("Finished Start");
 
     }
     void Update() {
-        /*   
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log("Space slammed"); 
-            endTurn();
-        }
-        */
-        
 
     }
     public void createPlayer() {
         Character = new CombatUnit(GameObject.Find("Character"),stats.maxHealth,stats.health,stats.damage,1,stats.critRate,true,false,0,0,Enums.Enemy.Character);
         grid.getTiles()[0,1].setTileUnit(Character);
         grid.getTiles()[0,1].setIsOccupied(true);
-        // Character = new Unit();
-        // Character.unitSprite = GameObject.Find("Dynamic Sprite");
-        // Debug.Log("Player Created "); 
     }
     public void spawnEnemies() {
         CombatUnit unit;
@@ -142,17 +128,21 @@ public class CombatLogic : MonoBehaviour {
         this.enabled = false; // disables the enemy collision
         Debug.Log("Collision now disabled");
         //Starts Combat
+        GameObject.Find("Character").transform.Find("Character VCam").parent = null;
+        GameObject.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = null;
         GameObject.Find("Character").transform.parent = gameObject.transform.GetChild(2).transform;
         Debug.Log("SetParent");
         startCombat();
     }
     public void startCombat() {
         inCombat = true;
+        moveScript.inCombat = true;
+
         // puts player into the combat scene
         gameObject.transform.Find("CombatGrid").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 100;
         
-        moveScript.inCombat = true;
+        
         // swap for snapUnit function 
         grid.getTiles()[0,1].snapUnit();
         // snap enemies to grid
@@ -164,7 +154,6 @@ public class CombatLogic : MonoBehaviour {
         gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
         // FOR PLAYTEST
         stats.health = Character.getHealth();
-        StaminaBar.SetActive(false);
         GameObject.Find("Canvas").GetComponent<GUIScript>().updateUIBars();
     }
     public void endTurn() { // end turn button?
@@ -207,23 +196,51 @@ public class CombatLogic : MonoBehaviour {
     public void loseCondition() {
         Debug.Log("You LOST!");
     }
+    public void UseMinorHeal(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+        }
+    }
+    public void UseMajorHeal(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+        }
+    }
+    public void HighlightSlash(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+            if(grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()+1]!=null)
+            grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()+1].setHighlight(Enums.highlight.Damage);
+            if(grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()]!=null)
+            grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()].setHighlight(Enums.highlight.Damage);
+            if(grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()-1]!=null)
+            grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()-1].setHighlight(Enums.highlight.Damage);
+            RefreshHighlights();
+        }
+    }
+    public void UseSlash(){
+        
+    }
+    public void UseSporeBomb(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+        }
+    }
     public void endCombat() {
         if (checkWin()){
             captureOp();
-            stats.actionPoints = 5;
             grid.clearHighlights();
             RefreshHighlights();
             stats.mindEnergy = stats.maxMindEnergy;
             CombatButtonGUI.SetActive(false);
             GameObject.Find("Character").transform.parent = null;
-            gameObject.transform.Find("CombatGrid").gameObject.SetActive(false);
-            // GameObject.Find("CombatGrid").SetActive(false);
-
+            GameObject.Find("CombatGrid").SetActive(false);
             Debug.Log("You have ended the battle");
-            
-            StaminaBar.SetActive(true);
             moveScript.inCombat = false;
+            GameObject.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Character").transform;
+            GameObject.Find("Character VCam").transform.parent = GameObject.Find("Character").transform;
             gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 0;
+            
             inCombat = false;
             // allow for collecting creatures
             // remove dead or captured creatures

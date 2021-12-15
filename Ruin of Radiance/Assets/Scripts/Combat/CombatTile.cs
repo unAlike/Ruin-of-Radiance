@@ -84,14 +84,4 @@ public class CombatTile{
         Debug.Log("Unit Snapped to grid");
     }
 
-    /* // not using
-    public void deleteUnit() {
-        tileUnit = null;
-    }
-    public void createUnit(CombatUnit unit1){
-        tileUnit = unit1;
-    }
-    */
-
-
 }
