@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/08_Final Office.unity
     guid: f76921827fe3ef5449436a52228c06f6
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 5b5c92446186be342a4a9dd5e30c5397
   m_configObjects: {}

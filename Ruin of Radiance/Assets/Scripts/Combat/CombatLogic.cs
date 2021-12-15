@@ -48,6 +48,8 @@ public class CombatLogic : MonoBehaviour {
     CombatTile enemy4;
     CombatTile enemy5;
     CombatTile enemy6; 
+    GameObject StaminaBar;
+    
     bool enemyDelay = false;
     bool usedMajorHeal = false;
     bool usedMinorHeal = false;
@@ -70,6 +72,8 @@ public class CombatLogic : MonoBehaviour {
         createPlayer();
 
         Character.setIsFriendly(true);
+        StaminaBar = GameObject.Find("StaminaBar");
+        
         CombatButtonGUI = gameObject.transform.Find("CombatGUICanvas").gameObject;
         CombatButtonGUI.SetActive(false);
         Debug.Log("Finished Start");
@@ -161,6 +165,7 @@ public class CombatLogic : MonoBehaviour {
         spawnEnemies();
         Debug.Log("End Start");
         CombatButtonGUI.SetActive(true);
+        StaminaBar.SetActive(false);
         defineEnemies();
         gameObject.transform.Find("CombatGUICanvas").Find("ActionPoints").GetComponent<Text>().text = "Action Points: " + stats.actionPoints;
         // FOR PLAYTEST

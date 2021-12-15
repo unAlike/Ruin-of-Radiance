@@ -14,6 +14,8 @@ public class LevelLoad : MonoBehaviour
     AudioClip clip;
     public Animator transition;
     bool switching = false;
+    [SerializeField]
+    AudioClip currentMusic;
     void Start(){
 
     }
@@ -28,6 +30,8 @@ public class LevelLoad : MonoBehaviour
         Debug.Log("Loading Scene #$##############");
         yield return new WaitForSeconds(1.5f); 
         GameObject.Find("Character").transform.position = new Vector3(pos.x,pos.y, 0);
+        GameObject.Find("Character").transform.Find("Music").gameObject.GetComponent<AudioSource>().clip = currentMusic;
+        GameObject.Find("Character").transform.Find("Music").gameObject.GetComponent<AudioSource>().Play();
         Scene currentScene = SceneManager.GetActiveScene();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(toSceneName, LoadSceneMode.Single);
 
@@ -41,5 +45,7 @@ public class LevelLoad : MonoBehaviour
         
         SceneManager.UnloadSceneAsync(currentScene);
     }
+
+
 
 }
