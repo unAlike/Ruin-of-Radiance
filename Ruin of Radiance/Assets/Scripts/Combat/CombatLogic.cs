@@ -239,7 +239,8 @@ public class CombatLogic : MonoBehaviour {
             stats.mindEnergy = stats.maxMindEnergy;
             CombatButtonGUI.SetActive(false);
             GameObject.Find("Character").transform.parent = null;
-            GameObject.Find("CombatGrid").SetActive(false);
+            // GameObject.Find("CombatGrid").SetActive(false);
+            gameObject.transform.Find("CombatGrid").gameObject.SetActive(false);
             Debug.Log("You have ended the battle");
             moveScript.inCombat = false;
             GameObject.Find("Character VCam").GetComponent<CinemachineVirtualCamera>().Follow = GameObject.Find("Character").transform;
