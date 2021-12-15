@@ -553,5 +553,45 @@ public class GUIScript : MonoBehaviour
         }
         return null;
     }
+    public void UseMinorHeal(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseMinorHeal();
+            }
+        }
+    }
+    public void UserMajorHeal(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseMajorHeal();
+            }
+        }
+    }
+    public void UseSlash(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseSlash();
+            }
+        }
+    }
+    public void HightlightSlash(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.HighlightSlash();
+            }
+        }
+    }
+    public void UseSporeBomb(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseSporeBomb();
+            }
+        }
+    }
 
 }

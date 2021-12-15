@@ -34,7 +34,7 @@ public class CombatLogic : MonoBehaviour {
     CombatUnit Character;
     CombatUnit SpawnUnit;
     PlayerStats stats;
-    bool inCombat = false;
+    public bool inCombat = false;
     DefaultCreatures dc = new DefaultCreatures();
     GameObject CombatButtonGUI;
     int enemyTotal = 0;
@@ -137,7 +137,7 @@ public class CombatLogic : MonoBehaviour {
     public void startCombat() {
         inCombat = true;
         moveScript.inCombat = true;
-        
+
         // puts player into the combat scene
         gameObject.transform.Find("CombatGrid").GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
         gameObject.transform.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>().Priority = 100;
@@ -195,6 +195,36 @@ public class CombatLogic : MonoBehaviour {
     }
     public void loseCondition() {
         Debug.Log("You LOST!");
+    }
+    public void UseMinorHeal(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+        }
+    }
+    public void UseMajorHeal(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+        }
+    }
+    public void HighlightSlash(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+            if(grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()+1]!=null)
+            grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()+1].setHighlight(Enums.highlight.Damage);
+            if(grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()]!=null)
+            grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()].setHighlight(Enums.highlight.Damage);
+            if(grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()-1]!=null)
+            grid.getTiles()[grid.getTileOfUnit(Character).getXCoord()+1,grid.getTileOfUnit(Character).getYCoord()-1].setHighlight(Enums.highlight.Damage);
+            RefreshHighlights();
+        }
+    }
+    public void UseSlash(){
+        
+    }
+    public void UseSporeBomb(){
+        if(stats.actionPoints>=3){
+            stats.actionPoints -= 3;
+        }
     }
     public void endCombat() {
         if (checkWin()){
