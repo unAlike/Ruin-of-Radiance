@@ -14,7 +14,7 @@ public class GUIScript : MonoBehaviour
     GameObject invPanel, mapPanel, sklPanel, SkillTreeHoverPanel, SkillPointText, questPanel, abilitiesPanel, AbilitiesHoverPanel, MapHoverPanel;
     string activeBtn;
     [SerializeField]
-    bool openGUI = false;
+    public bool openGUI = false;
     PlayerStats stats;
     int healthUpgradePoints, sheildPoints, lifestealPoints, healPoints, megaHealPoints = 0;
     int damagePoints, critPoints, creatureCritPoints, slashPoints, sporeBombPoints = 0;
@@ -330,9 +330,7 @@ public class GUIScript : MonoBehaviour
                         stats.maxMindEnergy += 5;
                         stats.mindEnergy += 5;
                         GameObject.Find("MindBtn11").GetComponent<SkillTreeButton>().unlocked = true;
-                        GameObject.Find("MindBtn21").GetComponent<SkillTreeButton>().unlocked = true;
                         GameObject.Find("MindBtn11").GetComponent<Button>().interactable = true;
-                        GameObject.Find("MindBtn21").GetComponent<Button>().interactable = true;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         mindEnergyPoints++;
                         break;
@@ -350,22 +348,6 @@ public class GUIScript : MonoBehaviour
                         stats.recallCostReduction+=1;
                         obj.GetComponent<SkillTreeButton>().currentPoints++;
                         recallPoints++;
-                        break;
-                    case "MindBtn21":
-                        stats.skillPoints--;
-                        stats.hasBoostedSpawn=true;
-                        stats.boostedSpawnLevel+=1;
-                        GameObject.Find("MindBtn22").GetComponent<SkillTreeButton>().unlocked = true;
-                        GameObject.Find("MindBtn22").GetComponent<Button>().interactable = true;
-                        obj.GetComponent<SkillTreeButton>().currentPoints++;
-                        boostedSpawnPoints++;
-                        break;
-                    case "MindBtn22":
-                        stats.skillPoints--;
-                        stats.hasFlip=true;
-                        stats.flipLevel+=1;
-                        obj.GetComponent<SkillTreeButton>().currentPoints++;
-                        flipPoints++;
                         break;
                     default:
                         break; 
@@ -585,6 +567,22 @@ public class GUIScript : MonoBehaviour
             }
         }
     }
+    public void HightlightSporeBomb(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.HightlightSporeBomb();
+            }
+        }
+    }
+    public void RefreshCombatHighlight(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.HighlightField();
+            }
+        }
+    }
     public void UseSporeBomb(){
         if(GameObject.Find("Character").transform.parent != null){
             CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
@@ -592,6 +590,25 @@ public class GUIScript : MonoBehaviour
                 cl.UseSporeBomb();
             }
         }
+    }
+    public void UseWateringCan(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseWateringCan();
+            }
+        }
+    }
+    public void UseCrystal(){
+        if(GameObject.Find("Character").transform.parent != null){
+            CombatLogic cl = GameObject.Find("Character").transform.parent.parent.GetComponent<CombatLogic>();
+            if(cl.inCombat){
+                cl.UseCrystal();
+            }
+        }
+    }
+    public void SetActiveButton(GameObject g){
+        EventSystem.SetSelectedGameObject(g);
     }
 
 }

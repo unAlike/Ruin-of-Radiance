@@ -10,6 +10,8 @@ public class LevelLoad : MonoBehaviour
     string toSceneName;
     [SerializeField]
     Vector2 pos;
+    [SerializeField]
+    AudioClip clip;
     public Animator transition;
     bool switching = false;
     void Start(){
