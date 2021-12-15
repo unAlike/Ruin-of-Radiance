@@ -349,6 +349,7 @@ public class CombatLogic : MonoBehaviour {
             grid.clearHighlights();
             RefreshHighlights();
             stats.mindEnergy = stats.maxMindEnergy;
+            stast.actionPoints = 5;
             CombatButtonGUI.SetActive(false);
             GameObject.Find("Character").transform.parent = null;
             // GameObject.Find("CombatGrid").SetActive(false);
